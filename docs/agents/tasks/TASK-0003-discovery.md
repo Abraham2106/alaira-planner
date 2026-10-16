@@ -7,7 +7,7 @@
 - **Requisitos:** valida las hipótesis del [PRODUCT_BRIEF](../../product/PRODUCT_BRIEF.md) y la baseline M1
 - **ADRs:** ninguno
 - **RR relacionada:** [RR-0002 §5](../../requirements/records/RR-0002-baseline-m1-y-g0.md)
-- **Rama / worktree:** `agent/TASK-0003-discovery` · `../alaira-wt-TASK-0003-discovery`
+- **Rama / worktree:** `main` · copia principal (sin ramas ni worktree, por instrucción del mantenedor)
 - **Rutas reservadas:** `docs/research/discovery/`
 - **Rutas prohibidas:** SRS, ADRs, REGISTRY; cualquier dato personal sin anonimizar
 - **Dependencias:** ninguna

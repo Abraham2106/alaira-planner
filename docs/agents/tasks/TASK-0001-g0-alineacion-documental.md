@@ -1,6 +1,6 @@
 # TASK-0001 — Resolución de G0 y alineación documental con la definición de producto
 
-- **Estado:** review
+- **Estado:** accepted (PR #7 fusionado en `main` por el mantenedor)
 - **Planificador:** agente bajo autoridad expresa del mantenedor (sin Planner independiente activo)
 - **Agente ejecutor / revisor distinto:** agente de documentación de Cursor / mantenedor Alaira (Abraham2106)
 - **WBS:** WBS-1.2, WBS-1.3 (decisiones), WBS-1.5
