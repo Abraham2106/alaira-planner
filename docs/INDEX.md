@@ -97,7 +97,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0001](agents/tasks/TASK-0001-g0-alineacion-documental.md) | Resolución de G0 y alineación con el brief | Ficha (accepted) |
 | [TASK-0002](agents/tasks/TASK-0002-bootstrap-monorepo-y-poc.md) | Bootstrap del monorepo y POC de ADRs condicionados | Ficha (in_progress) |
 | [TASK-0003](agents/tasks/TASK-0003-discovery.md) | Discovery con usuarios en paralelo a M1 | Ficha (ready) |
-| [TASK-0101](agents/tasks/TASK-0101-iam-identidad.md) | IAM: tenants, usuarios, invitaciones, sesiones | Ficha (in_progress) |
+| [TASK-0101](agents/tasks/TASK-0101-iam-identidad.md) | IAM: tenants, usuarios, invitaciones, sesiones | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0101.md) |
 | [TASK-0102](agents/tasks/TASK-0102-motor-cpm.md) | Motor CPM puro | Ficha (in_progress) |
 | [TASK-0103](agents/tasks/TASK-0103-web-shell.md) | Shell web, a11y y cliente API | Ficha (in_progress) |
 | [TASK-0104](agents/tasks/TASK-0104-connector-sdk.md) | Connector SDK y conector falso | Ficha (in_progress) |

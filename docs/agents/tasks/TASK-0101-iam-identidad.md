@@ -1,8 +1,8 @@
 # TASK-0101 — IAM: tenants, usuarios, invitaciones, sesiones y CSRF
 
-- **Estado:** in_progress
+- **Estado:** integrated_provisional (integrado en `main`; no marcar `accepted` — auth/tenancy)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0101 (composer-2.5) / revisor-0101 (instancia nueva)
+- **Agente ejecutor / revisor distinto:** implementador-0101 (composer-2.5) / revisor-0101 (instancia nueva `88d11c0f`, ronda 2/2)
 - **WBS:** WBS-2.1
 - **Requisitos:** REQ-001, REQ-002, REQ-004, REQ-009; NFR-001, NFR-006
 - **ADRs:** ADR-0006, ADR-0007
@@ -22,5 +22,6 @@
   5. Pruebas negativas por cada endpoint nuevo; solo datos sintéticos.
 - **Plan de pruebas:** Vitest; reportar passed/failed/not_run con comando y salida.
 - **Riesgos / condiciones de parada:** contradicción con ADR-0007 → blocked + ADR/RR proposed.
-- **Evidencia:** commits en `main` + reporte. Requiere aprobación humana (auth/tenancy).
-- **Rollback:** `git revert` de tus commits.
+- **Evidencia:** [reporte TASK-0101](../../quality/reports/TASK-0101.md); commits en `main` (fix login 500: `a99129d`). Revisor ronda 2/2: **approve** (`88d11c0f`); `iam.integration.test.ts` 4/4 passed (Postgres Docker); `POST /auth/login` → **200** (no 500).
+- **Revisión / autorización humana:** **REQUIERE_APROBACION_HUMANA:** sí (auth/tenancy) — **pendiente** del mantenedor. Hallazgos menores no bloqueantes: criterio 5 en modo 80/20 (suite integración); tests normalizan `set-cookie` cuando Fastify devuelve `string` vs `string[]`.
+- **Rollback:** `git revert` de tus commits (p. ej. `a99129d` + migración `0104` si aplica).
