@@ -1,13 +1,13 @@
 # TASK-0117 — Web Gantt: baseline, forecast y real (M1b UI)
 
-- **Estado:** review (implementación en `main`; no `accepted`)
+- **Estado:** integrated_provisional (integrado en `main`; no marcar `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0117 (instancia `10c8a9d6`) / revisor-0117 (pendiente asignación)
+- **Agente ejecutor / revisor distinto:** implementador-0117 (instancia `10c8a9d6`) / revisor-0117 (instancia `bc-5cb84ade`, ronda 1/1 — **approve**)
 - **WBS:** WBS-3.3 (UI)
 - **Requisitos:** REQ-028; NFR-015
 - **ADRs:** ADR-0006
 - **Rama / worktree:** `main`. Sin ramas. `git commit -s` y push.
-- **Rutas reservadas:** `apps/web/src/features/gantt/`, `docs/quality/reports/TASK-0117.md`
+- **Rutas reservadas:** liberadas (provisional)
 - **Rutas prohibidas:** shell (0103), project/wbs forms (0115), REGISTRY, raíz
 - **Bloque de migraciones:** ninguna
 - **Dependencias:** TASK-0115 (formularios web), TASK-0116 (baseline/forecast en API)
@@ -18,5 +18,5 @@
   2. Alternativa tabular navegable por teclado.
   3. Sin mutar baseline desde UI.
   4. Build + tests de componente mínimos.
-- **Evidencia:** `a1e3015`, `23b999f`, `e1bf796`; [informe TASK-0117](../../quality/reports/TASK-0117.md). Vitest web **18/18** (incl. 6 gantt); revisor pendiente.
+- **Evidencia:** `a1e3015`, `23b999f`, `e1bf796`; [informe TASK-0117](../../quality/reports/TASK-0117.md). Revisor **approve** (`bc-5cb84ade`): Vitest web **18/18**; typecheck/build OK; UI read-only (sin mutar baseline); E2E **not_run**.
 - **Rollback:** `git revert`.

@@ -115,7 +115,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0114](agents/tasks/TASK-0114-asignaciones.md) | Asignaciones y sobreasignación | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0114.md) |
 | [TASK-0115](agents/tasks/TASK-0115-web-proyecto-wbs.md) | Web: proyecto y WBS | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0115.md) |
 | [TASK-0116](agents/tasks/TASK-0116-baseline.md) | Baseline, forecast y real | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0116.md) |
-| [TASK-0117](agents/tasks/TASK-0117-web-gantt.md) | Web Gantt accesible | Ficha (review) · [reporte](quality/reports/TASK-0117.md) |
+| [TASK-0117](agents/tasks/TASK-0117-web-gantt.md) | Web Gantt accesible | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0117.md) |
 | [TASK-0118](agents/tasks/TASK-0118-evidencia.md) | Evidencias y EvidenceEvent persistido | Ficha (ready) |
 | [TASK-0119](agents/tasks/TASK-0119-connector-fabric.md) | Connector Fabric (webhooks, tokens, DLQ) | Ficha (ready) |
 | [TASK-0120](agents/tasks/TASK-0120-github.md) | Conector GitHub → EvidenceEvent | Ficha (proposed) |
@@ -147,7 +147,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0114 report](quality/reports/TASK-0114.md) | Evidencia asignaciones M1 | Evidencia (provisional; RLS humana) |
 | [TASK-0115 report](quality/reports/TASK-0115.md) | Evidencia web proyecto/WBS | Evidencia (provisional) |
 | [TASK-0116 report](quality/reports/TASK-0116.md) | Evidencia baseline M1 | Evidencia (provisional; línea base humana) |
-| [TASK-0117 report](quality/reports/TASK-0117.md) | Evidencia web Gantt M1b | Evidencia (review; revisor pendiente) |
+| [TASK-0117 report](quality/reports/TASK-0117.md) | Evidencia web Gantt M1b | Evidencia (provisional) |
 
 ### Gobernanza, investigación y ejemplos
 
