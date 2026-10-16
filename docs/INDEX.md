@@ -130,6 +130,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0108 report](quality/reports/TASK-0108.md) | Evidencia AI runtime core | Evidencia (provisional; ADR-0005 humana) |
 | [TASK-0109 report](quality/reports/TASK-0109.md) | Evidencia event log / outbox | Evidencia (provisional) |
 | [TASK-0110 report](quality/reports/TASK-0110.md) | Evidencia grafo de proyecto | Evidencia (provisional) |
+| [TASK-0111 report](quality/reports/TASK-0111.md) | Evidencia WBS y entregables | Evidencia (en curso) |
 
 ### Gobernanza, investigación y ejemplos
 
