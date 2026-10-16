@@ -27,6 +27,7 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@alaira/worker": "workspace:*",
     "@types/pg": "^8.11.11",
     "vitest": "^3.0.5"
   }
