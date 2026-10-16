@@ -103,7 +103,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0104](agents/tasks/TASK-0104-connector-sdk.md) | Connector SDK y conector falso | Ficha (in_progress) |
 | [TASK-0105](agents/tasks/TASK-0105-testkit.md) | Testkit y fixtures sintéticos | Ficha (in_progress) |
 | [TASK-0106](agents/tasks/TASK-0106-authz.md) | RBAC deny-by-default | Ficha (in_progress) |
-| [TASK-0107](agents/tasks/TASK-0107-motor-capacidad.md) | Motor de capacidad puro | Ficha (in_progress) |
+| [TASK-0107](agents/tasks/TASK-0107-motor-capacidad.md) | Motor de capacidad puro | Ficha (review) |
 | [TASK-0108](agents/tasks/TASK-0108-ai-runtime-core.md) | AI runtime core | Ficha (in_progress) |
 | [Plantilla RUN](agents/runs/TEMPLATE.md) | Registro por ejecución de agente | Plantilla |
 | [SWARM_MASTER_PROMPT](agents/prompts/SWARM_MASTER_PROMPT.md) | Prompt del Planner para construir M1 con un enjambre de agentes Composer | Procedimiento operativo |
@@ -121,7 +121,9 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0103 report](quality/reports/TASK-0103.md) | Evidencia web shell | Evidencia (provisional) |
 | [TASK-0104 report](quality/reports/TASK-0104.md) | Evidencia Connector SDK | Evidencia (provisional) |
 | [TASK-0105 report](quality/reports/TASK-0105.md) | Evidencia testkit | Evidencia (provisional) |
-| [TASK-0107 report](quality/reports/TASK-0107.md) | Evidencia motor de capacidad | Evidencia (en curso) |
+| [TASK-0106 report](quality/reports/TASK-0106.md) | Evidencia RBAC deny-by-default | Evidencia (en curso) |
+| [TASK-0107 report](quality/reports/TASK-0107.md) | Evidencia motor de capacidad | Evidencia (review) |
+| [TASK-0108 report](quality/reports/TASK-0108.md) | Evidencia AI runtime core | Evidencia (en curso) |
 
 ### Gobernanza, investigación y ejemplos
 
