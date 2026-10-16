@@ -124,7 +124,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0123](agents/tasks/TASK-0123-recuperacion.md) | Recuperación vectorial con permisos | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0123.md) |
 | [TASK-0124](agents/tasks/TASK-0124-ai-runtime-dominio.md) | AI runtime dominio y AIProposal | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0124.md) |
 | [TASK-0125](agents/tasks/TASK-0125-slack-consecuencias.md) | Slack: consecuencias de acciones | Ficha (proposed) |
-| [TASK-0126](agents/tasks/TASK-0126-agente-progress.md) | Agente Progress | Ficha (in_progress) |
+| [TASK-0126](agents/tasks/TASK-0126-agente-progress.md) | Agente Progress | Ficha (review) |
 | [TASK-0127](agents/tasks/TASK-0127-control-tower-min.md) | Control Tower mínimo | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0127.md) |
 | [TASK-0128](agents/tasks/TASK-0128-evals-ia.md) | Evals IA adversariales | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0128.md) |
 | [TASK-0129](agents/tasks/TASK-0129-e2e-g1.md) | E2E UC-06 y batería G1 | Ficha (proposed) |
@@ -168,6 +168,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0123 report](quality/reports/TASK-0123.md) | Evidencia recuperación pgvector M1d | Evidencia (provisional) |
 | [TASK-0122 report](quality/reports/TASK-0122.md) | Evidencia aceptación/progreso M1d | Evidencia (provisional) |
 | [TASK-0124 report](quality/reports/TASK-0124.md) | Evidencia AI runtime dominio M1d | Evidencia (provisional; ADR-0005 / gate 0108) |
+| [TASK-0126 report](quality/reports/TASK-0126.md) | Evidencia agente Progress M1d | Evidencia (review; revisor en vuelo; gate 0108 / ADR-0005) |
 | [TASK-0127 report](quality/reports/TASK-0127.md) | Evidencia Control Tower mínimo M1d | Evidencia (provisional; ADR-0005 / gate 0108) |
 | [TASK-0128 report](quality/reports/TASK-0128.md) | Evidencia evals IA adversariales M1d | Evidencia (provisional; umbrales G1 no aprobados) |
 

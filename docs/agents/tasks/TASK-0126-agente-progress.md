@@ -1,8 +1,8 @@
 # TASK-0126 — Agente Progress: evidencia → propuesta de avance (M1d)
 
-- **Estado:** in_progress (no `accepted`)
+- **Estado:** review (no `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0126 (instancia `bc-c10fa099`) / revisor-0126 (pendiente)
+- **Agente ejecutor / revisor distinto:** implementador-0126 (instancia `bc-c10fa099`, entrega `d9371f4`) / revisor-0126 (en vuelo)
 - **WBS:** WBS-7.4 (Progress)
 - **Requisitos:** REQ-092; TC-AI-07
 - **ADRs:** ADR-0005 (condicionado), ADR-0006
@@ -15,5 +15,7 @@
 - **Fuera de alcance:** stand-up (M2/M4); finanzas.
 - **Criterios de aceptación (80/20):** propuesta lista criterios cumplidos/pendientes.
 - **Plan de pruebas:** Vitest con fixtures; job worker en test.
-- **Evidencia:** reporte TASK-0126.
+- **Evidencia:** `d9371f4`; [informe TASK-0126](../../quality/reports/TASK-0126.md). ai progress **3**; worker **1**; worker typecheck.
+- **Revisión:** revisor en vuelo; rutas progress/worker reservadas hasta veredicto.
+- **Revisión / autorización humana:** gate **TASK-0108** / ADR-0005 abierto; no `accepted`.
 - **Rollback:** `git revert`.
