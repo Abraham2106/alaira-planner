@@ -37,6 +37,23 @@ Detalle en [STATUS](docs/governance/STATUS.md) y [preguntas abiertas](docs/gover
 5. El motor determinista es la autoridad sobre fechas, costos y estados; la IA propone y actúa solo con herramientas tipadas, permisos mínimos y la política de autonomía.
 6. La metodología nunca es premium; APIs, exportación, seguridad multi-tenant y accesibilidad son criterios de diseño.
 
+## Dependencias locales (Docker)
+
+Pruebas de integración M1 usan **PostgreSQL** únicamente:
+
+```bash
+docker compose up -d
+# equivalente: docker compose up -d postgres
+```
+
+API, worker y web requieren el perfil `poc-stack`. El emulador S3 local (`minio/minio`) está en perfil `object-storage` y **no arranca por defecto** (MinIO CE OSS archivado; ver [ADR-0008](docs/architecture/adr/0008-local-s3-emulator-minio-ce-archived.md) y [RR-0003](docs/requirements/records/RR-0003-m1-dev-sin-emulador-s3.md)).
+
+```bash
+docker compose --profile poc-stack up -d
+```
+
+Copia `.env.example` a `.env` y ajusta `DATABASE_URL` para el host local.
+
 ## Validar la documentación
 
 Requiere Python 3.9+ y no tiene dependencias externas. Es la misma comprobación que ejecuta la CI en cada PR:

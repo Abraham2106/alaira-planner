@@ -1,0 +1,22 @@
+# RR-0003 — Desarrollo y pruebas M1 sin emulador S3 local obligatorio
+
+- **Estado:** proposed
+- **Solicitante / fecha:** mantenedor Alaira / 2026-10-16
+- **Problema de negocio y usuarios afectados:** agentes y CI no pueden levantar dependencias locales porque `docker compose up` intentaba descargar `minio/minio` (MinIO Community Edition archivado, pull denegado). Las tareas M1 en curso (identidad, grafo, event log, programación, API) usan PostgreSQL, no almacenamiento de objetos en runtime.
+- **Resultado esperado:** precondición estándar de integración M1 = Postgres local; emulador S3 local opcional hasta decisión de emulador sustituto.
+- **Evidencia o investigación de soporte:** archivo del repositorio MinIO CE OSS (feb 2026); `docker compose` falla en pull; [ADR-0008 propuesto](../../architecture/adr/0008-local-s3-emulator-minio-ce-archived.md); uso de S3 limitado a POC del worker (`HeadBucket` opcional).
+- **REQ afectados, versiones antes/después:** ningún REQ de baseline M1 exige S3 local en dev; criterio de aceptación de TASK-0002 §1 (stack Compose con S3) queda sujeto a enmienda operativa, no a cambio de SRS.
+- **Texto normativo propuesto:** «Para M1, las pruebas de integración documentadas en `docs/quality/reports/` pueden declarar como precondición `docker compose up -d` (solo PostgreSQL) o equivalente; el almacenamiento de evidencias binarias en producción sigue siendo API S3 compatible según ADR-0006.»
+- **Escenarios Given/When/Then:**
+  - **Given** un desarrollador en M1a/M1b con Docker. **When** ejecuta `docker compose up -d`. **Then** PostgreSQL queda healthy sin descargar `minio/minio`.
+  - **Given** TASK-0002 pendiente de cierre con S3 local. **When** el Planner acepta ADR-0008 y elige emulador (Garage, filesystem, mock, M2). **Then** se actualiza la ficha TASK-0002 y la validación de ADR-0006 sin reabrir baseline M1 de REQ.
+- **Alternativas, incluido no realizar el cambio:**
+  - Aceptar RR + perfiles Compose (recomendado).
+  - Elegir emulador sustituto antes de M1 (bloquea hasta auditoría OSS).
+  - No hacer: integración M1 sigue bloqueada por pull de MinIO.
+- **Impactos:** WBS-1.3 (bootstrap), documentación Compose, `.env.example`; sin migraciones; arquitectura vía ADR-0008; sin datos sensibles.
+- **Riesgos / mitigaciones:** deriva dev/prod en evidencias binarias → mitigar con adaptador único y tests de contrato cuando exista emulador; TASK-0002 incompleta en S3 → registrar en reporte TASK-0002 como `deferred`.
+- **ADR vinculado si es decisión técnica:** [ADR-0008](../../architecture/adr/0008-local-s3-emulator-minio-ce-archived.md) (Proposed)
+- **Decision maker / fecha / justificación:** Planner / mantenedor — pendiente
+- **Baseline anterior / nueva:** sin cambio de REQ M1
+- **Prueba y evidencia de cierre:** `docker compose up -d` sin pull MinIO; reportes de integración M1 referencian Postgres; ADR-0008 Accepted o emulador elegido.
