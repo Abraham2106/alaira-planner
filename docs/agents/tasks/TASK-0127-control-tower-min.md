@@ -2,7 +2,7 @@
 
 - **Estado:** in_progress (no `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0127 (Composer en vuelo; id en follow-up) / revisor-0127 (pendiente)
+- **Agente ejecutor / revisor distinto:** implementador-0127 (instancia `bc-a01d64b1`) / revisor-0127 (pendiente)
 - **WBS:** WBS-2.7 (M1 mínimo)
 - **Requisitos:** REQ-096, REQ-097; TC-UX-04, TC-AUD-04
 - **ADRs:** ADR-0006, ADR-0005 (condicionado Ask/Command)
