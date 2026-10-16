@@ -10,6 +10,20 @@ const synthPassword = "SyntheticPass-0101!";
 const slugA = "synth-org-alpha-0101";
 const slugB = "synth-org-beta-0101";
 
+function cookieHeaderFromSetCookie(setCookie: string | string[] | undefined): string {
+  if (!setCookie) return "";
+  const parts = Array.isArray(setCookie) ? setCookie : [setCookie];
+  return parts
+    .map((part) => part.split(";")[0]?.trim())
+    .filter((part): part is string => Boolean(part))
+    .join("; ");
+}
+
+function sessionIdFromSetCookie(setCookie: string | string[] | undefined): string | undefined {
+  const joined = Array.isArray(setCookie) ? setCookie.join(";") : (setCookie ?? "");
+  return joined.match(/alaira_session=([^;]+)/)?.[1];
+}
+
 async function dbReachable(): Promise<boolean> {
   const client = new pg.Client({ connectionString: adminUrl });
   try {
@@ -46,9 +60,10 @@ async function registerAndLogin(
     url: "/api/v1/iam/auth/login",
     payload: { tenantSlug: slug, email, password: synthPassword },
   });
+  expect(login.statusCode).toBe(200);
   const body = login.json() as { csrfToken: string };
   return {
-    cookies: login.headers["set-cookie"] as string,
+    cookies: cookieHeaderFromSetCookie(login.headers["set-cookie"]),
     csrf: body.csrfToken,
   };
 }
@@ -133,8 +148,9 @@ describe.skipIf(!dbUp)("TASK-0101 IAM (80/20)", () => {
         password: synthPassword,
       },
     });
-    const cookies = login.headers["set-cookie"] as string;
-    const sessionId = cookies.match(/alaira_session=([^;]+)/)?.[1];
+    expect(login.statusCode).toBe(200);
+    const cookies = cookieHeaderFromSetCookie(login.headers["set-cookie"]);
+    const sessionId = sessionIdFromSetCookie(login.headers["set-cookie"]);
     await appPool.query(
       `UPDATE session SET expires_at = now() - interval '1 minute' WHERE id = $1`,
       [sessionId],
@@ -150,11 +166,12 @@ describe.skipIf(!dbUp)("TASK-0101 IAM (80/20)", () => {
 
   it("TC-IAM-01: invite, accept, deactivate — deactivated cannot access", async () => {
     const app = await buildServer();
+    const flowEmail = `iam-flow-${Date.now()}@synth.test`;
     const invite = await app.inject({
       method: "POST",
       url: "/api/v1/iam/invitations",
       headers: { cookie: betaOwner.cookies, "x-alaira-csrf": betaOwner.csrf },
-      payload: { email: "iam-flow@synth.test" },
+      payload: { email: flowEmail },
     });
     expect(invite.statusCode).toBe(201);
     const { acceptToken } = invite.json() as { acceptToken: string };
@@ -175,7 +192,7 @@ describe.skipIf(!dbUp)("TASK-0101 IAM (80/20)", () => {
       url: "/api/v1/iam/auth/login",
       payload: {
         tenantSlug: slugB,
-        email: "iam-flow@synth.test",
+        email: flowEmail,
         password: synthPassword,
       },
     });
@@ -207,7 +224,7 @@ describe.skipIf(!dbUp)("TASK-0101 IAM (80/20)", () => {
           url: "/api/v1/iam/auth/login",
           payload: {
             tenantSlug: slugB,
-            email: "iam-flow@synth.test",
+            email: flowEmail,
             password: synthPassword,
           },
         })
