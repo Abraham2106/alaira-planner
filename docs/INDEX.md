@@ -98,6 +98,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0002](agents/tasks/TASK-0002-bootstrap-monorepo-y-poc.md) | Bootstrap del monorepo y POC de ADRs condicionados | Ficha (ready) |
 | [TASK-0003](agents/tasks/TASK-0003-discovery.md) | Discovery con usuarios en paralelo a M1 | Ficha (ready) |
 | [Plantilla RUN](agents/runs/TEMPLATE.md) | Registro por ejecución de agente | Plantilla |
+| [SWARM_MASTER_PROMPT](agents/prompts/SWARM_MASTER_PROMPT.md) | Prompt del Planner para construir M1 con un enjambre de agentes Composer | Procedimiento operativo |
 
 ### Calidad
 
