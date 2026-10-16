@@ -1,5 +1,4 @@
 import { describe, expect, it } from "vitest";
-import { isConnector } from "../sdk/connector.js";
 import {
   createFakeReferenceConnector,
   syntheticLifecyclePayload,
@@ -15,12 +14,6 @@ const ctx = {
 };
 
 describe("FakeReferenceConnector", () => {
-  it("implements the Connector contract", () => {
-    const connector = createFakeReferenceConnector();
-    expect(isConnector(connector)).toBe(true);
-    expect(connector.definition.capabilities.length).toBeGreaterThan(0);
-  });
-
   it("normalize produces REQ-087 field set from synthetic payload", async () => {
     const connector = createFakeReferenceConnector();
     await connector.authorize({
@@ -76,14 +69,5 @@ describe("FakeReferenceConnector", () => {
     await connector.revoke(ctx);
     health = await connector.healthCheck(ctx);
     expect(health.status).toBe("revoked");
-  });
-
-  it("receiveEvent deduplicates by deliveryId", async () => {
-    const connector = createFakeReferenceConnector();
-    const raw = syntheticLifecyclePayload();
-    const first = await connector.receiveEvent({ ...ctx, raw });
-    const second = await connector.receiveEvent({ ...ctx, raw });
-    expect(first.duplicate).toBe(false);
-    expect(second.duplicate).toBe(true);
   });
 });

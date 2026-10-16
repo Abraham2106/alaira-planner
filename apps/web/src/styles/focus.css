@@ -1,0 +1,26 @@
+.shell-root :where(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])):focus {
+  outline: none;
+}
+
+.shell-root :where(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])):focus-visible {
+  outline: var(--shell-focus-width) solid var(--shell-color-focus-ring);
+  outline-offset: 2px;
+}
+
+.shell-skip-link {
+  position: absolute;
+  left: var(--shell-space-md);
+  top: var(--shell-space-md);
+  z-index: 100;
+  padding: var(--shell-space-sm) var(--shell-space-md);
+  background: var(--shell-color-surface);
+  color: var(--shell-color-text);
+  border: 2px solid var(--shell-color-focus-ring);
+  border-radius: var(--shell-radius);
+  transform: translateY(-200%);
+  transition: transform 0.15s ease;
+}
+
+.shell-skip-link:focus {
+  transform: translateY(0);
+}
