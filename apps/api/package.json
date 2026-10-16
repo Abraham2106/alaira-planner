@@ -17,6 +17,7 @@
     "@alaira/connectors": "workspace:*",
     "@alaira/contracts": "workspace:*",
     "@alaira/domain": "workspace:*",
+    "@alaira/ai": "workspace:*",
     "@alaira/engine": "workspace:*",
     "@fastify/cookie": "^11.0.2",
     "argon2": "^0.41.1",

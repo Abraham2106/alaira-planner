@@ -16,7 +16,9 @@
     "./eventlog": "./src/eventlog/index.ts",
     "./scheduling": "./src/scheduling/index.ts",
     "./baseline": "./src/baseline/index.ts",
-    "./evidence": "./src/evidence/index.ts"
+    "./evidence": "./src/evidence/index.ts",
+    "./acceptance": "./src/acceptance/index.ts",
+    "./retrieval": "./src/retrieval/index.ts"
   },
   "scripts": {
     "lint": "eslint src --max-warnings 0",

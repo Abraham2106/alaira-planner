@@ -26,6 +26,9 @@ importers:
 
   apps/api:
     dependencies:
+      '@alaira/ai':
+        specifier: workspace:*
+        version: link:../../packages/ai
       '@alaira/connectors':
         specifier: workspace:*
         version: link:../../packages/connectors
