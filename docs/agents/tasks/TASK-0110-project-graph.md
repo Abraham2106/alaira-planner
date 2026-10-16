@@ -1,8 +1,8 @@
 # TASK-0110 — Grafo de proyecto: work nodes, ramas y delivery_profile
 
-- **Estado:** in_progress
+- **Estado:** review (entrega en `main`; veredicto revisor pendiente; no `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0110 (composer-2.5) / revisor nuevo (instancia distinta)
+- **Agente ejecutor / revisor distinto:** implementador-0110 (composer-2.5) / revisor ronda 1 (nuevo, no implementador) en vuelo
 - **WBS:** WBS-2.3
 - **Requisitos:** REQ-081, REQ-009; NFR-001
 - **ADRs:** ADR-0006, ADR-0007
@@ -21,5 +21,5 @@
   4. Tenant de sesión; otro tenant no lee el proyecto (404).
 - **Plan de pruebas:** Vitest; integración Postgres Docker; 2–4 casos; datos sintéticos.
 - **Riesgos / condiciones de parada:** modelo incompatible con 0111 → elevar al Planner antes de persistir WBS.
-- **Evidencia:** commits + reporte TASK-0110.
+- **Evidencia:** implementación `8f13a9e`; reporte `39a55e3`; [informe TASK-0110](../../quality/reports/TASK-0110.md).
 - **Rollback:** `git revert`; migraciones `014x` down.

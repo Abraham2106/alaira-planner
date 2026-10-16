@@ -106,7 +106,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0107](agents/tasks/TASK-0107-motor-capacidad.md) | Motor de capacidad puro | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0107.md) |
 | [TASK-0108](agents/tasks/TASK-0108-ai-runtime-core.md) | AI runtime core | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0108.md) |
 | [TASK-0109](agents/tasks/TASK-0109-event-log.md) | Event log, outbox e idempotencia | Ficha (in_progress) |
-| [TASK-0110](agents/tasks/TASK-0110-project-graph.md) | Grafo de proyecto y delivery_profile | Ficha (in_progress) |
+| [TASK-0110](agents/tasks/TASK-0110-project-graph.md) | Grafo de proyecto y delivery_profile | Ficha (review) · [reporte](quality/reports/TASK-0110.md) |
 | [TASK-0111](agents/tasks/TASK-0111-wbs-entregables.md) | WBS, entregables e hitos | Ficha (ready) |
 | [TASK-0112](agents/tasks/TASK-0112-api-io.md) | API v1, OpenAPI e import/export CSV | Ficha (ready) |
 | [Plantilla RUN](agents/runs/TEMPLATE.md) | Registro por ejecución de agente | Plantilla |
@@ -128,6 +128,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0106 report](quality/reports/TASK-0106.md) | Evidencia RBAC deny-by-default | Evidencia (provisional; authz/RLS humana) |
 | [TASK-0107 report](quality/reports/TASK-0107.md) | Evidencia motor de capacidad | Evidencia (provisional) |
 | [TASK-0108 report](quality/reports/TASK-0108.md) | Evidencia AI runtime core | Evidencia (provisional; ADR-0005 humana) |
+| [TASK-0110 report](quality/reports/TASK-0110.md) | Evidencia grafo de proyecto | Evidencia (review) |
 
 ### Gobernanza, investigación y ejemplos
 
