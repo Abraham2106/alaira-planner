@@ -1,8 +1,8 @@
 # TASK-0117 — Web Gantt: baseline, forecast y real (M1b UI)
 
-- **Estado:** ready
+- **Estado:** in_progress (implementación en vuelo; no `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** (sin asignar) / revisor nuevo
+- **Agente ejecutor / revisor distinto:** implementador-0117 (instancia `10c8a9d6`, en vuelo) / revisor nuevo
 - **WBS:** WBS-3.3 (UI)
 - **Requisitos:** REQ-028; NFR-015
 - **ADRs:** ADR-0006
