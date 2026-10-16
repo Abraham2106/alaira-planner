@@ -1,4 +1,4 @@
-import { createHash, randomBytes, timingSafeEqual } from "node:crypto";
+import { createHash } from "node:crypto";
 import argon2 from "argon2";
 
 /** Argon2id parameters aligned with OWASP memory-hard defaults (M1). */
@@ -28,9 +28,4 @@ export async function verifyPasswordArgon2id(
 /** SHA-256 of opaque invitation / accept tokens (stored form). */
 export function hashOpaqueToken(token: string): string {
   return createHash("sha256").update(token, "utf8").digest("hex");
-}
-
-export function timingSafeEqualHex(a: string, b: string): boolean {
-  if (a.length !== b.length) return false;
-  return timingSafeEqual(Buffer.from(a, "hex"), Buffer.from(b, "hex"));
 }

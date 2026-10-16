@@ -10,7 +10,6 @@ import {
   nextSessionExpiry,
   SESSION_ABSOLUTE_MS,
   type MembershipRecord,
-  type SessionTimestamps,
 } from "@alaira/domain/iam";
 import { appPool, withTenantTx } from "../../db/pool.js";
 
