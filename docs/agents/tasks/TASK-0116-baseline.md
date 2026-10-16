@@ -1,8 +1,8 @@
 # TASK-0116 — Baseline inmutable, forecast y real (M1)
 
-- **Estado:** ready
+- **Estado:** in_progress
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** (sin asignar) / revisor nuevo
+- **Agente ejecutor / revisor distinto:** implementador-0116 (composer-2.5) / revisor nuevo (instancia distinta)
 - **WBS:** WBS-3.3 (M1)
 - **Requisitos:** REQ-024, REQ-027; TC-BASE-01, TC-BASE-04
 - **ADRs:** ADR-0006, ADR-0007
