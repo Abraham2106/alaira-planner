@@ -8,7 +8,7 @@
 - **ADRs:** [ADR-0003](../../architecture/adr/0003-modular-monolith-candidate.md), [ADR-0005](../../architecture/adr/0005-agent-tools-policy-gate.md), [ADR-0006](../../architecture/adr/0006-stack-base.md), [ADR-0007](../../architecture/adr/0007-tenancy-y-autenticacion.md); todos aceptados con la condición de esta validación
 - **RR relacionada:** [RR-0002](../../requirements/records/RR-0002-baseline-m1-y-g0.md)
 - **Rama / worktree:** `main` · copia principal. **Prohibido** crear `agent/TASK-0002-*`, `integration/*` u otro worktree. Commits solo en `main` con `git commit -s`.
-- **Rutas reservadas:** `apps/`, `packages/`, `package.json`, `pnpm-workspace.yaml`, `pnpm-lock.yaml`, `tsconfig*.json`, `.nvmrc`, `.gitignore`, `.npmrc`, `docker-compose.yml`, `Dockerfile*`, `.github/workflows/ci.yml`, `docs/quality/reports/TASK-0002.md`
+- **Rutas reservadas:** `package.json`, `pnpm-workspace.yaml`, `pnpm-lock.yaml`, `tsconfig*.json`, `.nvmrc`, `.gitignore`, `.npmrc`, `docker-compose.yml`, `Dockerfile*`, `.github/workflows/ci.yml`, `apps/api/src/bootstrap/`, `apps/api/src/modules/poc/`, `apps/api/migrations/0000_*.sql`–`0009_*.sql`, `apps/worker/src/bootstrap/`, `apps/worker/src/jobs/poc/`, `apps/web/src/bootstrap/`, `packages/ai/src/poc/`, `docs/quality/reports/TASK-0002.md`. No llenes `iam/`, `schedule/`, `connectors/`, `testkit/` ni `apps/web/src/features/`: están asignados a la ola 1.
 - **Rutas prohibidas:** `docs/agents/REGISTRY.md`, fichas TASK, `AGENTS.md`, SRS, ADRs, `TRACEABILITY.md`, `docs/INDEX.md` (los hallazgos se proponen por RR o ADR, no se editan en esta tarea)
 - **Bloque de migraciones:** `0000–0009` (primera migración sugerida: `0001_task0002_poc_tenancy_outbox`)
 - **Dependencias:** TASK-0001 fusionada en `main` (PR #7)

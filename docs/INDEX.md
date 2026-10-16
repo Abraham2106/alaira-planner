@@ -97,6 +97,11 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0001](agents/tasks/TASK-0001-g0-alineacion-documental.md) | Resolución de G0 y alineación con el brief | Ficha (accepted) |
 | [TASK-0002](agents/tasks/TASK-0002-bootstrap-monorepo-y-poc.md) | Bootstrap del monorepo y POC de ADRs condicionados | Ficha (in_progress) |
 | [TASK-0003](agents/tasks/TASK-0003-discovery.md) | Discovery con usuarios en paralelo a M1 | Ficha (ready) |
+| [TASK-0101](agents/tasks/TASK-0101-iam-identidad.md) | IAM: tenants, usuarios, invitaciones, sesiones | Ficha (in_progress) |
+| [TASK-0102](agents/tasks/TASK-0102-motor-cpm.md) | Motor CPM puro | Ficha (in_progress) |
+| [TASK-0103](agents/tasks/TASK-0103-web-shell.md) | Shell web, a11y y cliente API | Ficha (in_progress) |
+| [TASK-0104](agents/tasks/TASK-0104-connector-sdk.md) | Connector SDK y conector falso | Ficha (in_progress) |
+| [TASK-0105](agents/tasks/TASK-0105-testkit.md) | Testkit y fixtures sintéticos | Ficha (in_progress) |
 | [Plantilla RUN](agents/runs/TEMPLATE.md) | Registro por ejecución de agente | Plantilla |
 | [SWARM_MASTER_PROMPT](agents/prompts/SWARM_MASTER_PROMPT.md) | Prompt del Planner para construir M1 con un enjambre de agentes Composer | Procedimiento operativo |
 

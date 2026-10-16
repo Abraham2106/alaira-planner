@@ -1,25 +1,28 @@
 # Registro central de agentes y asignaciones
 
-**Control de escritura:** exclusivamente Planner. **Estado:** G0 en `main` (PR #7). Instrucción del mantenedor (2026-10-15): **trabajar solo en `main`, sin ramas de integración ni de agente**.
+**Control de escritura:** exclusivamente Planner. **Estado:** G0 en `main` (PR #7). Instrucción del mantenedor: **solo `main`, sin ramas**; ola 1 en paralelo con rutas exclusivas.
 
 | TASK | Agente | Rol | WBS / REQ | Rama | Worktree local | Rutas reservadas | Estado | Última evidencia |
 |---|---|---|---|---|---|---|---|---|
-| [TASK-0001](tasks/TASK-0001-g0-alineacion-documental.md) | agente de documentación (Cursor) | Documentación | WBS-1.2, 1.3, 1.5 | `main` | copia principal | liberadas (G0 fusionado) | accepted | [PR #7](https://github.com/Abraham2106/alaira-planner/pull/7) fusionado en `main` |
-| [TASK-0002](tasks/TASK-0002-bootstrap-monorepo-y-poc.md) | implementador-0002 (composer-2.5) | Implementador | WBS-1.3, 1.4, 8.1 · REQ-001, 003, 037 · NFR-001, 008, 012, 015, 021 | `main` | copia principal | `apps/`, `packages/`, `package.json`, `pnpm-workspace.yaml`, `pnpm-lock.yaml`, `tsconfig*.json`, `.nvmrc`, `.gitignore`, `.npmrc`, `docker-compose.yml`, `Dockerfile*`, `.github/workflows/ci.yml`, `docs/quality/reports/TASK-0002.md` | in_progress | despachada en `main` |
+| [TASK-0001](tasks/TASK-0001-g0-alineacion-documental.md) | agente de documentación | Documentación | WBS-1.2, 1.3, 1.5 | `main` | copia principal | liberadas | accepted | [PR #7](https://github.com/Abraham2106/alaira-planner/pull/7) |
+| [TASK-0002](tasks/TASK-0002-bootstrap-monorepo-y-poc.md) | implementador-0002 (composer-2.5) | Implementador | WBS-1.3, 1.4, 8.1 | `main` | copia principal | `package.json`, `pnpm-workspace.yaml`, `pnpm-lock.yaml`, `tsconfig*.json`, `.nvmrc`, `.gitignore`, `.npmrc`, `docker-compose.yml`, `Dockerfile*`, `.github/workflows/ci.yml`, `apps/api/src/bootstrap/`, `apps/api/src/modules/poc/`, `apps/api/migrations/0000_*.sql`–`0009_*.sql`, `apps/worker/src/bootstrap/`, `apps/worker/src/jobs/poc/`, `apps/web/src/bootstrap/`, `packages/ai/src/poc/`, `docs/quality/reports/TASK-0002.md` | in_progress | en curso; rutas recortadas para ola 1 |
 | [TASK-0003](tasks/TASK-0003-discovery.md) | por asignar (humano) | Product Research | WBS-1.1 | `main` | copia principal | `docs/research/discovery/` | ready | — |
+| [TASK-0101](tasks/TASK-0101-iam-identidad.md) | implementador-0101 (composer-2.5) | Implementador | WBS-2.1 · REQ-001,002,004,009 | `main` | copia principal | `packages/domain/src/iam/`, `packages/contracts/src/iam/`, `apps/api/src/modules/iam/`, `apps/api/migrations/0100_*.sql`–`0109_*.sql`, `docs/quality/reports/TASK-0101.md` | in_progress | ola 1 despachada |
+| [TASK-0102](tasks/TASK-0102-motor-cpm.md) | implementador-0102 (composer-2.5) | Implementador | WBS-3.2 · REQ-020–023 | `main` | copia principal | `packages/engine/src/schedule/`, `packages/domain/src/schedule/`, `packages/contracts/src/schedule/`, `docs/quality/reports/TASK-0102.md` | in_progress | ola 1 despachada |
+| [TASK-0103](tasks/TASK-0103-web-shell.md) | implementador-0103 (composer-2.5) | Implementador | WBS-2.6 · REQ-076,078 | `main` | copia principal | `apps/web/src/features/shell/`, `apps/web/src/lib/api-client/`, `apps/web/src/styles/`, `docs/quality/reports/TASK-0103.md` | in_progress | ola 1 despachada |
+| [TASK-0104](tasks/TASK-0104-connector-sdk.md) | implementador-0104 (composer-2.5) | Implementador | WBS-5.2 · REQ-064,087 | `main` | copia principal | `packages/connectors/src/sdk/`, `packages/connectors/src/fake/`, `packages/contracts/src/connectors/`, `docs/quality/reports/TASK-0104.md` | in_progress | ola 1 despachada |
+| [TASK-0105](tasks/TASK-0105-testkit.md) | implementador-0105 (composer-2.5-fast) | Implementador | WBS-8.1 | `main` | copia principal | `packages/testkit/`, `docs/quality/reports/TASK-0105.md` | in_progress | ola 1 despachada |
 
-## Olas M1 pendientes (fichas al abrir cada ola)
+## Olas
 
-Sin ramas: una TASK a la vez en la copia principal. `CONTINUAR_TRAS_G1 = no`.
+`CONTINUAR_TRAS_G1 = no`. Commits concurrentes: `git pull --rebase origin main` antes de push; nunca `--force`.
 
-| Ola | TASK candidatas | Depende de | Estado de la ola |
-|---|---|---|---|
-| 1 | 0101 iam, 0102 motor-cpm, 0103 web-shell, 0104 connector-sdk, 0105 testkit | 0002 en `main` con CI verde | blocked hasta 0002 |
-| 2 | 0106 authz, 0107 motor-capacidad, 0108 ai-runtime-core | 0101 / 0102 / 0002 | no abierta |
-| 3 | 0109 event-log, 0110 project-graph | 0106 | no abierta |
-| 4 | 0111 wbs-entregables, 0112 api-io | 0109 / 0110 | no abierta |
-| 5–12 | 0113–0130 (M1b–M1d) | según plan | no abierta |
+| Ola | TASK | Estado |
+|---|---|---|
+| 0 | 0002 | in_progress (infra recortada) |
+| 1 | 0101–0105 | in_progress en paralelo |
+| 2–12 | 0106–0130 | no abierta |
 
 ## Reglas del registro
 
-Reservar rutas excluyentes; actualizar estado cuando exista artefacto verificable. Nunca registrar tokens ni rutas con secretos. Por instrucción del mantenedor no se crean `agent/TASK-*`, `integration/*` ni worktrees hermanos. Las fichas viven en [`tasks/`](tasks/) con el formato de la [plantilla TASK](TASK_TEMPLATE.md).
+Rutas excluyentes. Sin ramas ni worktrees por instrucción del mantenedor. Las fichas viven en [`tasks/`](tasks/).
