@@ -1,0 +1,17 @@
+name: Documentación y trazabilidad
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Verificar enlaces locales y catálogos
+        run: python3 scripts/validate_docs.py
+      - name: Validar sintaxis de scripts
+        run: bash -n scripts/new-agent-worktree.sh

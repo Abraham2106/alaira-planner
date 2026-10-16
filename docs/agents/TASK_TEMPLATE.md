@@ -1,0 +1,23 @@
+# TASK-XXXX — [título]
+
+- **Estado:** proposed | ready | in_progress | blocked | review | accepted | rejected
+- **Planificador:** [identificador de agente o humano]
+- **Agente ejecutor / revisor distinto:** [identificadores]
+- **WBS:** WBS-X.X
+- **Requisitos:** REQ-XXX
+- **ADRs:** ADR-XXXX (estado)
+- **RR relacionada:** RR-XXXX, si modifica requisitos
+- **Rama / worktree:** agent/WBS-X-X-slug · ../alaira-wt-WBS-X-X-slug
+- **Rutas reservadas:** [inclusiones concretas]
+- **Rutas prohibidas:** [exclusiones y archivos centrales]
+- **Dependencias:** [TASK / WBS]
+- **Objetivo y alcance:** [resultado verificable]
+- **Fuera de alcance:** [explicación]
+- **Entradas:** [documentos, herramientas, permisos, supuestos]
+- **Salidas:** [artefactos]
+- **Criterios de aceptación:** [observables y pruebas asociadas]
+- **Plan de pruebas:** [TC, comandos y fixtures]
+- **Riesgos / condiciones de parada:** [fallos, seguridad, licencias]
+- **Evidencia:** [URLs/artefactos; sin secretos]
+- **Revisión / autorización humana:** [estado]
+- **Rollback:** [pasos verificables]

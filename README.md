@@ -1,21 +1,29 @@
 # Alaira Planner
 
-> **Estado:** concepción / especificación inicial. Aún no existe una implementación funcional.
+> **Estado:** concepción de producto OSS · **Versión documental:** 0.1.0 · 2026-10-15. No existe aún implementación funcional.
 
-Alaira Planner es una iniciativa de Alaira para construir una plataforma **open source** de gestión integral de proyectos con asistencia de IA, adaptable a enfoques predictivos, ágiles e híbridos. Su modelo de avance deberá aceptar evidencias verificables de trabajo real, incluidas entregas y documentos ajenos a GitHub.
+**Alaira Planner** es una iniciativa de Alaira para crear una plataforma abierta de gestión integral de proyectos, programas y portafolios. Combina planificación predictiva, ejecución ágil e híbrida, control de entregables y costos, integración con herramientas cotidianas e IA asistiva y auditable.
 
-## Principios
+El avance se basa en criterios de aceptación y evidencias de entregables: archivos, aprobaciones, trabajo de campo, documentos, integraciones o repositorios de código. Ningún repositorio, incluido GitHub, constituye la única fuente de avance.
 
-- Gestión de proyectos, programas y portafolios con EDT/WBS, cronogramas, presupuestos, backlog, dependencias y métricas.
-- Avance respaldado por evidencia y aceptación, no por actividad inferida de un repositorio.
-- Integraciones y comandos conversacionales con autorización explícita y auditoría.
-- Agentes de desarrollo coordinados, documentados y aislados en `git worktree`.
-- Seguridad, portabilidad e interoperabilidad desde el diseño.
+## Comenzar
 
-## Estado del repositorio
+- [Índice documental](docs/INDEX.md), [visión del producto](docs/product/VISION.md) y [PRD](docs/product/PRD.md).
+- [SRS](docs/requirements/SRS.md), [matriz de trazabilidad](docs/requirements/TRACEABILITY.md).
+- [EDT/WBS](docs/planning/WBS.md), [diccionario de trabajo](docs/planning/WBS_DICTIONARY.md) y [roadmap](docs/planning/ROADMAP.md).
+- [Protocolo de agentes](AGENTS.md), [modelo operativo](docs/agents/OPERATING_MODEL.md) y [registro de agentes](docs/agents/REGISTRY.md).
+- [Arquitectura](docs/architecture/ARCHITECTURE.md), [ADRs](docs/architecture/adr/) y [pruebas](docs/quality/TEST_STRATEGY.md).
 
-Este commit inicial crea únicamente el punto de partida. La documentación de concepción, requisitos, WBS y protocolo agéntico se prepara en una rama de propuesta para revisión.
+## Principios innegociables
 
-## Licencia
+1. El responsable humano aprueba compromisos, cambios de línea base y acciones de alto impacto.
+2. Evidencia ≠ progreso aceptado: la aceptación es un evento explícito, autorizado y reversible bajo control.
+3. Cada proyecto puede adoptar modo predictivo, ágil o híbrido dentro de un dominio coherente.
+4. La IA propone y ejecuta solo con los permisos mínimos y controles aplicables.
+5. Las APIs, exportación, seguridad multi-tenant y accesibilidad son criterios de diseño.
 
-**Por decidir.** Aunque el proyecto tiene intención de ser OSS, la licencia debe ser elegida y agregada por quien controla los derechos del código antes de aceptar contribuciones externas. Sin archivo LICENSE no debe asumirse un permiso de reutilización.
+## Condiciones OSS
+
+La intención open source es un requisito de concepción, pero **no se ha elegido una licencia**. Hasta publicar un archivo LICENSE válido, la visibilidad pública del código **no concede automáticamente derechos de reutilización**. Véase [ADR-0004](docs/architecture/adr/0004-oss-license-pending.md).
+
+Este repositorio contiene inicialmente especificaciones y planes, no capacidades de producto implementadas.
