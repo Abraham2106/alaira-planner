@@ -104,7 +104,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0105](agents/tasks/TASK-0105-testkit.md) | Testkit y fixtures sintéticos | Ficha (in_progress) |
 | [TASK-0106](agents/tasks/TASK-0106-authz.md) | RBAC deny-by-default | Ficha (review) |
 | [TASK-0107](agents/tasks/TASK-0107-motor-capacidad.md) | Motor de capacidad puro | Ficha (in_progress; changes_requested r1) |
-| [TASK-0108](agents/tasks/TASK-0108-ai-runtime-core.md) | AI runtime core | Ficha (review) |
+| [TASK-0108](agents/tasks/TASK-0108-ai-runtime-core.md) | AI runtime core | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0108.md) |
 | [Plantilla RUN](agents/runs/TEMPLATE.md) | Registro por ejecución de agente | Plantilla |
 | [SWARM_MASTER_PROMPT](agents/prompts/SWARM_MASTER_PROMPT.md) | Prompt del Planner para construir M1 con un enjambre de agentes Composer | Procedimiento operativo |
 
@@ -123,7 +123,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0105 report](quality/reports/TASK-0105.md) | Evidencia testkit | Evidencia (provisional) |
 | [TASK-0106 report](quality/reports/TASK-0106.md) | Evidencia RBAC deny-by-default | Evidencia (review; authz humana) |
 | [TASK-0107 report](quality/reports/TASK-0107.md) | Evidencia motor de capacidad | Evidencia (en curso; changes_requested r1) |
-| [TASK-0108 report](quality/reports/TASK-0108.md) | Evidencia AI runtime core | Evidencia (review) |
+| [TASK-0108 report](quality/reports/TASK-0108.md) | Evidencia AI runtime core | Evidencia (provisional; ADR-0005 humana) |
 
 ### Gobernanza, investigación y ejemplos
 
