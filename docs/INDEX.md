@@ -49,6 +49,7 @@ Instrucciones expresas del mantenedor > requisitos aprobados ([SRS](requirements
 | [Plantilla RR](requirements/records/RR-0000-template.md) | Formato de solicitud/decisión de requisito | Plantilla |
 | [RR-0001](requirements/records/RR-0001-inconsistencias-fases-prioridades.md) | Significado de P0 y verificación de NFR (fases sustituidas por RR-0002) | Aprobada |
 | [RR-0002](requirements/records/RR-0002-baseline-m1-y-g0.md) | Adopción del brief, baseline M1, decisiones de G0 y política de avance | Aprobada |
+| [RR-0003](requirements/records/RR-0003-m1-dev-sin-emulador-s3.md) | M1: Postgres local sin emulador S3 obligatorio (MinIO CE archivado) | Propuesta |
 
 ### Planificación
 
@@ -83,6 +84,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [0005](architecture/adr/0005-agent-tools-policy-gate.md) | IA transaccional mediada por políticas y motor determinista | Accepted (condicionado a TASK-0002 y evals) |
 | [0006](architecture/adr/0006-stack-base.md) | Stack base: TypeScript, Fastify, React, PostgreSQL, pgvector | Accepted (condicionado a TASK-0002) |
 | [0007](architecture/adr/0007-tenancy-y-autenticacion.md) | Tenancy con RLS, IDs, autenticación y autorización | Accepted (condicionado a TASK-0002) |
+| [0008](architecture/adr/0008-local-s3-emulator-minio-ce-archived.md) | Emulador S3 local tras archivado de MinIO CE | Proposed |
 
 ### Agentes
 
@@ -110,7 +112,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0111](agents/tasks/TASK-0111-wbs-entregables.md) | WBS, entregables e hitos | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0111.md) |
 | [TASK-0112](agents/tasks/TASK-0112-api-io.md) | API v1, OpenAPI e import/export CSV | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0112.md) |
 | [TASK-0113](agents/tasks/TASK-0113-programacion.md) | Programación persistida y CPM | Ficha (in_progress) |
-| [TASK-0114](agents/tasks/TASK-0114-asignaciones.md) | Asignaciones y sobreasignación | Ficha (in_progress) |
+| [TASK-0114](agents/tasks/TASK-0114-asignaciones.md) | Asignaciones y sobreasignación | Ficha (review) · [reporte](quality/reports/TASK-0114.md) |
 | [TASK-0115](agents/tasks/TASK-0115-web-proyecto-wbs.md) | Web: proyecto y WBS | Ficha (in_progress) |
 | [TASK-0116](agents/tasks/TASK-0116-baseline.md) | Baseline, forecast y real | Ficha (ready) |
 | [TASK-0117](agents/tasks/TASK-0117-web-gantt.md) | Web Gantt accesible | Ficha (ready) |
@@ -137,6 +139,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0110 report](quality/reports/TASK-0110.md) | Evidencia grafo de proyecto | Evidencia (provisional) |
 | [TASK-0111 report](quality/reports/TASK-0111.md) | Evidencia WBS y entregables | Evidencia (provisional) |
 | [TASK-0112 report](quality/reports/TASK-0112.md) | Evidencia API v1 / OpenAPI | Evidencia (provisional; accepted humana) |
+| [TASK-0114 report](quality/reports/TASK-0114.md) | Evidencia asignaciones M1 | Evidencia (review) |
 
 ### Gobernanza, investigación y ejemplos
 
