@@ -12,7 +12,9 @@
     "./authz": "./src/authz/index.ts",
     "./project": "./src/project/index.ts",
     "./wbs": "./src/wbs/index.ts",
-    "./eventlog": "./src/eventlog/index.ts"
+    "./assignments": "./src/assignments/index.ts",
+    "./eventlog": "./src/eventlog/index.ts",
+    "./scheduling": "./src/scheduling/index.ts"
   },
   "scripts": {
     "lint": "eslint src --max-warnings 0",
