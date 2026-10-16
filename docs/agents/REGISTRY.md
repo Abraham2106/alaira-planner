@@ -13,7 +13,7 @@
 | [TASK-0104](tasks/TASK-0104-connector-sdk.md) | implementador-0104 | Implementador | 5.2 | `main` | principal | liberadas | integrated_provisional | approve |
 | [TASK-0105](tasks/TASK-0105-testkit.md) | implementador-0105 | Implementador | 8.1 | `main` | principal | liberadas | integrated_provisional | approve |
 | [TASK-0106](tasks/TASK-0106-authz.md) | implementador-0106 | Implementador | 2.2 | `main` | principal | liberadas | integrated_provisional | revisor approve (`e819e802`); domain 4/4; authz.integration 4/4 Postgres; TC-SEC-03; hallazgos menores; **aprobación humana** authz/RLS/ADR-0007 |
-| [TASK-0107](tasks/TASK-0107-motor-capacidad.md) | implementador-0107 | Implementador | 3.6 | `main` | principal | `packages/engine/src/capacity/`, `packages/domain/src/capacity/`, `packages/contracts/src/capacity/`, `docs/quality/reports/TASK-0107.md` | in_progress | revisor ronda 1 (`3202f30b`) **changes_requested** (exports `./authz`/`./ai` ajenos); fix ronda 2 `0c37ced4`; base `72e6864` |
+| [TASK-0107](tasks/TASK-0107-motor-capacidad.md) | implementador-0107 | Implementador | 3.6 | `main` | principal | `packages/engine/src/capacity/`, `packages/domain/src/capacity/`, `packages/contracts/src/capacity/`, `docs/quality/reports/TASK-0107.md` | review | ronda 2 docs `29a2be6`; motor `72e6864`; r1 `changes_requested` (exports `./authz`/`./ai` — legítimos post 0106/0108); revisor ronda 2 (nuevo) en vuelo |
 | [TASK-0108](tasks/TASK-0108-ai-runtime-core.md) | implementador-0108 | Implementador | 7.2 | `main` | principal | liberadas | integrated_provisional | revisor approve (`a0d4c0b7`); ai 3/3; contracts 2/2; hallazgos menores; **aprobación humana** ADR-0005 |
 
 Ola 2 abierta. `CONTINUAR_TRAS_G1 = no`.
