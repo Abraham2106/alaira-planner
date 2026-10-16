@@ -125,6 +125,9 @@ importers:
 
   packages/ai:
     dependencies:
+      '@alaira/contracts':
+        specifier: workspace:*
+        version: link:../contracts
       '@alaira/domain':
         specifier: workspace:*
         version: link:../domain

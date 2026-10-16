@@ -6,7 +6,10 @@
   "license": "Apache-2.0",
   "exports": {
     ".": "./src/index.ts",
-    "./poc": "./src/poc/index.ts"
+    "./poc": "./src/poc/index.ts",
+    "./runtime": "./src/runtime/index.ts",
+    "./providers": "./src/providers/index.ts",
+    "./tools": "./src/tools/index.ts"
   },
   "scripts": {
     "lint": "eslint src --max-warnings 0",
@@ -15,6 +18,7 @@
     "build": "tsc -p tsconfig.build.json"
   },
   "dependencies": {
+    "@alaira/contracts": "workspace:*",
     "@alaira/domain": "workspace:*",
     "@alaira/engine": "workspace:*"
   },
