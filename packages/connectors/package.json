@@ -9,6 +9,7 @@
     "./sdk": "./src/sdk/index.ts",
     "./fake": "./src/fake/index.ts",
     "./fabric": "./src/fabric/index.ts",
+    "./github": "./src/github/index.ts",
     "./slack": "./src/slack/index.ts"
   },
   "scripts": {
