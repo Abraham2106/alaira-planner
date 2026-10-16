@@ -26,6 +26,9 @@ importers:
 
   apps/api:
     dependencies:
+      '@alaira/connectors':
+        specifier: workspace:*
+        version: link:../../packages/connectors
       '@alaira/contracts':
         specifier: workspace:*
         version: link:../../packages/contracts

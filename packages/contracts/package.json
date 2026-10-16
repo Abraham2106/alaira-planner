@@ -20,7 +20,8 @@
     "./ai": "./src/ai/index.ts",
     "./scheduling": "./src/scheduling/index.ts",
     "./baseline": "./src/baseline/index.ts",
-    "./evidence": "./src/evidence/index.ts"
+    "./evidence": "./src/evidence/index.ts",
+    "./connector-fabric": "./src/connector-fabric/index.ts"
   },
   "scripts": {
     "lint": "eslint src --max-warnings 0",

@@ -14,6 +14,7 @@
     "migrate": "tsx src/db/migrate-cli.ts"
   },
   "dependencies": {
+    "@alaira/connectors": "workspace:*",
     "@alaira/contracts": "workspace:*",
     "@alaira/domain": "workspace:*",
     "@alaira/engine": "workspace:*",
