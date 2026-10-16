@@ -9,7 +9,9 @@
     "./schedule": "./src/schedule/index.ts",
     "./capacity": "./src/capacity/index.ts",
     "./iam": "./src/iam/index.ts",
-    "./authz": "./src/authz/index.ts"
+    "./authz": "./src/authz/index.ts",
+    "./project": "./src/project/index.ts",
+    "./eventlog": "./src/eventlog/index.ts"
   },
   "scripts": {
     "lint": "eslint src --max-warnings 0",

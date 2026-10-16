@@ -12,6 +12,8 @@
     "./capacity": "./src/capacity/index.ts",
     "./iam": "./src/iam/index.ts",
     "./authz": "./src/authz/index.ts",
+    "./project": "./src/project/index.ts",
+    "./eventlog": "./src/eventlog/index.ts",
     "./ai": "./src/ai/index.ts"
   },
   "scripts": {
