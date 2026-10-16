@@ -1,0 +1,77 @@
+.ct-ask {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--planner-border, #d8dee4);
+}
+
+.ct-ask-compact {
+  margin-bottom: 0.75rem;
+}
+
+.ct-proposal-card {
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--planner-border, #d8dee4);
+  border-radius: 6px;
+  background: var(--planner-surface-muted, #f6f8fa);
+}
+
+.ct-section-title {
+  font-size: 1.05rem;
+  margin: 1rem 0 0.5rem;
+}
+
+.ct-tabs {
+  margin-top: 1rem;
+}
+
+.ct-tab-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.ct-exceptions-list,
+.ct-event-log-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ct-exceptions-item,
+.ct-event-log-item {
+  margin: 0 0 0.5rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--planner-border, #d8dee4);
+  border-radius: 6px;
+}
+
+.ct-exceptions-item:focus,
+.ct-event-log-item:focus {
+  outline: 2px solid var(--planner-focus, #0969da);
+  outline-offset: 2px;
+}
+
+.ct-exceptions-kind {
+  margin-left: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--planner-text-muted, #57606a);
+}
+
+.ct-event-log-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  font-size: 0.85rem;
+  color: var(--planner-text-muted, #57606a);
+}
+
+.ct-event-log-readable {
+  margin: 0.35rem 0 0.15rem;
+  font-weight: 500;
+}
+
+.ct-event-log-summary {
+  margin: 0;
+  font-size: 0.9rem;
+}
