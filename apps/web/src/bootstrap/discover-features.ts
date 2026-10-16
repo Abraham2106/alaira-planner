@@ -1,3 +1,4 @@
+/// <reference types="vite/client" />
 import type { ComponentType } from "react";
 
 export type DiscoveredFeature = {
@@ -6,16 +7,20 @@ export type DiscoveredFeature = {
   Component: ComponentType;
 };
 
+type FeatureModule = {
+  Feature: ComponentType;
+  featureId?: string;
+  featureLabel?: string;
+};
+
 /**
  * Autodiscovery: each feature lives under `src/features/<name>/Feature.tsx`
  * without editing this bootstrap file.
  */
 export function discoverFeatures(): DiscoveredFeature[] {
-  const modules = import.meta.glob<{
-    Feature: ComponentType;
-    featureId?: string;
-    featureLabel?: string;
-  }>("../features/*/Feature.tsx", { eager: true });
+  const modules = import.meta.glob<FeatureModule>("../features/*/Feature.tsx", {
+    eager: true,
+  });
 
   return Object.entries(modules)
     .map(([path, mod]) => {
