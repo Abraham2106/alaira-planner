@@ -1,8 +1,8 @@
 # TASK-0109 — Event log, outbox e idempotencia (Project Event Log)
 
-- **Estado:** in_progress
+- **Estado:** review (entrega en `main`; veredicto revisor pendiente; no `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0109 (composer-2.5) / revisor nuevo (instancia distinta)
+- **Agente ejecutor / revisor distinto:** implementador-0109 (composer-2.5) / revisor ronda 1 (nuevo, no implementador) en vuelo
 - **WBS:** WBS-2.4
 - **Requisitos:** REQ-029, REQ-037, REQ-097; NFR-012
 - **ADRs:** ADR-0006, ADR-0007
@@ -21,5 +21,5 @@
   4. Lectura filtrada por tenant/proyecto; cross-tenant → 404 o vacío autorizado.
 - **Plan de pruebas:** Vitest unitario + integración con `docker compose up -d postgres`; fixtures sintéticos del testkit (0105); 2–4 tests integración máximo.
 - **Riesgos / condiciones de parada:** contradice outbox POC (0002) → ADR/RR proposed y `blocked`.
-- **Evidencia:** commits en `main` + `docs/quality/reports/TASK-0109.md`.
+- **Evidencia:** entrega `ecab8df`; [informe TASK-0109](../../quality/reports/TASK-0109.md).
 - **Rollback:** `git revert` de tus commits; migraciones `down` documentadas.
