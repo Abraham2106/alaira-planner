@@ -1,13 +1,13 @@
 # TASK-0124 — AI runtime: herramientas de dominio y AIProposal (M1d)
 
-- **Estado:** review (ronda 2; fix `85db5d2`; no `accepted`)
+- **Estado:** integrated_provisional (integrado en `main`; no marcar `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0124 (instancia `bc-31f0b2b4`, fix r2 `85db5d2`) / revisor-0124 (ronda 2/2 — en vuelo); ronda 1 (`bc-d26034fd`) — **changes_requested**
+- **Agente ejecutor / revisor distinto:** implementador-0124 (instancia `bc-31f0b2b4`) / revisor-0124 (instancia `bc-d26034fd`, ronda 2/2 — **approve**)
 - **WBS:** WBS-7.2 (parte 2)
 - **Requisitos:** REQ-090–REQ-092; TC-AI-04..07, TC-AI-09
 - **ADRs:** ADR-0005 (condicionado), ADR-0006, ADR-0007
 - **Rama / worktree:** `main`. Sin ramas. `git commit -s` y push.
-- **Rutas reservadas:** `packages/ai/src/domain-tools/`, `packages/contracts/src/ai-proposal/`, `apps/api/src/modules/ai-proposal/`, `apps/api/migrations/0260_*.sql`–`0269_*.sql`, `docs/quality/reports/TASK-0124.md`
+- **Rutas reservadas:** liberadas (provisional)
 - **Rutas prohibidas:** evals harness (0128), Control Tower UI (0127), REGISTRY, raíz
 - **Bloque de migraciones:** `0260–0269`
 - **Dependencias:** TASK-0108 (runtime core), TASK-0122, TASK-0123
@@ -15,7 +15,7 @@
 - **Fuera de alcance:** agente Progress completo (0126); Slack consecuencias (0125).
 - **Criterios de aceptación (80/20):** mutación solo vía herramienta; acción controlada sin aprobación rechazada.
 - **Plan de pruebas:** Vitest `packages/ai`; integración API con políticas sintéticas.
-- **Evidencia:** `b91f0ab`; fix r2 `85db5d2`; [informe TASK-0124](../../quality/reports/TASK-0124.md). AI **6** tests; API **4/4**; migrate **0260**; typecheck TenantId corregido (r2).
-- **Revisión:** ronda 1 — **changes_requested** (`bc-d26034fd`): typecheck API **TS2322** `TenantId` en `ai-proposal/service.ts` (`toRuntimeActor`). Ronda 2 — revisor en vuelo.
+- **Evidencia:** `b91f0ab`, `85db5d2`; [informe TASK-0124](../../quality/reports/TASK-0124.md). AI **6** tests; API **4/4**; migrate **0260**; typecheck API OK post-r2.
+- **Revisión:** ronda 1 — **changes_requested** (`bc-d26034fd`): typecheck API **TS2322** `TenantId` en `ai-proposal/service.ts` (`toRuntimeActor`). Ronda 2 — **approve** (`bc-d26034fd`) tras fix `85db5d2`.
 - **Revisión / autorización humana:** **REQUIERE_APROBACION_HUMANA:** sí (ADR-0005) — pendiente mantenedor para `accepted`; gate **TASK-0108** abierto.
 - **Rollback:** `git revert`; migraciones down.
