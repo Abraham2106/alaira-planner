@@ -1,7 +1,6 @@
 import type {
   CpmScheduleRequest,
   CpmScheduleResult,
-  DependencyType,
   ScheduleDependencyDefinition,
   ScheduleTaskDefinition,
   TaskScheduleTimes,
@@ -42,7 +41,7 @@ function constraintEarlyStart(
   succCal: WorkCalendarDefinition,
 ): number {
   const lag = dep.lagMinutes;
-  switch (dep.type as DependencyType) {
+  switch (dep.type) {
     case "FS":
       return applyLag(predEF, lag, succCal);
     case "SS":
@@ -54,10 +53,6 @@ function constraintEarlyStart(
     case "SF": {
       const efBound = applyLag(predES, lag, succCal);
       return subtractWorkMinutes(efBound, succDuration, succCal);
-    }
-    default: {
-      const _exhaustive: never = dep.type;
-      return _exhaustive;
     }
   }
 }
@@ -71,7 +66,7 @@ function constraintLateFinish(
   succCal: WorkCalendarDefinition,
 ): number {
   const lag = dep.lagMinutes;
-  switch (dep.type as DependencyType) {
+  switch (dep.type) {
     case "FS":
       return applyLag(succLS, -lag, predCal);
     case "SS": {
@@ -83,10 +78,6 @@ function constraintLateFinish(
     case "SF": {
       const lsBound = applyLag(succLF, -lag, predCal);
       return addWorkMinutes(lsBound, predDuration, predCal);
-    }
-    default: {
-      const _exhaustive: never = dep.type;
-      return _exhaustive;
     }
   }
 }
