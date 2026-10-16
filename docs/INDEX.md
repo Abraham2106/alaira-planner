@@ -114,7 +114,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0113](agents/tasks/TASK-0113-programacion.md) | Programación persistida y CPM | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0113.md) |
 | [TASK-0114](agents/tasks/TASK-0114-asignaciones.md) | Asignaciones y sobreasignación | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0114.md) |
 | [TASK-0115](agents/tasks/TASK-0115-web-proyecto-wbs.md) | Web: proyecto y WBS | Ficha (in_progress; changes_requested r1) · [reporte](quality/reports/TASK-0115.md) |
-| [TASK-0116](agents/tasks/TASK-0116-baseline.md) | Baseline, forecast y real | Ficha (review) · [reporte](quality/reports/TASK-0116.md) |
+| [TASK-0116](agents/tasks/TASK-0116-baseline.md) | Baseline, forecast y real | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0116.md) |
 | [TASK-0117](agents/tasks/TASK-0117-web-gantt.md) | Web Gantt accesible | Ficha (ready) |
 | [Plantilla RUN](agents/runs/TEMPLATE.md) | Registro por ejecución de agente | Plantilla |
 | [SWARM_MASTER_PROMPT](agents/prompts/SWARM_MASTER_PROMPT.md) | Prompt del Planner para construir M1 con un enjambre de agentes Composer | Procedimiento operativo |
@@ -142,7 +142,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0113 report](quality/reports/TASK-0113.md) | Evidencia programación CPM | Evidencia (provisional) |
 | [TASK-0114 report](quality/reports/TASK-0114.md) | Evidencia asignaciones M1 | Evidencia (provisional; RLS humana) |
 | [TASK-0115 report](quality/reports/TASK-0115.md) | Evidencia web proyecto/WBS | Evidencia (en curso; changes_requested r1) |
-| [TASK-0116 report](quality/reports/TASK-0116.md) | Evidencia baseline M1 | Evidencia (review) |
+| [TASK-0116 report](quality/reports/TASK-0116.md) | Evidencia baseline M1 | Evidencia (provisional; línea base humana) |
 
 ### Gobernanza, investigación y ejemplos
 

@@ -1,8 +1,8 @@
 # TASK-0116 — Baseline inmutable, forecast y real (M1)
 
-- **Estado:** review (entrega en `main`; veredicto revisor pendiente; no `accepted`)
+- **Estado:** integrated_provisional (integrado en `main`; no marcar `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0116 (composer-2.5) / revisor ronda 1 (nuevo, no implementador) en vuelo
+- **Agente ejecutor / revisor distinto:** implementador-0116 (composer-2.5) / revisor-0116 (instancia `a4277779`, ronda 1/1 — **approve**)
 - **WBS:** WBS-3.3 (M1)
 - **Requisitos:** REQ-024, REQ-027; TC-BASE-01, TC-BASE-04
 - **ADRs:** ADR-0006, ADR-0007
@@ -18,5 +18,6 @@
   2. Varianza fecha/costo documentada en reporte (TC-BASE-04 parcial).
   3. Tenant + authz.
   4. 2–4 tests integración Postgres.
-- **Evidencia:** implementación `7fc4e02`; reporte `34f5f92`; [informe TASK-0116](../../quality/reports/TASK-0116.md).
+- **Evidencia:** implementación `7fc4e02`; reporte `34f5f92`; [informe TASK-0116](../../quality/reports/TASK-0116.md). Revisor **approve** (`a4277779`): domain **2/2**; API integración **4/4**; typecheck OK.
+- **Revisión / autorización humana:** **REQUIERE_APROBACION_HUMANA:** sí (línea base / costos / varianza) — **pendiente** del mantenedor.
 - **Rollback:** `git revert`; migraciones down.
