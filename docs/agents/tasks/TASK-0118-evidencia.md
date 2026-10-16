@@ -1,8 +1,8 @@
 # TASK-0118 — Evidencias y EvidenceEvent persistido (M1c)
 
-- **Estado:** in_progress (fix ronda 2; no `accepted`)
+- **Estado:** review (ronda 2 en `main`; no `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0118 (instancia `bc-bfe3777a`, fix ronda 2) / revisor-0118 (instancia `bc-de0a4de8`, ronda 1/1 — **changes_requested**)
+- **Agente ejecutor / revisor distinto:** implementador-0118 (instancia `bc-bfe3777a`) / revisor-0118 (instancia `bc-1ea2b198`, ronda 2/2 en vuelo); ronda 1 (`bc-de0a4de8`) — **changes_requested**
 - **WBS:** WBS-3.4
 - **Requisitos:** REQ-087; TC-EV-03, TC-EV-04
 - **ADRs:** ADR-0001, ADR-0006, ADR-0007; [RR-0003](../../requirements/records/RR-0003-m1-dev-sin-emulador-s3.md) (almacenamiento binario local sin MinIO obligatorio)
@@ -19,6 +19,6 @@
   3. Tenant + authz; otro tenant no lee blob ni fila.
   4. 2–4 tests integración Postgres + tests dominio mínimos.
 - **Plan de pruebas:** Vitest dominio/contratos; integración API con fixtures sintéticos; sin MinIO en CI (Postgres + adaptador local).
-- **Evidencia:** `282c2cf`, `997959e`; [informe TASK-0118](../../quality/reports/TASK-0118.md). Dominio **5/5**; API integración **4/4** (ronda 1).
-- **Revisión:** ronda 1 — **changes_requested** (`bc-de0a4de8`): alias Vitest `@alaira/connectors/fabric` acoplado a módulo **0119**; corrección en rutas 0118 sin depender de fabric WIP.
+- **Evidencia:** r1 `282c2cf`, `997959e`; r2 `30aaff6`, `004bb3f`; [informe TASK-0118](../../quality/reports/TASK-0118.md). Dominio **5/5**; API integración **4/4**; revisor r2 pendiente.
+- **Revisión:** ronda 1 — **changes_requested** (`bc-de0a4de8`): alias Vitest → fabric 0119; ronda 2 — entrega fix (`30aaff6`); revisor r2 (`bc-1ea2b198`) en vuelo.
 - **Rollback:** `git revert`; migraciones down.
