@@ -1,13 +1,13 @@
 # TASK-0128 — Evals IA adversariales (M1d)
 
-- **Estado:** review (no `accepted`)
+- **Estado:** integrated_provisional (integrado en `main`; no marcar `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0128 (instancia `bc-e0fa0deb`, entrega `b21fb79`) / revisor-0128 (en vuelo)
+- **Agente ejecutor / revisor distinto:** implementador-0128 (instancia `bc-e0fa0deb`, entrega `b21fb79`) / revisor-0128 (instancia `bc-90caa26a` — **approve**)
 - **WBS:** WBS-7.3
 - **Requisitos:** REQ-067 (parcial); TC-AI adversarial (ver TEST_STRATEGY)
 - **ADRs:** ADR-0005 (condicionado)
 - **Rama / worktree:** `main`. Sin ramas. `git commit -s` y push.
-- **Rutas reservadas:** `packages/ai/evals/`, `docs/quality/evals/`, `docs/quality/reports/TASK-0128.md`
+- **Rutas reservadas:** liberadas (provisional)
 - **Rutas prohibidas:** runtime dominio (0124 salvo consumo), REGISTRY, raíz
 - **Bloque de migraciones:** ninguna
 - **Dependencias:** TASK-0124
@@ -16,6 +16,6 @@
 - **Criterios de aceptación (80/20):** harness corre en CI con fixtures; informe de umbrales propuestos.
 - **Plan de pruebas:** comando documentado `pnpm` en paquete ai.
 - **Evidencia:** `b21fb79`; [informe TASK-0128](../../quality/reports/TASK-0128.md). evals **15**; ai test **21**; typecheck:evals; lint.
-- **Revisión:** revisor en vuelo; rutas evals reservadas hasta veredicto.
+- **Revisión:** revisor **approve** (`bc-90caa26a`). Rutas evals **liberadas** (provisional) en REGISTRY.
 - **Revisión / autorización humana:** umbrales G1 **no** aprobados; requieren mantenedor (`CONTINUAR_TRAS_G1 = no`).
 - **Rollback:** `git revert`.
