@@ -1,8 +1,8 @@
 # TASK-0119 — Connector Fabric: tokens, webhooks, dedup y DLQ (M1c)
 
-- **Estado:** in_progress
+- **Estado:** review (implementación en `main`; no `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0119 (instancia `bc-67098c38`) / revisor-0119 (pendiente)
+- **Agente ejecutor / revisor distinto:** implementador-0119 (instancia `bc-67098c38`) / revisor-0119 (instancia `bc-b8f62d65` en vuelo; pendiente veredicto)
 - **WBS:** WBS-5.2 (parte 2)
 - **Requisitos:** REQ-064, REQ-087; TC-INT-01, TC-SEC-05
 - **ADRs:** ADR-0003, ADR-0006, ADR-0007
@@ -20,5 +20,5 @@
   4. Health connected/degraded/disconnected/revoked expuesto vía API o SDK fabric.
   5. Tests Vitest + 2–4 integración Postgres/worker con payloads sintéticos.
 - **Plan de pruebas:** firmas HMAC con claves de testkit; cola DLQ simulada; sin llamadas a GitHub/Slack.
-- **Evidencia:** reporte TASK-0119.
+- **Evidencia:** `66ef63b`, `110be1f`; [informe TASK-0119](../../quality/reports/TASK-0119.md). Connectors **7/7** (fabric 5); API integración **4/4**; revisor pendiente.
 - **Rollback:** `git revert`; migraciones down; purga DLQ de prueba.
