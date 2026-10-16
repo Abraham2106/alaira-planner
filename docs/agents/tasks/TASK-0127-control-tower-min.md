@@ -1,8 +1,8 @@
 # TASK-0127 — Control Tower mínimo y Ask/Command (M1d)
 
-- **Estado:** in_progress (no `accepted`)
+- **Estado:** review (no `accepted`; no `integrated_provisional` hasta veredicto revisor)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0127 (instancia `bc-a01d64b1`) / revisor-0127 (pendiente)
+- **Agente ejecutor / revisor distinto:** implementador-0127 (instancia `bc-a01d64b1`, entrega `c8e7afe`/`ac34cc2`) / revisor-0127 (en vuelo)
 - **WBS:** WBS-2.7 (M1 mínimo)
 - **Requisitos:** REQ-096, REQ-097; TC-UX-04, TC-AUD-04
 - **ADRs:** ADR-0006, ADR-0005 (condicionado Ask/Command)
@@ -15,5 +15,6 @@
 - **Fuera de alcance:** Portfolio; RAID completo M4.
 - **Criterios de aceptación (80/20):** navegación teclado en vistas principales; log legible.
 - **Plan de pruebas:** Vitest componente; build web.
-- **Evidencia:** reporte TASK-0127.
+- **Evidencia:** `c8e7afe`, `ac34cc2`; [informe TASK-0127](../../quality/reports/TASK-0127.md). web vitest **25**; typecheck; build.
+- **Revisión:** revisor en vuelo; rutas control-tower reservadas hasta veredicto.
 - **Rollback:** `git revert`.
