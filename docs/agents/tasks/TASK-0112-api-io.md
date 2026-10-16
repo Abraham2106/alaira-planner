@@ -1,8 +1,8 @@
 # TASK-0112 — API v1, OpenAPI, búsqueda filtrada e import/export CSV
 
-- **Estado:** ready
+- **Estado:** in_progress
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** (sin asignar hasta `in_progress`) / revisor nuevo
+- **Agente ejecutor / revisor distinto:** implementador-0112 (composer-2.5) / revisor nuevo (instancia distinta)
 - **WBS:** WBS-2.5
 - **Requisitos:** REQ-010, REQ-063; NFR-008
 - **ADRs:** ADR-0006, ADR-0007
