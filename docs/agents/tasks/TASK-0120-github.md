@@ -1,13 +1,13 @@
 # TASK-0120 — Conector GitHub: PR/merge → EvidenceEvent (M1c)
 
-- **Estado:** review (implementación en `main`; no `accepted`)
+- **Estado:** integrated_provisional (integrado en `main`; no marcar `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0120 (instancia `bc-953927ad`) / revisor-0120 (instancia `bc-31c93024` en vuelo; pendiente veredicto)
+- **Agente ejecutor / revisor distinto:** implementador-0120 (instancia `bc-953927ad`) / revisor-0120 (instancia `bc-31c93024`, ronda 1/1 — **approve**)
 - **WBS:** WBS-5.4
 - **Requisitos:** REQ-087; TC-GH-01
 - **ADRs:** ADR-0001, ADR-0003, ADR-0006
 - **Rama / worktree:** `main`. Sin ramas. `git commit -s` y push.
-- **Rutas reservadas:** `packages/connectors/src/github/`, `apps/api/src/modules/github-connector/`, `apps/api/migrations/0220_*.sql`–`0229_*.sql`, `docs/quality/reports/TASK-0120.md`
+- **Rutas reservadas:** liberadas (provisional)
 - **Rutas prohibidas:** Slack (0121), SDK/fabric core (0119 salvo registro), evidence domain (0118 salvo API pública), REGISTRY, raíz
 - **Bloque de migraciones:** `0220–0229`
 - **Dependencias:** TASK-0118 (EvidenceEvent persistido), TASK-0119 (ingreso webhook y tokens)
@@ -18,5 +18,6 @@
   2. Webhook falsificado o repetido sin pasar fabric → sin efecto.
   3. Tests del normalizador + integración mínima con 0118/0119 mockeados o en Postgres.
 - **Plan de pruebas:** payloads JSON de referencia en testkit; sin PAT real.
-- **Evidencia:** `c591e24`, `83868ee`; [informe TASK-0120](../../quality/reports/TASK-0120.md). GitHub unit **2/2**; API integración **2/2**; revisor pendiente.
-- **Rollback:** `git revert`; migraciones down.
+- **Evidencia:** `c591e24`, `83868ee`, `48d220b`; [informe TASK-0120](../../quality/reports/TASK-0120.md). Revisor **approve** (`bc-31c93024`): connectors **12/12**; API github-connector **2/2**; migrate up ok; stub sintético; fabric 0119 + evidence 0118.
+- **Revisión:** ronda 1 — **approve** (`bc-31c93024`). Rutas **liberadas** en REGISTRY.
+- **Rollback:** `git revert` en orden inverso de los commits de la tarea; `pnpm migrate down` (`0221` → `0220`).
