@@ -1,8 +1,8 @@
 # TASK-0124 — AI runtime: herramientas de dominio y AIProposal (M1d)
 
-- **Estado:** ready
+- **Estado:** in_progress
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0124 (pendiente) / revisor-0124 (pendiente)
+- **Agente ejecutor / revisor distinto:** implementador-0124 (Composer en vuelo, ola 4; id en follow-up docs) / revisor-0124 (pendiente)
 - **WBS:** WBS-7.2 (parte 2)
 - **Requisitos:** REQ-090–REQ-092; TC-AI-04..07, TC-AI-09
 - **ADRs:** ADR-0005 (condicionado), ADR-0006, ADR-0007
