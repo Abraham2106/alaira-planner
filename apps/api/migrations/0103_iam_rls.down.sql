@@ -1,1 +1,3 @@
--- Grants revoked implicitly when role/table dropped in earlier downs.
+REVOKE ALL PRIVILEGES ON ALL TABLES IN SCHEMA public FROM alaira_app;
+REVOKE SELECT, INSERT, UPDATE, DELETE ON iam_invitation FROM alaira_app;
+REVOKE SELECT, INSERT, UPDATE ON iam_login_attempt FROM alaira_app;

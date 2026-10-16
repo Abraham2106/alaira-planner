@@ -9,6 +9,9 @@ DROP TABLE IF EXISTS tenant;
 
 DROP EXTENSION IF EXISTS vector;
 
+REVOKE ALL PRIVILEGES ON ALL TABLES IN SCHEMA public FROM alaira_app;
+REVOKE USAGE ON SCHEMA public FROM alaira_app;
+
 DO $$
 BEGIN
   IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'alaira_app') THEN

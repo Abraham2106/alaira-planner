@@ -30,7 +30,7 @@ export async function seedPocSyntheticTenants(adminUrl: string): Promise<{
     await client.query("DELETE FROM tenant");
 
     await client.query(
-      `INSERT INTO tenant (id, name) VALUES ($1, 'Tenant A'), ($2, 'Tenant B')`,
+      `INSERT INTO tenant (id, name, slug) VALUES ($1, 'Tenant A', 'poc-tenant-a'), ($2, 'Tenant B', 'poc-tenant-b')`,
       [tenantA, tenantB],
     );
     await client.query(
@@ -38,7 +38,11 @@ export async function seedPocSyntheticTenants(adminUrl: string): Promise<{
       [userA, userB, tenantA, tenantB],
     );
     await client.query(
-      `INSERT INTO session (id, tenant_id, user_id, expires_at) VALUES ($1, $3, $5, now() + interval '1 day'), ($2, $4, $6, now() + interval '1 day')`,
+      `INSERT INTO session (
+         id, tenant_id, user_id, expires_at, csrf_token, absolute_expires_at, last_activity_at
+       ) VALUES
+         ($1, $3, $5, now() + interval '1 day', 'poc-csrf-a', now() + interval '1 day', now()),
+         ($2, $4, $6, now() + interval '1 day', 'poc-csrf-b', now() + interval '1 day', now())`,
       [sessionA, sessionB, tenantA, tenantB, userA, userB],
     );
     await client.query(
