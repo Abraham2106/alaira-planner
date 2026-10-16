@@ -1,0 +1,26 @@
+{
+  "name": "@alaira/contracts",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./src/index.ts",
+    "./discover": "./src/discover.ts",
+    "./poc": "./src/poc/index.ts",
+    "./schedule": "./src/schedule/index.ts",
+    "./iam": "./src/iam/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint src --max-warnings 0",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "build": "tsc -p tsconfig.build.json"
+  },
+  "dependencies": {
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "vitest": "^3.0.5"
+  }
+}
