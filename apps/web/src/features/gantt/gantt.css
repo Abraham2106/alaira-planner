@@ -1,0 +1,116 @@
+.gantt-chart {
+  display: flex;
+  flex-direction: column;
+  gap: var(--shell-space-sm, 0.5rem);
+  margin-top: var(--shell-space-md, 0.75rem);
+}
+
+.gantt-row {
+  display: grid;
+  grid-template-columns: minmax(8rem, 14rem) 1fr;
+  gap: var(--shell-space-sm, 0.5rem);
+  align-items: center;
+}
+
+.gantt-row-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.gantt-track {
+  position: relative;
+  height: 2.75rem;
+  background: var(--shell-color-surface-elevated, #f4f4f5);
+  border-radius: var(--shell-radius, 6px);
+  border: 1px solid var(--shell-color-border, #d4d4d8);
+}
+
+.gantt-bar {
+  position: absolute;
+  height: 0.65rem;
+  border-radius: 3px;
+  min-width: 2px;
+}
+
+.gantt-bar--baseline {
+  top: 0.35rem;
+  background: #71717a;
+}
+
+.gantt-bar--forecast {
+  top: 1.05rem;
+  background: #2563eb;
+}
+
+.gantt-bar--actual {
+  top: 1.75rem;
+  background: #16a34a;
+}
+
+.gantt-legend-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--shell-space-md, 0.75rem);
+  font-size: 0.875rem;
+  margin-bottom: var(--shell-space-sm, 0.5rem);
+}
+
+.gantt-legend-inline span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.gantt-swatch {
+  width: 1rem;
+  height: 0.5rem;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.gantt-table-wrap {
+  overflow-x: auto;
+  margin-top: var(--shell-space-md, 0.75rem);
+}
+
+.gantt-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.gantt-table th,
+.gantt-table td {
+  border: 1px solid var(--shell-color-border, #d4d4d8);
+  padding: var(--shell-space-xs, 0.25rem) var(--shell-space-sm, 0.5rem);
+  text-align: left;
+}
+
+.gantt-table th {
+  background: var(--shell-color-surface-elevated, #f4f4f5);
+  font-weight: 650;
+}
+
+.gantt-table tbody tr:focus-visible {
+  outline: 2px solid var(--shell-color-focus-ring, #2563eb);
+  outline-offset: -2px;
+}
+
+.gantt-table tbody tr[data-focused="true"] {
+  background: color-mix(in srgb, var(--shell-color-focus-ring, #2563eb) 12%, transparent);
+}
+
+.gantt-view-radios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--shell-space-md, 0.75rem);
+}
+
+.gantt-view-radios label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 500;
+  cursor: pointer;
+}
