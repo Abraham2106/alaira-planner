@@ -136,114 +136,106 @@ export function ProjectWorkspace({ showSubnav = true }: ProjectWorkspaceProps) {
         </p>
       ) : null}
 
-      <form
-        id={createFormId}
-        className="planner-fieldset"
-        aria-labelledby={`${createFormId}-legend`}
-        onSubmit={onCreateProject}
-      >
-        <legend id={`${createFormId}-legend`}>Crear proyecto (sintético)</legend>
-        <div className="planner-field-grid">
-          <label htmlFor={`${createFormId}-name`}>
-            Nombre
-            <input
-              id={`${createFormId}-name`}
-              name="name"
-              required
-              maxLength={256}
-              value={projectName}
-              onChange={(e) => setProjectName(e.target.value)}
-              autoComplete="off"
-            />
-          </label>
-        </div>
-        <div className="planner-actions">
-          <button type="submit" disabled={busy}>
-            Crear vía API
-          </button>
-        </div>
+      <form id={createFormId} onSubmit={onCreateProject}>
+        <fieldset className="planner-fieldset">
+          <legend>Crear proyecto (sintético)</legend>
+          <div className="planner-field-grid">
+            <label htmlFor={`${createFormId}-name`}>
+              Nombre
+              <input
+                id={`${createFormId}-name`}
+                name="name"
+                required
+                maxLength={256}
+                value={projectName}
+                onChange={(e) => setProjectName(e.target.value)}
+                autoComplete="off"
+              />
+            </label>
+          </div>
+          <div className="planner-actions">
+            <button type="submit" disabled={busy}>
+              Crear vía API
+            </button>
+          </div>
+        </fieldset>
       </form>
 
-      <form
-        id={editFormId}
-        className="planner-fieldset"
-        aria-labelledby={`${editFormId}-legend`}
-        onSubmit={onLoadProject}
-      >
-        <legend id={`${editFormId}-legend`}>Editar / inspeccionar proyecto</legend>
-        <div className="planner-field-grid">
-          <label htmlFor={`${editFormId}-project-id`}>
-            ID de proyecto (`prj_…`)
-            <input
-              id={`${editFormId}-project-id`}
-              name="projectId"
-              required
-              minLength={4}
-              value={selectedProjectId}
-              onChange={(e) => setSelectedProjectId(e.target.value)}
-              autoComplete="off"
-            />
-          </label>
-        </div>
-        <div className="planner-actions">
-          <button type="submit" disabled={busy}>
-            Cargar proyecto
-          </button>
-          <button type="button" disabled={busy} onClick={onSearchProjects}>
-            Buscar proyectos (API v1)
-          </button>
-        </div>
-        {projectDetail ? <p className="planner-muted">{projectDetail}</p> : null}
-        {branchList ? (
-          <pre className="planner-muted" style={{ whiteSpace: "pre-wrap", margin: 0 }}>
-            {branchList}
-          </pre>
-        ) : null}
-        {searchSummary ? (
-          <pre className="planner-muted" style={{ whiteSpace: "pre-wrap", margin: 0 }}>
-            {searchSummary}
-          </pre>
-        ) : null}
+      <form id={editFormId} onSubmit={onLoadProject}>
+        <fieldset className="planner-fieldset">
+          <legend>Editar / inspeccionar proyecto</legend>
+          <div className="planner-field-grid">
+            <label htmlFor={`${editFormId}-project-id`}>
+              ID de proyecto (`prj_…`)
+              <input
+                id={`${editFormId}-project-id`}
+                name="projectId"
+                required
+                minLength={4}
+                value={selectedProjectId}
+                onChange={(e) => setSelectedProjectId(e.target.value)}
+                autoComplete="off"
+              />
+            </label>
+          </div>
+          <div className="planner-actions">
+            <button type="submit" disabled={busy}>
+              Cargar proyecto
+            </button>
+            <button type="button" disabled={busy} onClick={onSearchProjects}>
+              Buscar proyectos (API v1)
+            </button>
+          </div>
+          {projectDetail ? <p className="planner-muted">{projectDetail}</p> : null}
+          {branchList ? (
+            <pre className="planner-muted" style={{ whiteSpace: "pre-wrap", margin: 0 }}>
+              {branchList}
+            </pre>
+          ) : null}
+          {searchSummary ? (
+            <pre className="planner-muted" style={{ whiteSpace: "pre-wrap", margin: 0 }}>
+              {searchSummary}
+            </pre>
+          ) : null}
+        </fieldset>
       </form>
 
-      <form
-        className="planner-fieldset"
-        aria-label="Añadir rama al proyecto"
-        onSubmit={onAddBranch}
-      >
-        <legend>Añadir rama (mutación)</legend>
-        <div className="planner-field-grid">
-          <label htmlFor={`${editFormId}-branch-title`}>
-            Título de rama
-            <input
-              id={`${editFormId}-branch-title`}
-              name="branchTitle"
-              required
-              maxLength={256}
-              value={branchTitle}
-              onChange={(e) => setBranchTitle(e.target.value)}
-            />
-          </label>
-          <label htmlFor={`${editFormId}-branch-mode`}>
-            Modo de ejecución (opcional)
-            <select
-              id={`${editFormId}-branch-mode`}
-              name="executionModeOverride"
-              value={branchMode}
-              onChange={(e) => setBranchMode(e.target.value)}
-            >
-              <option value="">Heredar del proyecto</option>
-              <option value="predictive">Predictivo</option>
-              <option value="scrum">Scrum</option>
-              <option value="kanban">Kanban</option>
-            </select>
-          </label>
-        </div>
-        <div className="planner-actions">
-          <button type="submit" disabled={busy || !selectedProjectId.trim()}>
-            Crear rama
-          </button>
-        </div>
+      <form onSubmit={onAddBranch}>
+        <fieldset className="planner-fieldset">
+          <legend>Añadir rama (mutación)</legend>
+          <div className="planner-field-grid">
+            <label htmlFor={`${editFormId}-branch-title`}>
+              Título de rama
+              <input
+                id={`${editFormId}-branch-title`}
+                name="branchTitle"
+                required
+                maxLength={256}
+                value={branchTitle}
+                onChange={(e) => setBranchTitle(e.target.value)}
+              />
+            </label>
+            <label htmlFor={`${editFormId}-branch-mode`}>
+              Modo de ejecución (opcional)
+              <select
+                id={`${editFormId}-branch-mode`}
+                name="executionModeOverride"
+                value={branchMode}
+                onChange={(e) => setBranchMode(e.target.value)}
+              >
+                <option value="">Heredar del proyecto</option>
+                <option value="predictive">Predictivo</option>
+                <option value="scrum">Scrum</option>
+                <option value="kanban">Kanban</option>
+              </select>
+            </label>
+          </div>
+          <div className="planner-actions">
+            <button type="submit" disabled={busy || !selectedProjectId.trim()}>
+              Crear rama
+            </button>
+          </div>
+        </fieldset>
       </form>
     </div>
   );

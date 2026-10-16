@@ -3,6 +3,7 @@ import { z, type ZodType } from "zod";
 import { ApiClientError } from "../../lib/api-client/errors.js";
 import { createApiClient } from "../../lib/api-client/http-client.js";
 import { toApiV1Path } from "../../lib/api-client/paths.js";
+import { jsonWriteHeaders } from "./csrf.js";
 
 const client = createApiClient();
 
@@ -13,12 +14,17 @@ const ReparentNodeResponse = z.object({
   parentWorkNodeId: z.string(),
 });
 
-async function patch<T>(path: string, schema: ZodType<T>, body: unknown): Promise<T> {
+async function writeJson<T>(
+  method: "POST" | "PATCH",
+  path: string,
+  schema: ZodType<T>,
+  body: unknown,
+): Promise<T> {
   const url = toApiV1Path(path);
   const response = await fetch(url, {
-    method: "PATCH",
+    method,
     credentials: "same-origin",
-    headers: { "Content-Type": "application/json" },
+    headers: jsonWriteHeaders(),
     body: JSON.stringify(body),
   });
   let payload: unknown;
@@ -50,7 +56,8 @@ export function createWbsApi() {
         parentWorkNodeId?: string;
       },
     ) {
-      return client.post(
+      return writeJson(
+        "POST",
         `projects/${encodeURIComponent(projectId)}/wbs/packages`,
         wbsSchemas.PackageResponse,
         {
@@ -60,7 +67,8 @@ export function createWbsApi() {
       );
     },
     reparentNode(projectId: string, workNodeId: string, parentWorkNodeId: string) {
-      return patch(
+      return writeJson(
+        "PATCH",
         `projects/${encodeURIComponent(projectId)}/wbs/nodes/${encodeURIComponent(workNodeId)}/parent`,
         ReparentNodeResponse,
         { parentWorkNodeId },
@@ -74,7 +82,8 @@ export function createWbsApi() {
         linkKind: "backlog_projection" | "goal";
       },
     ) {
-      return client.post(
+      return writeJson(
+        "POST",
         `projects/${encodeURIComponent(projectId)}/wbs/projection-links`,
         wbsSchemas.ProjectionLinkResponse,
         body,

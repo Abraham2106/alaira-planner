@@ -19,6 +19,16 @@ afterEach(() => {
 });
 
 describe("ProjectWorkspace a11y", () => {
+  it("uses fieldset > legend for each form section", () => {
+    render(<ProjectWorkspace showSubnav={false} />);
+    const fieldsets = screen.getAllByRole("group");
+    expect(fieldsets.length).toBeGreaterThanOrEqual(3);
+    for (const fieldset of fieldsets) {
+      expect(fieldset.tagName).toBe("FIELDSET");
+      expect(fieldset.querySelector("legend")).toBeTruthy();
+    }
+  });
+
   it("exposes labeled fields and keyboard focus order for create form", () => {
     render(<ProjectWorkspace showSubnav={false} />);
     const name = screen.getByLabelText(/Nombre/i);

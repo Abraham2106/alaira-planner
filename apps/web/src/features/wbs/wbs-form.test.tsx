@@ -17,6 +17,16 @@ afterEach(() => {
 });
 
 describe("WbsWorkspace", () => {
+  it("wraps legends inside fieldset elements", () => {
+    render(<WbsWorkspace />);
+    const fieldsets = screen.getAllByRole("group");
+    expect(fieldsets.length).toBe(4);
+    for (const fieldset of fieldsets) {
+      expect(fieldset.tagName).toBe("FIELDSET");
+      expect(fieldset.querySelector("legend")).toBeTruthy();
+    }
+  });
+
   it("renders WBS and dependency fieldsets with accessible legends", () => {
     render(<WbsWorkspace />);
     expect(screen.getByText(/Árbol WBS del proyecto/i)).toBeTruthy();
