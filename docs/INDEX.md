@@ -111,9 +111,9 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0110](agents/tasks/TASK-0110-project-graph.md) | Grafo de proyecto y delivery_profile | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0110.md) |
 | [TASK-0111](agents/tasks/TASK-0111-wbs-entregables.md) | WBS, entregables e hitos | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0111.md) |
 | [TASK-0112](agents/tasks/TASK-0112-api-io.md) | API v1, OpenAPI e import/export CSV | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0112.md) |
-| [TASK-0113](agents/tasks/TASK-0113-programacion.md) | Programación persistida y CPM | Ficha (in_progress) |
-| [TASK-0114](agents/tasks/TASK-0114-asignaciones.md) | Asignaciones y sobreasignación | Ficha (review) · [reporte](quality/reports/TASK-0114.md) |
-| [TASK-0115](agents/tasks/TASK-0115-web-proyecto-wbs.md) | Web: proyecto y WBS | Ficha (in_progress) |
+| [TASK-0113](agents/tasks/TASK-0113-programacion.md) | Programación persistida y CPM | Ficha (review) · [reporte](quality/reports/TASK-0113.md) |
+| [TASK-0114](agents/tasks/TASK-0114-asignaciones.md) | Asignaciones y sobreasignación | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0114.md) |
+| [TASK-0115](agents/tasks/TASK-0115-web-proyecto-wbs.md) | Web: proyecto y WBS | Ficha (in_progress; changes_requested r1) · [reporte](quality/reports/TASK-0115.md) |
 | [TASK-0116](agents/tasks/TASK-0116-baseline.md) | Baseline, forecast y real | Ficha (ready) |
 | [TASK-0117](agents/tasks/TASK-0117-web-gantt.md) | Web Gantt accesible | Ficha (ready) |
 | [Plantilla RUN](agents/runs/TEMPLATE.md) | Registro por ejecución de agente | Plantilla |
@@ -139,9 +139,9 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0110 report](quality/reports/TASK-0110.md) | Evidencia grafo de proyecto | Evidencia (provisional) |
 | [TASK-0111 report](quality/reports/TASK-0111.md) | Evidencia WBS y entregables | Evidencia (provisional) |
 | [TASK-0112 report](quality/reports/TASK-0112.md) | Evidencia API v1 / OpenAPI | Evidencia (provisional; accepted humana) |
-| [TASK-0113 report](quality/reports/TASK-0113.md) | Evidencia programación CPM | Evidencia (en curso) |
-| [TASK-0114 report](quality/reports/TASK-0114.md) | Evidencia asignaciones M1 | Evidencia (review) |
-| [TASK-0115 report](quality/reports/TASK-0115.md) | Evidencia web proyecto/WBS | Evidencia (en curso) |
+| [TASK-0113 report](quality/reports/TASK-0113.md) | Evidencia programación CPM | Evidencia (review) |
+| [TASK-0114 report](quality/reports/TASK-0114.md) | Evidencia asignaciones M1 | Evidencia (provisional; RLS humana) |
+| [TASK-0115 report](quality/reports/TASK-0115.md) | Evidencia web proyecto/WBS | Evidencia (en curso; changes_requested r1) |
 
 ### Gobernanza, investigación y ejemplos
 

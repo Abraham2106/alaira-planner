@@ -1,8 +1,8 @@
 # TASK-0114 — Asignaciones y sobreasignación persistidas (M1)
 
-- **Estado:** review (entrega en `main`; veredicto revisor pendiente; no `accepted`)
+- **Estado:** integrated_provisional (integrado en `main`; no marcar `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0114 (composer-2.5) / revisor ronda 1 (nuevo, no implementador) en vuelo
+- **Agente ejecutor / revisor distinto:** implementador-0114 (composer-2.5) / revisor-0114 (instancia `c4e2d65a`, ronda 1/1 — **approve**)
 - **WBS:** WBS-3.6 (persistencia M1)
 - **Requisitos:** REQ-017, REQ-018, REQ-083
 - **ADRs:** ADR-0006, ADR-0007
@@ -19,5 +19,6 @@
   3. Authz + tenant en mutaciones.
   4. Solo datos sintéticos en fixtures.
 - **Plan de pruebas:** Vitest integración Postgres; 2–4 casos.
-- **Evidencia:** implementación `c27eb70`; reporte `e465a8e`; [informe TASK-0114](../../quality/reports/TASK-0114.md).
+- **Evidencia:** implementación `c27eb70`; reporte `e465a8e`; [informe TASK-0114](../../quality/reports/TASK-0114.md). Revisor **approve** (`c4e2d65a`).
+- **Revisión / autorización humana:** **REQUIERE_APROBACION_HUMANA:** sí (RLS/tenancy en asignaciones) — **pendiente** del mantenedor.
 - **Rollback:** `git revert`; migraciones down.

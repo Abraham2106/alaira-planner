@@ -1,8 +1,8 @@
 # TASK-0113 — Programación persistida: calendarios, dependencias y recálculo CPM
 
-- **Estado:** in_progress
+- **Estado:** review (entrega en `main`; veredicto revisor pendiente; no `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0113 (composer-2.5) / revisor nuevo (instancia distinta)
+- **Agente ejecutor / revisor distinto:** implementador-0113 (composer-2.5) / revisor-0113 (instancia `8cfb7e4a`, ronda 1 en vuelo)
 - **WBS:** WBS-3.2 (integración M1b)
 - **Requisitos:** REQ-020, REQ-021, REQ-022, REQ-023, REQ-028; NFR-019
 - **ADRs:** ADR-0006, ADR-0007
@@ -19,5 +19,5 @@
   3. Cross-tenant → 404; sin permiso → deny (0106).
   4. Idempotencia en comando de recálculo donde aplique (0109).
 - **Plan de pruebas:** Vitest; Postgres Docker; 2–4 integración; oráculo vs engine.
-- **Evidencia:** reporte TASK-0113.
+- **Evidencia:** entrega `3fb5600`; [informe TASK-0113](../../quality/reports/TASK-0113.md).
 - **Rollback:** `git revert`; migraciones `017x` down.
