@@ -1,0 +1,32 @@
+{
+  "name": "@alaira/api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "license": "Apache-2.0",
+  "scripts": {
+    "lint": "eslint src --max-warnings 0",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "tsx src/index.ts",
+    "dev": "tsx watch src/index.ts",
+    "migrate": "tsx src/db/migrate-cli.ts"
+  },
+  "dependencies": {
+    "@alaira/contracts": "workspace:*",
+    "@alaira/domain": "workspace:*",
+    "@alaira/engine": "workspace:*",
+    "@fastify/cookie": "^11.0.2",
+    "argon2": "^0.41.1",
+    "fastify": "^5.2.1",
+    "pg": "^8.13.1",
+    "tsx": "^4.19.2",
+    "uuid": "^11.0.5",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.11.11",
+    "vitest": "^3.0.5"
+  }
+}
