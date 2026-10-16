@@ -121,7 +121,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0120](agents/tasks/TASK-0120-github.md) | Conector GitHub → EvidenceEvent | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0120.md) |
 | [TASK-0121](agents/tasks/TASK-0121-slack-intake.md) | Slack: verificación e intake seguro | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0121.md) |
 | [TASK-0122](agents/tasks/TASK-0122-aceptacion-progreso.md) | Aceptación y progreso (M1d) | Ficha (in_progress) |
-| [TASK-0123](agents/tasks/TASK-0123-recuperacion.md) | Recuperación vectorial con permisos | Ficha (review r2) · [reporte](quality/reports/TASK-0123.md) |
+| [TASK-0123](agents/tasks/TASK-0123-recuperacion.md) | Recuperación vectorial con permisos | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0123.md) |
 | [TASK-0124](agents/tasks/TASK-0124-ai-runtime-dominio.md) | AI runtime dominio y AIProposal | Ficha (proposed) |
 | [TASK-0125](agents/tasks/TASK-0125-slack-consecuencias.md) | Slack: consecuencias de acciones | Ficha (proposed) |
 | [TASK-0126](agents/tasks/TASK-0126-agente-progress.md) | Agente Progress | Ficha (proposed) |
@@ -162,7 +162,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0119 report](quality/reports/TASK-0119.md) | Evidencia connector fabric M1c | Evidencia (provisional) |
 | [TASK-0120 report](quality/reports/TASK-0120.md) | Evidencia conector GitHub M1c | Evidencia (provisional) |
 | [TASK-0121 report](quality/reports/TASK-0121.md) | Evidencia Slack intake M1c | Evidencia (provisional) |
-| [TASK-0123 report](quality/reports/TASK-0123.md) | Evidencia recuperación pgvector M1d | Evidencia (review r2; revisor pendiente) |
+| [TASK-0123 report](quality/reports/TASK-0123.md) | Evidencia recuperación pgvector M1d | Evidencia (provisional) |
 
 ### Gobernanza, investigación y ejemplos
 
