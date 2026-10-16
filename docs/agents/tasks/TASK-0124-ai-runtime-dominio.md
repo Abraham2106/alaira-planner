@@ -1,8 +1,8 @@
 # TASK-0124 — AI runtime: herramientas de dominio y AIProposal (M1d)
 
-- **Estado:** in_progress (fix ronda 1 tras **changes_requested**; no `accepted`)
+- **Estado:** review (ronda 2; fix `85db5d2`; no `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0124 (instancia `bc-31f0b2b4`, fix r1) / revisor-0124 (instancia `bc-d26034fd`, ronda 1/1 — **changes_requested**)
+- **Agente ejecutor / revisor distinto:** implementador-0124 (instancia `bc-31f0b2b4`, fix r2 `85db5d2`) / revisor-0124 (ronda 2/2 — en vuelo); ronda 1 (`bc-d26034fd`) — **changes_requested**
 - **WBS:** WBS-7.2 (parte 2)
 - **Requisitos:** REQ-090–REQ-092; TC-AI-04..07, TC-AI-09
 - **ADRs:** ADR-0005 (condicionado), ADR-0006, ADR-0007
@@ -15,6 +15,7 @@
 - **Fuera de alcance:** agente Progress completo (0126); Slack consecuencias (0125).
 - **Criterios de aceptación (80/20):** mutación solo vía herramienta; acción controlada sin aprobación rechazada.
 - **Plan de pruebas:** Vitest `packages/ai`; integración API con políticas sintéticas.
-- **Evidencia:** `b91f0ab`; [informe TASK-0124](../../quality/reports/TASK-0124.md). AI **6** tests (domain-tools/runtime); API integración **4/4**; migrate **0260** ok; typecheck api/ai **not_run** (POC engine); revisor pendiente.
-- **Revisión / autorización humana:** **REQUIERE_APROBACION_HUMANA:** sí (ADR-0005) — pendiente mantenedor para `accepted`.
+- **Evidencia:** `b91f0ab`; fix r2 `85db5d2`; [informe TASK-0124](../../quality/reports/TASK-0124.md). AI **6** tests; API **4/4**; migrate **0260**; typecheck TenantId corregido (r2).
+- **Revisión:** ronda 1 — **changes_requested** (`bc-d26034fd`): typecheck API **TS2322** `TenantId` en `ai-proposal/service.ts` (`toRuntimeActor`). Ronda 2 — revisor en vuelo.
+- **Revisión / autorización humana:** **REQUIERE_APROBACION_HUMANA:** sí (ADR-0005) — pendiente mantenedor para `accepted`; gate **TASK-0108** abierto.
 - **Rollback:** `git revert`; migraciones down.
