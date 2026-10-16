@@ -1,9 +1,11 @@
 import { schemas as baselineSchemas } from "@alaira/contracts/baseline";
-import { createApiClient } from "../../lib/api-client/http-client.js";
+import {
+  createApiClient,
+  type ApiClientOptions,
+} from "../../lib/api-client/http-client.js";
 
-const client = createApiClient();
-
-export function createGanttApi() {
+export function createGanttApi(options?: ApiClientOptions) {
+  const client = createApiClient(options);
   return {
     getBaselineVariance(projectId: string) {
       return client.get(

@@ -18,9 +18,9 @@ describe("createGanttApi", () => {
         { status: 200, headers: { "Content-Type": "application/json" } },
       ),
     );
-    vi.stubGlobal("fetch", fetchFn);
-
-    await createGanttApi().getBaselineVariance("prj_018f00000000700080000000000001");
+    await createGanttApi({ fetchFn }).getBaselineVariance(
+      "prj_018f00000000700080000000000001",
+    );
 
     expect(fetchFn).toHaveBeenCalledWith(
       expect.stringContaining(
