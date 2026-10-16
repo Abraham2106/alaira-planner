@@ -22,7 +22,7 @@
 
 | [TASK-0113](tasks/TASK-0113-programacion.md) | implementador-0113 | Implementador | 3.2 | `main` | principal | liberadas | integrated_provisional | revisor approve (`8cfb7e4a`); domain 1/1; api 4/4; entrega `3fb5600` |
 | [TASK-0114](tasks/TASK-0114-asignaciones.md) | implementador-0114 | Implementador | 3.6 | `main` | principal | liberadas | integrated_provisional | revisor approve (`c4e2d65a`); `c27eb70`/`e465a8e`; **aprobación humana** RLS pendiente |
-| [TASK-0115](tasks/TASK-0115-web-proyecto-wbs.md) | implementador-0115 | Implementador | 2.6 | `main` | principal | `apps/web/src/features/project/`, `apps/web/src/features/wbs/`, `docs/quality/reports/TASK-0115.md` | in_progress | revisor r1 (`7f9998ed`) **changes_requested**; fix r2 `f98d20e3` |
+| [TASK-0115](tasks/TASK-0115-web-proyecto-wbs.md) | implementador-0115 | Implementador | 2.6 | `main` | principal | `apps/web/src/features/project/`, `apps/web/src/features/wbs/`, `docs/quality/reports/TASK-0115.md` | review | ronda 2 `0a42062`/`d523842`; r1 `changes_requested` (`7f9998ed`); revisor r2 (`e4c8f011`) en vuelo |
 | [TASK-0116](tasks/TASK-0116-baseline.md) | implementador-0116 | Implementador | 3.3 | `main` | principal | liberadas | integrated_provisional | revisor approve (`a4277779`); domain 2/2; api 4/4; typecheck OK; **aprobación humana** línea base/costos |
 | [TASK-0117](tasks/TASK-0117-web-gantt.md) | — | Implementador | 3.3 | `main` | principal | `apps/web/src/features/gantt/`, `docs/quality/reports/TASK-0117.md` | ready | depende 0115, 0116 |
 
