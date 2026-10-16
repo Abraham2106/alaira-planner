@@ -1,6 +1,6 @@
 # TASK-0124 — AI runtime: herramientas de dominio y AIProposal (M1d)
 
-- **Estado:** proposed
+- **Estado:** ready
 - **Planificador:** Planner/Orchestrator
 - **Agente ejecutor / revisor distinto:** implementador-0124 (pendiente) / revisor-0124 (pendiente)
 - **WBS:** WBS-7.2 (parte 2)
