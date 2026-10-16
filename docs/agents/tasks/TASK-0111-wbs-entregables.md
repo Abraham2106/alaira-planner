@@ -1,8 +1,8 @@
 # TASK-0111 — WBS: paquetes, entregables, hitos y criterios versionados
 
-- **Estado:** review (entrega en `main`; veredicto revisor pendiente; no `accepted`)
+- **Estado:** integrated_provisional (integrado en `main`; no marcar `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0111 (instancia `19f6fc1f`, composer-2.5) / revisor ronda 1 (nuevo, no implementador) en vuelo
+- **Agente ejecutor / revisor distinto:** implementador-0111 (instancia `19f6fc1f`, composer-2.5) / revisor-0111 (instancia `0bc51793`, ronda 1/1 — **approve**)
 - **WBS:** WBS-3.1
 - **Requisitos:** REQ-011, REQ-012, REQ-013, REQ-014, REQ-015, REQ-016
 - **ADRs:** ADR-0006, ADR-0007
@@ -19,6 +19,6 @@
   3. Entregable con versión/criterios editables (TC-WBS-03).
   4. Authz + tenant en escrituras; invitado no crea paquete raíz.
 - **Plan de pruebas:** Vitest; Postgres Docker; 2–4 tests integración.
-- **Evidencia:** implementación WBS en `3944d87`; reporte `433431d`; [informe TASK-0111](../../quality/reports/TASK-0111.md).
+- **Evidencia:** implementación WBS en `3944d87`; reporte `433431d`; [informe TASK-0111](../../quality/reports/TASK-0111.md). Revisor **approve** (`0bc51793`): domain **4/4**; API integración **4/4**. **REQUIERE_APROBACION_HUMANA:** no (veredicto técnico).
 - **Proceso / trazabilidad:** el commit `3944d87` mezcló docs del Planner (0109/0112) con código WBS por **stage accidental**; no se reescribe historia — la entrega funcional 0111 se identifica por rutas reservadas y el reporte `433431d`.
 - **Rollback:** `git revert` selectivo por rutas 0111 (no revertir el commit completo si arrastra docs ajenos); migraciones `015x` down si aplica.

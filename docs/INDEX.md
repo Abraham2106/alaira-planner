@@ -107,7 +107,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0108](agents/tasks/TASK-0108-ai-runtime-core.md) | AI runtime core | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0108.md) |
 | [TASK-0109](agents/tasks/TASK-0109-event-log.md) | Event log, outbox e idempotencia | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0109.md) |
 | [TASK-0110](agents/tasks/TASK-0110-project-graph.md) | Grafo de proyecto y delivery_profile | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0110.md) |
-| [TASK-0111](agents/tasks/TASK-0111-wbs-entregables.md) | WBS, entregables e hitos | Ficha (review) · [reporte](quality/reports/TASK-0111.md) |
+| [TASK-0111](agents/tasks/TASK-0111-wbs-entregables.md) | WBS, entregables e hitos | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0111.md) |
 | [TASK-0112](agents/tasks/TASK-0112-api-io.md) | API v1, OpenAPI e import/export CSV | Ficha (review) · [reporte](quality/reports/TASK-0112.md) |
 | [Plantilla RUN](agents/runs/TEMPLATE.md) | Registro por ejecución de agente | Plantilla |
 | [SWARM_MASTER_PROMPT](agents/prompts/SWARM_MASTER_PROMPT.md) | Prompt del Planner para construir M1 con un enjambre de agentes Composer | Procedimiento operativo |
@@ -130,7 +130,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0108 report](quality/reports/TASK-0108.md) | Evidencia AI runtime core | Evidencia (provisional; ADR-0005 humana) |
 | [TASK-0109 report](quality/reports/TASK-0109.md) | Evidencia event log / outbox | Evidencia (provisional) |
 | [TASK-0110 report](quality/reports/TASK-0110.md) | Evidencia grafo de proyecto | Evidencia (provisional) |
-| [TASK-0111 report](quality/reports/TASK-0111.md) | Evidencia WBS y entregables | Evidencia (review) |
+| [TASK-0111 report](quality/reports/TASK-0111.md) | Evidencia WBS y entregables | Evidencia (provisional) |
 | [TASK-0112 report](quality/reports/TASK-0112.md) | Evidencia API v1 / OpenAPI | Evidencia (review) |
 
 ### Gobernanza, investigación y ejemplos
