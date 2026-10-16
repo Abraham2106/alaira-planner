@@ -5,7 +5,8 @@
   "type": "module",
   "license": "Apache-2.0",
   "exports": {
-    "./jobs/connector-fabric": "./src/jobs/connector-fabric/index.ts"
+    "./jobs/connector-fabric": "./src/jobs/connector-fabric/index.ts",
+    "./jobs/ai-progress": "./src/jobs/ai-progress/index.ts"
   },
   "scripts": {
     "lint": "eslint src --max-warnings 0",
@@ -16,6 +17,8 @@
     "dev": "tsx watch src/index.ts"
   },
   "dependencies": {
+    "@alaira/ai": "workspace:*",
+    "@alaira/domain": "workspace:*",
     "@aws-sdk/client-s3": "^3.750.0",
     "pg": "^8.13.1"
   },

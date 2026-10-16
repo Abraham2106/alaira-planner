@@ -10,7 +10,8 @@
     "./runtime": "./src/runtime/index.ts",
     "./providers": "./src/providers/index.ts",
     "./tools": "./src/tools/index.ts",
-    "./domain-tools": "./src/domain-tools/index.ts"
+    "./domain-tools": "./src/domain-tools/index.ts",
+    "./agents/progress": "./src/agents/progress/index.ts"
   },
   "scripts": {
     "lint": "eslint src --max-warnings 0",

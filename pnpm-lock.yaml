@@ -115,6 +115,12 @@ importers:
 
   apps/worker:
     dependencies:
+      '@alaira/ai':
+        specifier: workspace:*
+        version: link:../../packages/ai
+      '@alaira/domain':
+        specifier: workspace:*
+        version: link:../../packages/domain
       '@aws-sdk/client-s3':
         specifier: ^3.750.0
         version: 3.1152.0
