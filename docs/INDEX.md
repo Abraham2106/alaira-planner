@@ -121,6 +121,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0103 report](quality/reports/TASK-0103.md) | Evidencia web shell | Evidencia (provisional) |
 | [TASK-0104 report](quality/reports/TASK-0104.md) | Evidencia Connector SDK | Evidencia (provisional) |
 | [TASK-0105 report](quality/reports/TASK-0105.md) | Evidencia testkit | Evidencia (provisional) |
+| [TASK-0107 report](quality/reports/TASK-0107.md) | Evidencia motor de capacidad | Evidencia (en curso) |
 
 ### Gobernanza, investigación y ejemplos
 
