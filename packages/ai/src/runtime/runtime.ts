@@ -1,6 +1,7 @@
 import type { OpenAiCompatibleProvider } from "../providers/openai-compatible.js";
 import { extractFirstToolCall } from "../providers/openai-compatible.js";
 import { interpretObservation } from "../providers/fake-deterministic.js";
+import type { DomainToolStore } from "../domain-tools/store.js";
 import { executeTypedTool } from "../tools/registry.js";
 import { evaluatePolicy } from "./policy-gateway.js";
 import { buildAiProposal } from "./proposal.js";
@@ -19,6 +20,7 @@ function pushAudit(
 export type RunAiRuntimeOptions = {
   provider?: OpenAiCompatibleProvider;
   proposalIdFactory?: () => string;
+  domainStore?: DomainToolStore;
 };
 
 /** Observe → Retrieve → Interpret → Plan → Policy → Execute + verify (ADR-0005). */
@@ -85,11 +87,16 @@ export async function runAiRuntime(
 
   if (decision.outcome === "require_proposal") {
     pushAudit(audit, "policy", `proposal_required:${decision.autonomyLevel}`);
-    const preview = executeTypedTool(decision.tool, {
-      actor: input.actor,
-      projectId: input.projectId,
-      targetNodeId,
-    }, plannedTool.arguments);
+    const preview = await executeTypedTool(
+      decision.tool,
+      {
+        actor: input.actor,
+        projectId: input.projectId,
+        targetNodeId,
+      },
+      plannedTool.arguments,
+      options.domainStore,
+    );
 
     const proposal = buildAiProposal({
       id: options.proposalIdFactory?.() ?? crypto.randomUUID(),
@@ -115,11 +122,16 @@ export async function runAiRuntime(
   }
 
   pushAudit(audit, "policy", "allow_execute");
-  const result = executeTypedTool(decision.tool, {
-    actor: input.actor,
-    projectId: input.projectId,
-    targetNodeId,
-  }, plannedTool.arguments);
+  const result = await executeTypedTool(
+    decision.tool,
+    {
+      actor: input.actor,
+      projectId: input.projectId,
+      targetNodeId,
+    },
+    plannedTool.arguments,
+    options.domainStore,
+  );
 
   pushAudit(audit, "execute", decision.tool);
   pushAudit(audit, "verify", "state_verified_stub");

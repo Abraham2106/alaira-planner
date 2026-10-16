@@ -1,6 +1,7 @@
 export * from "./poc/index.js";
 export * from "./tools/index.js";
 export * from "./providers/index.js";
+export * from "./domain-tools/index.js";
 export {
   runAiRuntime,
   evaluatePolicy,

@@ -33,6 +33,22 @@ describe("TASK-0108 / ADR-0005 (80/20)", () => {
     }
   });
 
+  it("returns proposal for proponer tool (propose progress)", async () => {
+    const result = await runAiRuntime({
+      observation: "Please propose progress percent complete to 90",
+      actor,
+      idempotencyKey: "idem-propose-1",
+      projectId,
+      targetNodeId,
+    });
+    expect(result.ok).toBe(true);
+    if (result.ok && result.kind === "proposal") {
+      expect(result.proposal.typedCommand).toBe("propose_progress_update");
+      expect(result.proposal.resolution).toBe("pending");
+      expect(result.proposal.autonomyLevel).toBe("proponer");
+    }
+  });
+
   it("allows read-only typed tool via policy gateway", async () => {
     const result = await runAiRuntime(
       {

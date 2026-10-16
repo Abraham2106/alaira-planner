@@ -23,7 +23,8 @@
     "./evidence": "./src/evidence/index.ts",
     "./acceptance": "./src/acceptance/index.ts",
     "./connector-fabric": "./src/connector-fabric/index.ts",
-    "./retrieval": "./src/retrieval/index.ts"
+    "./retrieval": "./src/retrieval/index.ts",
+    "./ai-proposal": "./src/ai-proposal/index.ts"
   },
   "scripts": {
     "lint": "eslint src --max-warnings 0",

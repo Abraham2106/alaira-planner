@@ -36,6 +36,14 @@ export function fakeDeterministicInterpret(observation: string): FakeInterpretat
     };
   }
 
+  if (text.includes("modify baseline") || text.includes("baseline contract")) {
+    return {
+      intent: "modify_baseline",
+      tool: "modify_baseline",
+      arguments: { field: "baseline_finish", value: "2027-01-01" },
+    };
+  }
+
   if (text.includes("get project") || text.includes("project metadata")) {
     return {
       intent: "get_project",
