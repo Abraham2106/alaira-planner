@@ -1,0 +1,109 @@
+.planner-forms {
+  display: flex;
+  flex-direction: column;
+  gap: var(--shell-space-lg, 1.25rem);
+  margin-top: var(--shell-space-md, 0.75rem);
+}
+
+.planner-subnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--shell-space-sm, 0.5rem);
+}
+
+.planner-subnav a {
+  padding: var(--shell-space-xs, 0.25rem) var(--shell-space-md, 0.75rem);
+  border-radius: var(--shell-radius, 6px);
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--shell-color-text, inherit);
+  border: 1px solid var(--shell-color-border, #ccc);
+}
+
+.planner-subnav a[aria-current="page"] {
+  background: var(--shell-color-surface-elevated, #f4f4f5);
+  border-color: var(--shell-color-focus-ring, #2563eb);
+}
+
+.planner-fieldset {
+  border: 1px solid var(--shell-color-border, #d4d4d8);
+  border-radius: var(--shell-radius, 6px);
+  padding: var(--shell-space-md, 0.75rem);
+  margin: 0;
+}
+
+.planner-fieldset legend {
+  font-weight: 650;
+  padding: 0 var(--shell-space-xs, 0.25rem);
+}
+
+.planner-field-grid {
+  display: grid;
+  gap: var(--shell-space-md, 0.75rem);
+}
+
+.planner-field-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--shell-space-xs, 0.25rem);
+  font-weight: 500;
+}
+
+.planner-field-grid input,
+.planner-field-grid select {
+  padding: var(--shell-space-sm, 0.5rem);
+  border-radius: var(--shell-radius, 6px);
+  border: 1px solid var(--shell-color-border, #d4d4d8);
+  font: inherit;
+}
+
+.planner-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--shell-space-sm, 0.5rem);
+  align-items: center;
+}
+
+.planner-actions button {
+  font: inherit;
+  font-weight: 600;
+  padding: var(--shell-space-sm, 0.5rem) var(--shell-space-md, 0.75rem);
+  border-radius: var(--shell-radius, 6px);
+  border: 1px solid var(--shell-color-border, #d4d4d8);
+  background: var(--shell-color-surface, #fff);
+  cursor: pointer;
+}
+
+.planner-actions button[type="submit"] {
+  background: var(--shell-color-focus-ring, #2563eb);
+  color: #fff;
+  border-color: transparent;
+}
+
+.planner-alert {
+  padding: var(--shell-space-sm, 0.5rem) var(--shell-space-md, 0.75rem);
+  border-radius: var(--shell-radius, 6px);
+  border: 1px solid transparent;
+}
+
+.planner-alert--error {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #991b1b;
+}
+
+.planner-alert--success {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #065f46;
+}
+
+.planner-list {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.planner-muted {
+  color: var(--shell-color-text-muted, #71717a);
+  font-size: 0.875rem;
+}
