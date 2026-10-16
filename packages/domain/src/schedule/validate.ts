@@ -1,9 +1,5 @@
 import { ScheduleError } from "./errors.js";
-import type {
-  CpmScheduleRequest,
-  ScheduleDependencyDefinition,
-  ScheduleTaskDefinition,
-} from "./types.js";
+import type { CpmScheduleRequest, ScheduleDependencyDefinition } from "./types.js";
 
 export function validateScheduleRequest(request: CpmScheduleRequest): void {
   if (!Number.isFinite(request.projectStartEpochMs)) {
