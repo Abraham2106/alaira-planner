@@ -1,8 +1,8 @@
 # TASK-0115 — Web: formularios de proyecto, WBS y dependencias (M1b)
 
-- **Estado:** in_progress (corrección ronda 2 tras `changes_requested` del revisor)
+- **Estado:** review (ronda 2 entregada en `main`; veredicto revisor pendiente; no `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0115 (composer-2.5) / revisor-0115 (instancia `7f9998ed`, ronda 1/2 — **changes_requested**)
+- **Agente ejecutor / revisor distinto:** implementador-0115 (composer-2.5) / revisor-0115 (instancia `e4c8f011`, ronda 2/2 en vuelo); ronda 1 (`7f9998ed`) — **changes_requested**
 - **WBS:** WBS-2.6 (parte 2)
 - **Requisitos:** REQ-028, REQ-011; NFR-015
 - **ADRs:** ADR-0006, ADR-0007
@@ -19,6 +19,6 @@
   3. Error de API mostrado sin filtrar datos de otro tenant.
   4. Feature autodescubierta bajo `features/project/` o `features/wbs/`.
 - **Plan de pruebas:** Vitest componente; build web; 1–2 e2e manuales documentados o `not_run` con motivo.
-- **Evidencia:** [informe TASK-0115](../../quality/reports/TASK-0115.md); fix ronda 2 en curso (`f98d20e3`).
-- **Revisión:** ronda 1 — **changes_requested** (`7f9998ed`); implementador corrigiendo.
+- **Evidencia:** ronda 2 `0a42062`; reporte `d523842`; [informe TASK-0115](../../quality/reports/TASK-0115.md).
+- **Revisión:** ronda 1 — **changes_requested** (`7f9998ed`); ronda 2 entregada — revisor `e4c8f011` en vuelo.
 - **Rollback:** `git revert`.
