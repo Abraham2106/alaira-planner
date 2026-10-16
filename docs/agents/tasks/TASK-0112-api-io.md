@@ -1,8 +1,8 @@
 # TASK-0112 — API v1, OpenAPI, búsqueda filtrada e import/export CSV
 
-- **Estado:** in_progress
+- **Estado:** review (entrega en `main`; veredicto revisor pendiente; no `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0112 (composer-2.5) / revisor nuevo (instancia distinta)
+- **Agente ejecutor / revisor distinto:** implementador-0112 (composer-2.5) / revisor ronda 1 (nuevo, no implementador) en vuelo
 - **WBS:** WBS-2.5
 - **Requisitos:** REQ-010, REQ-063; NFR-008
 - **ADRs:** ADR-0006, ADR-0007
@@ -19,5 +19,5 @@
   3. Roundtrip CSV sintético documentado (TC-PORT-01 muestra).
   4. CSRF/sesión en escrituras donde aplique (IAM 0101).
 - **Plan de pruebas:** Vitest integración API + Postgres; 2–4 casos.
-- **Evidencia:** reporte TASK-0112.
+- **Evidencia:** entrega `a6335ce`; [informe TASK-0112](../../quality/reports/TASK-0112.md).
 - **Rollback:** `git revert`.
