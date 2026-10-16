@@ -1,0 +1,1 @@
+-- Grants revoked implicitly when role/table dropped in earlier downs.
