@@ -18,6 +18,6 @@
 | [TASK-0109](tasks/TASK-0109-event-log.md) | implementador-0109 | Implementador | 2.4 | `main` | principal | liberadas | integrated_provisional | revisor approve (`d9b978fa`); domain 2/2; api integration 4/4; typecheck OK |
 | [TASK-0110](tasks/TASK-0110-project-graph.md) | implementador-0110 | Implementador | 2.3 | `main` | principal | liberadas | integrated_provisional | revisor approve (`acbf1451`); domain 3/3; api 4/4; typecheck OK |
 | [TASK-0111](tasks/TASK-0111-wbs-entregables.md) | implementador-0111 | Implementador | 3.1 | `main` | principal | liberadas | integrated_provisional | revisor approve (`0bc51793`); domain 4/4; api 4/4; entrega `3944d87`/`433431d` |
-| [TASK-0112](tasks/TASK-0112-api-io.md) | implementador-0112 | Implementador | 2.5 | `main` | principal | `apps/api/src/modules/apiv1/`, `packages/contracts/src/apiv1/`, `apps/api/migrations/0160_*.sql`–`0169_*.sql`, `docs/quality/reports/TASK-0112.md` | review | entrega `a6335ce`; revisor ronda 1 (nuevo) en vuelo |
+| [TASK-0112](tasks/TASK-0112-api-io.md) | implementador-0112 | Implementador | 2.5 | `main` | principal | liberadas | integrated_provisional | revisor approve (`da61391c`); contracts 1/1; api 5/5; typecheck OK; OpenAPI público matiz; **aprobación humana** para `accepted` |
 
-Ola 3 M1a abierta (0109–0112). Ola 2 cerrada. `CONTINUAR_TRAS_G1 = no`.
+Ola 3 M1a cerrada (0109–0112 provisional). Ola 2 cerrada. `CONTINUAR_TRAS_G1 = no`.
