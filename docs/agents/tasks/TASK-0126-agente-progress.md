@@ -1,6 +1,6 @@
 # TASK-0126 — Agente Progress: evidencia → propuesta de avance (M1d)
 
-- **Estado:** proposed
+- **Estado:** ready
 - **Planificador:** Planner/Orchestrator
 - **Agente ejecutor / revisor distinto:** implementador-0126 (pendiente) / revisor-0126 (pendiente)
 - **WBS:** WBS-7.4 (Progress)

@@ -1,6 +1,6 @@
 # TASK-0127 — Control Tower mínimo y Ask/Command (M1d)
 
-- **Estado:** proposed
+- **Estado:** ready
 - **Planificador:** Planner/Orchestrator
 - **Agente ejecutor / revisor distinto:** implementador-0127 (pendiente) / revisor-0127 (pendiente)
 - **WBS:** WBS-2.7 (M1 mínimo)

@@ -122,14 +122,15 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0121](agents/tasks/TASK-0121-slack-intake.md) | Slack: verificación e intake seguro | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0121.md) |
 | [TASK-0122](agents/tasks/TASK-0122-aceptacion-progreso.md) | Aceptación y progreso (M1d) | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0122.md) |
 | [TASK-0123](agents/tasks/TASK-0123-recuperacion.md) | Recuperación vectorial con permisos | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0123.md) |
-| [TASK-0124](agents/tasks/TASK-0124-ai-runtime-dominio.md) | AI runtime dominio y AIProposal | Ficha (review) · [reporte](quality/reports/TASK-0124.md) |
+| [TASK-0124](agents/tasks/TASK-0124-ai-runtime-dominio.md) | AI runtime dominio y AIProposal | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0124.md) |
 | [TASK-0125](agents/tasks/TASK-0125-slack-consecuencias.md) | Slack: consecuencias de acciones | Ficha (proposed) |
-| [TASK-0126](agents/tasks/TASK-0126-agente-progress.md) | Agente Progress | Ficha (proposed) |
-| [TASK-0127](agents/tasks/TASK-0127-control-tower-min.md) | Control Tower mínimo | Ficha (proposed) |
-| [TASK-0128](agents/tasks/TASK-0128-evals-ia.md) | Evals IA adversariales | Ficha (proposed) |
+| [TASK-0126](agents/tasks/TASK-0126-agente-progress.md) | Agente Progress | Ficha (ready) |
+| [TASK-0127](agents/tasks/TASK-0127-control-tower-min.md) | Control Tower mínimo | Ficha (ready) |
+| [TASK-0128](agents/tasks/TASK-0128-evals-ia.md) | Evals IA adversariales | Ficha (ready) |
 | [TASK-0129](agents/tasks/TASK-0129-e2e-g1.md) | E2E UC-06 y batería G1 | Ficha (proposed) |
 | [TASK-0130](agents/tasks/TASK-0130-seguridad-m1.md) | Seguridad M1 (threat model, deps) | Ficha (proposed) |
 | [RUN 2026-10-16 M1c→M1d](agents/runs/2026-10-16-planner-m1c-cierre-m1d-ola4.md) | Checkpoint Planner: cierre M1c, apertura M1d | Run |
+| [RUN 2026-10-16 M1d 0124](agents/runs/2026-10-16-planner-m1d-0124-cierre-ready.md) | Checkpoint Planner: 0124 provisional; ready 0126–0128 | Run |
 | [Plantilla RUN](agents/runs/TEMPLATE.md) | Registro por ejecución de agente | Plantilla |
 | [SWARM_MASTER_PROMPT](agents/prompts/SWARM_MASTER_PROMPT.md) | Prompt del Planner para construir M1 con un enjambre de agentes Composer | Procedimiento operativo |
 
@@ -164,7 +165,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0121 report](quality/reports/TASK-0121.md) | Evidencia Slack intake M1c | Evidencia (provisional) |
 | [TASK-0123 report](quality/reports/TASK-0123.md) | Evidencia recuperación pgvector M1d | Evidencia (provisional) |
 | [TASK-0122 report](quality/reports/TASK-0122.md) | Evidencia aceptación/progreso M1d | Evidencia (provisional) |
-| [TASK-0124 report](quality/reports/TASK-0124.md) | Evidencia AI runtime dominio M1d | Evidencia (review; r2 en vuelo; r1 changes_requested) |
+| [TASK-0124 report](quality/reports/TASK-0124.md) | Evidencia AI runtime dominio M1d | Evidencia (provisional; ADR-0005 / gate 0108) |
 
 ### Gobernanza, investigación y ejemplos
 

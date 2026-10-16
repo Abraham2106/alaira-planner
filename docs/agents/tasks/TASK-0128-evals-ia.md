@@ -1,6 +1,6 @@
 # TASK-0128 — Evals IA adversariales (M1d)
 
-- **Estado:** proposed
+- **Estado:** ready
 - **Planificador:** Planner/Orchestrator
 - **Agente ejecutor / revisor distinto:** implementador-0128 (pendiente) / revisor-0128 (pendiente)
 - **WBS:** WBS-7.3
