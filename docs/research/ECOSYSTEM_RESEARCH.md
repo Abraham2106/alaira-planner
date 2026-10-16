@@ -34,7 +34,7 @@ Para cada producto y edición/plan: año/versión, segmento, pricing público y 
 
 ## 4. Evidencia de campo a reunir
 
-6–12 entrevistas iniciales para identificar elección de herramienta, fricción de migración, forma de demostrar progreso y cumplimiento financiero. Prototipos comparados por tiempo y errores para crear WBS, revisar una evidencia y pedir avance en Slack. Identificar el mercado de entrada viable y una razón suficiente para migrar antes de prometer superioridad general.
+8–12 entrevistas iniciales (criterio de [WBS-1.1](../planning/WBS_DICTIONARY.md)) para identificar elección de herramienta, fricción de migración, forma de demostrar progreso y cumplimiento financiero. Prototipos comparados por tiempo y errores para crear WBS, revisar una evidencia y pedir avance en Slack. Identificar el mercado de entrada viable y una razón suficiente para migrar antes de prometer superioridad general.
 
 ## 5. Fuentes primarias para revisar
 

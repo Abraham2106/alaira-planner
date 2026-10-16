@@ -10,7 +10,7 @@
 
 **Usuario:** «Usá este documento y enviá a revisión.»
 
-**Alaira:** «Solicitud registrada como pendiente de revisión (ID CR-...). Se vinculó el documento bajo los permisos del proyecto. El avance aceptado no cambió. Revisor: rol definido en la tarea.»
+**Alaira:** «Solicitud de finalización registrada como pendiente de revisión (ID `creq_...`). Se vinculó el documento bajo los permisos del proyecto. El avance aceptado no cambió. Revisor: rol definido en la tarea.»
 
 **Alaira (tras decisión real del revisor):** «Se aceptó el entregable con la política P-...; la WBS y los indicadores se actualizaron. [Ver auditoría].»
 

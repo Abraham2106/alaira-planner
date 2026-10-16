@@ -11,15 +11,17 @@ git fetch origin
 git worktree list
 ```
 
-Cuando el PR documental sea fusionado y exista `main` actualizado, el Planner puede reservar, por ejemplo, `TASK-0201` del paquete `WBS-2.1`:
+Con `main` actualizado, el Planner puede reservar, por ejemplo, `TASK-0201` del paquete `WBS-2.1`. Rama y directorio se nombran por la TASK, no por el paquete:
 
 ```bash
+scripts/new-agent-worktree.sh TASK-0201-auth
+# equivale a:
 git worktree add ../alaira-wt-TASK-0201-auth -b agent/TASK-0201-auth origin/main
 cd ../alaira-wt-TASK-0201-auth
 git status --short
 ```
 
-No ejecutar un segundo `-b` con branch existente. El Planner registra la reserva en `REGISTRY.md`, comunica rutas exclusivas y comparte SRS/ADR/TASK relevantes. Un agente no edita REGISTRY ni canónicos fuera de su asignación.
+El script valida el formato `TASK-NNNN-slug` (minúsculas y guiones), rechaza directorios o ramas ya existentes y acepta una ref base alternativa como segundo argumento. No ejecutar un segundo `-b` con branch existente: si la rama ya existe, usar `git worktree add <ruta> <rama>`. El Planner registra la reserva en [REGISTRY](REGISTRY.md), comunica rutas exclusivas y comparte SRS/ADR/TASK relevantes. Un agente no edita REGISTRY ni canónicos fuera de su asignación.
 
 ## Implementar y entregar
 
@@ -43,4 +45,4 @@ git branch -d agent/TASK-0201-auth
 
 No usar `rm -rf` ni `git worktree remove --force` como limpieza predeterminada. Si hay trabajo no incorporado, bloquear y recuperar antes de borrar.
 
-Documentación de referencia: https://git-scm.com/docs/git-worktree
+Documentación de referencia: [git-worktree](https://git-scm.com/docs/git-worktree).

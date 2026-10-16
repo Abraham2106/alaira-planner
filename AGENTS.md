@@ -22,12 +22,12 @@ El agente **Planner/Orchestrator** descompone solicitudes, crea y actualiza fich
 
 ## 4. Un worktree y rama por asignación ejecutable
 
-Cada agente implementador opera en un directorio y rama exclusivos, preparados por la coordinación. Ejemplo desde la copia principal:
+Cada agente implementador opera en un directorio y rama exclusivos, preparados por la coordinación. La convención es una rama `agent/TASK-NNNN-slug` y un directorio hermano `../alaira-wt-TASK-NNNN-slug`, nombrados por la TASK (no por el paquete WBS, que puede tener varias tareas). `scripts/new-agent-worktree.sh` la aplica. Ejemplo desde la copia principal para `TASK-0201` del paquete `WBS-2.1`:
 
 ```bash
 git fetch origin
-git worktree add ../alaira-wt-WBS-3.2-auth -b agent/WBS-3.2-auth origin/main
-cd ../alaira-wt-WBS-3.2-auth
+git worktree add ../alaira-wt-TASK-0201-auth -b agent/TASK-0201-auth origin/main
+cd ../alaira-wt-TASK-0201-auth
 git status --short
 ```
 

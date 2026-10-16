@@ -1,6 +1,6 @@
 # PRD — Product Requirements Document
 
-**Versión:** 0.1 · **Estado:** propuesta de concepción · **Deriva de:** `VISION.md` · **Detalle normativo:** `../requirements/SRS.md`.
+**Versión:** 0.1 · **Estado:** propuesta de concepción · **Deriva de:** [VISION](VISION.md) · **Detalle normativo:** [SRS](../requirements/SRS.md).
 
 ## 1. Oportunidad y clientes
 
@@ -33,8 +33,8 @@ La promesa es reducir la reconstrucción manual del estado de proyectos heterog�
 | Corte | Alcance sugerido | Exclusiones explícitas |
 |---|---|---|
 | M0 — Validación | entrevistas, modelo de dominio, prototipos, arquitectura y riesgos | producto funcional |
-| M1 — Núcleo | organizaciones, RBAC, proyecto/tareas/entregables, evidencia, aceptación, audit log, API, UI base | forecast IA, EVM avanzado |
-| M2 — Planificación | WBS, hitos, dependencias FS, calendario, baseline, Gantt, control de cambios | optimización compleja multi-recurso |
+| M1 — Núcleo | organizaciones, RBAC, proyecto/tareas, árbol WBS con paquetes, hitos y entregables, evidencia, aceptación, audit log, API, UI base | calendarios, CPM, forecast IA, EVM avanzado |
+| M2 — Planificación | calendarios, dependencias FS/SS/FF/SF con lag/lead, CPM, baseline, Gantt, recursos y control de cambios | optimización compleja multi-recurso |
 | M3 — Ágil e híbrido | backlog, boards, sprints, WIP, ciclo, mapeo de fases | escalar frameworks complejos |
 | M4 — Integraciones | Slack bot con escritura segura, webhooks, Drive/Microsoft 365 gradual | conectores indiscriminados |
 | M5 — Finanzas + IA | presupuesto, AC/PV/EV y CPI/SPI, previsión explicable, riesgos | contabilidad ERP completa |

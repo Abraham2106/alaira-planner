@@ -18,7 +18,8 @@ Activos: identidades, membresías, proyectos, contratos de costo, evidencia docu
 | Fuga RAG | vector de tenant B citado a A | filtrado previo a búsqueda y autorización antes de respuesta | TC-AI-03 |
 | Adjuntos maliciosos | archivo infectado/URL SSRF | antivirus o control adecuado, content type, URL allowlist y sandbox | TC-SAFE-01 |
 | Integración revocada | acceso sigue funcionando | refresh/revocación, invalidación de cache | TC-INT-02 |
-| Auditar PII en exceso | logs de chat/salarios | minimización, mascarado, retention/consent | TC-AUD-03 |
+| Secretos filtrados | token OAuth impreso en un log de error | cifrado, rotación, redacción en logs | TC-SEC-05 |
+| Auditar PII en exceso | logs de chat/salarios | minimización, mascarado, retention/consent | TC-PRIV-01 |
 | Costos alterados | cambio de AC sin autorización | dual approval según política y audit trail | TC-FIN-07 |
 
 ## 3. Controles de diseño
@@ -39,4 +40,4 @@ Threat model actualizado por nuevo conector/capacidad IA; escaneo de dependencia
 
 ## 6. Seguridad operativa OSS
 
-Publicar `SECURITY.md` con un canal privado habilitado, política de soportes y parches, guía hardening self-hosted y procedimiento para rotar tokens. No introducir telemetría invasiva u obligación de usar SaaS propietario como requisito para desplegar edición OSS, salvo decisión y transparencia posterior.
+Completar [SECURITY.md](../../SECURITY.md) con un canal privado habilitado, política de soportes y parches, guía hardening self-hosted y procedimiento para rotar tokens. No introducir telemetría invasiva u obligación de usar SaaS propietario como requisito para desplegar edición OSS, salvo decisión y transparencia posterior.

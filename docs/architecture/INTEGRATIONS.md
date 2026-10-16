@@ -8,7 +8,7 @@ El núcleo conserva la autoridad sobre Project, WorkItem, Evidence, Approval y B
 
 ## 2. Superficies y permisos
 
-| Integración candidata | Lectura | Escritura | Alcance mínimo | Fase |
+| Integración candidata | Lectura | Escritura | Alcance mínimo | Fase (M) o prioridad (P) |
 |---|---|---|---|---|
 | Slack | eventos/menciones permitidos | respuesta al usuario / solicitud de completar | workspace/usuarios vinculados, sólo canales autorizados | M4 |
 | Microsoft Teams | mensajes/interacciones autorizados | respuestas/solicitud | consentimientos organizacionales | P2 |
@@ -18,7 +18,7 @@ El núcleo conserva la autoridad sobre Project, WorkItem, Evidence, Approval y B
 | CSV/hoja de cálculo | tareas, costos, calendarios | export de estado | archivo suministrado y validado | M1/P1 |
 | API/webhooks | recursos bajo scopes | comandos tipados | tenant y resource policy | M1–M4 |
 
-Prioridades son hipótesis por validar en discovery. Ninguna integración debe leer todo el workspace por defecto.
+La última columna mezcla dos escalas: `M0–M5` es fase candidata del [ROADMAP](../planning/ROADMAP.md) y `P1/P2` es prioridad sin fase asignada (por ejemplo, Teams sigue la prioridad P2 de REQ-062). Ambas son hipótesis por validar en discovery; el ROADMAP recomienda además un *thin slice* no productivo de Slack en M1–M2. Ninguna integración debe leer todo el workspace por defecto.
 
 ## 3. Contrato público conceptual
 

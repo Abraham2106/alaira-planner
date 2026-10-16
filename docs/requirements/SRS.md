@@ -1,16 +1,16 @@
 # SRS — Especificación de requisitos de software de Alaira Planner
 
-**ID:** SRS-ALP · **Versión:** 0.1.0 · **Fecha:** 2026-10-15 · **Estado:** propuesta, sin aprobación de baseline. **Convención:** «DEBE» indica obligación de producto propuesta, no funcionalidad existente.
+**ID:** SRS-ALP · **Versión:** 0.1.1 ([RR-0001](records/RR-0001-inconsistencias-fases-prioridades.md)) · **Fecha:** 2026-10-15 · **Estado:** propuesta, sin aprobación de baseline. **Convención:** «DEBE» indica obligación de producto propuesta, no funcionalidad existente.
 
 ## 1. Propósito, alcance y vocabulario
 
-Especificar de forma comprobable una plataforma OSS de gestión multi-metodología de proyectos, programas y portafolios, asistida por IA y conectores. Audiencia: Alaira, Product, ingeniería, QA, seguridad, diseño, responsables de proyectos y agentes ejecutores. Sus cambios siguen el procedimiento de `CHANGE_CONTROL.md`.
+Especificar de forma comprobable una plataforma OSS de gestión multi-metodología de proyectos, programas y portafolios, asistida por IA y conectores. Audiencia: Alaira, Product, ingeniería, QA, seguridad, diseño, responsables de proyectos y agentes ejecutores. Sus cambios siguen el procedimiento de [CHANGE_CONTROL](CHANGE_CONTROL.md).
 
 **Actores:** propietario de organización, administrador, PM, PMO, PO/SM, ejecutor, revisor de entregable, finanzas, invitado limitado, integrador externo y agente de IA delegado. Un actor puede ocupar varios roles bajo políticas explícitas.
 
 **Glosario mínimo:** WBS/EDT = descomposición de entregables; baseline = versión aprobada congelada; BAC = presupuesto a terminación; PV = valor planificado; EV = valor ganado; AC = costo real; evidencia = artefacto o constancia con procedencia; aceptación = decisión de cumplimiento; idempotencia = reintentar sin aplicar duplicadamente; tenant = organización con aislamiento lógico.
 
-**Priorización:** P0 = núcleo y seguridad; P1 = primera expansión; P2 = avanzado. **Fases M0–M5:** se describen en `../product/PRD.md`, no son fechas comprometidas.
+**Priorización:** P0 = núcleo y seguridad; P1 = primera expansión; P2 = avanzado. La prioridad expresa criticidad, no fase: un requisito P0 **bloquea cualquier piloto externo o release que incluya la capacidad afectada**, aunque esa capacidad se entregue después de M1 (por ejemplo, REQ-065 con las integraciones de M4). **Fases M0–M5:** se describen en el [PRD](../product/PRD.md) y el [ROADMAP](../planning/ROADMAP.md), no son fechas comprometidas; la fase de cada requisito figura en la [matriz de trazabilidad](TRACEABILITY.md).
 
 ## 2. Contexto, interfaces y supuestos
 
@@ -134,28 +134,28 @@ Cada fila define requisito, prioridad y prueba de conformidad observable; ningú
 
 **Las cifras son objetivos candidatos para validar, NO resultados medidos ni SLA comprometidos.** Los requisitos de seguridad P0 aplican antes de cualquier piloto externo.
 
-| ID | P | Criterio medible propuesto / gate |
-|---|---|---|
-| NFR-001 | P0 | ninguna consulta o acción cruza tenants sin permiso explícito; pruebas negativas automatizadas |
-| NFR-002 | P0 | RBAC + reglas por recurso evaluadas en servidor, nunca sólo en UI |
-| NFR-003 | P0 | todas las acciones relevantes incluyen actor, resultado, momento, causa y correlation ID |
-| NFR-004 | P0 | claves OAuth, secretos y credenciales cifrados/rotables; no quedan en logs |
-| NFR-005 | P0 | cifrado en tránsito y reposo en implementación seleccionada |
-| NFR-006 | P0 | protección contra SSRF, inyección, XSS, CSRF cuando aplique, prompt injection y replay |
-| NFR-007 | P0 | pruebas de autorización y autorización de herramientas de IA antes de habilitar acciones |
-| NFR-008 | P0 | cambios externos idempotentes bajo entrega al menos una vez; reintentos observables |
-| NFR-009 | P1 | lectura normal p95 objetivo < 500 ms bajo carga definida en el piloto; medir y revisar |
-| NFR-010 | P1 | objetivo candidato disponibilidad mensual 99.9% una vez en servicio; excluir mantenimiento según futuro SLO |
-| NFR-011 | P1 | restauración de backup probada; definir RPO/RTO antes del primer piloto |
-| NFR-012 | P0 | migraciones reversibles o con plan de restauración y aprobación para pérdida de datos |
-| NFR-013 | P0 | accesibilidad de referencia WCAG 2.2 AA, verificada en flujos críticos |
-| NFR-014 | P1 | navegador moderno responsivo; matriz de soporte se define antes del MVP |
-| NFR-015 | P1 | exportación utilizable de datos en formatos documentados y sin dependencia de proveedor |
-| NFR-016 | P0 | observabilidad de auditoría, errores, cola, webhooks y sincronización sin PII innecesaria |
-| NFR-017 | P1 | APIs con versionado, paginación, validación y deprecación documentada |
-| NFR-018 | P0 | retención/borrado legal y backups bajo política aprobada, sin promesas regulatorias no verificadas |
-| NFR-019 | P1 | pruebas de reproducibilidad de programación/CPM/EVM en casos y límites |
-| NFR-020 | P1 | plan de evaluación IA con falsos positivos, abstención, aislamiento y regresión |
+| ID | P | Criterio medible propuesto / gate | Verificación |
+|---|---|---|---|
+| NFR-001 | P0 | ninguna consulta o acción cruza tenants sin permiso explícito; pruebas negativas automatizadas | TC-SEC-01 |
+| NFR-002 | P0 | RBAC + reglas por recurso evaluadas en servidor, nunca sólo en UI | TC-SEC-03 |
+| NFR-003 | P0 | todas las acciones relevantes incluyen actor, resultado, momento, causa y correlation ID | TC-AUD-02 |
+| NFR-004 | P0 | claves OAuth, secretos y credenciales cifrados/rotables; no quedan en logs | TC-SEC-05 |
+| NFR-005 | P0 | cifrado en tránsito y reposo en implementación seleccionada | TC-SEC-06 |
+| NFR-006 | P0 | protección contra SSRF, inyección, XSS, CSRF cuando aplique, prompt injection y replay | TC-SAFE-01, TC-AI-03/04, TC-INT-03 |
+| NFR-007 | P0 | pruebas de autorización y autorización de herramientas de IA antes de habilitar acciones | TC-AI-04 |
+| NFR-008 | P0 | cambios externos idempotentes bajo entrega al menos una vez; reintentos observables | TC-INT-01, TC-INT-03 |
+| NFR-009 | P1 | lectura normal p95 objetivo < 500 ms bajo carga definida en el piloto; medir y revisar | TC-PERF-01 |
+| NFR-010 | P1 | objetivo candidato disponibilidad mensual 99.9% una vez en servicio; excluir mantenimiento según futuro SLO | TC-SLO-01 |
+| NFR-011 | P1 | restauración de backup probada; definir RPO/RTO antes del primer piloto | TC-OPS-01 |
+| NFR-012 | P0 | migraciones reversibles o con plan de restauración y aprobación para pérdida de datos | TC-OPS-02 |
+| NFR-013 | P0 | accesibilidad de referencia WCAG 2.2 AA, verificada en flujos críticos | TC-UX-01 |
+| NFR-014 | P1 | navegador moderno responsivo; matriz de soporte se define antes del MVP | TC-UX-02 |
+| NFR-015 | P1 | exportación utilizable de datos en formatos documentados y sin dependencia de proveedor | TC-PORT-01 |
+| NFR-016 | P0 | observabilidad de auditoría, errores, cola, webhooks y sincronización sin PII innecesaria | TC-OPS-03, TC-PRIV-01 |
+| NFR-017 | P1 | APIs con versionado, paginación, validación y deprecación documentada | TC-API-02 |
+| NFR-018 | P0 | retención/borrado legal y backups bajo política aprobada, sin promesas regulatorias no verificadas | TC-PRIV-01 |
+| NFR-019 | P1 | pruebas de reproducibilidad de programación/CPM/EVM en casos y límites | TC-SCH-05, TC-EVM-01..03 |
+| NFR-020 | P1 | plan de evaluación IA con falsos positivos, abstención, aislamiento y regresión | TC-AI-01..04 |
 
 ## 5. Reglas del negocio e invariantes
 
@@ -168,7 +168,7 @@ Cada fila define requisito, prioridad y prueba de conformidad observable; ningú
 
 ## 6. Interfaces externas y fallos
 
-Autenticación de API según ADR, versión de contrato, scopes de conectores, rate limits y deduplicación. Slack requiere verificación de origen, mapeo de usuario y autorización local, desambiguación y confirmación. Cualquier sync parcial se marca error y se reintenta sin confirmar estado ficticio. Los errores nunca exponen datos de otro tenant. Ver `../architecture/INTEGRATIONS.md`.
+Autenticación de API según ADR, versión de contrato, scopes de conectores, rate limits y deduplicación. Slack requiere verificación de origen, mapeo de usuario y autorización local, desambiguación y confirmación. Cualquier sync parcial se marca error y se reintenta sin confirmar estado ficticio. Los errores nunca exponen datos de otro tenant. Ver [INTEGRATIONS](../architecture/INTEGRATIONS.md).
 
 ## 7. Escenarios críticos de aceptación
 
@@ -182,8 +182,8 @@ Autenticación de API según ADR, versión de contrato, scopes de conectores, ra
 
 **UC-05:** usuario de tenant B intenta acceso por ID directo a evidencia de A, también mediante búsqueda/RAG/webhook; todos los caminos deniegan sin fuga.
 
-Detalles de TC y datos esperados: `../quality/ACCEPTANCE_SCENARIOS.md`.
+Detalles de TC y datos esperados: [ACCEPTANCE_SCENARIOS](../quality/ACCEPTANCE_SCENARIOS.md).
 
 ## 8. Validación, dependencias y trazabilidad
 
-El alcance de cada requisito se recoge en WBS y TC mediante `TRACEABILITY.md`; sólo se declara completado al aportar evidencia válida y revisión. MVP, presupuesto, licencias y stack quedan pendientes de aprobación humana. Primer gate: priorización de REQ-001…080 y NFR, más entrevistas y threat model.
+El alcance de cada requisito se recoge en WBS y TC mediante la [matriz de trazabilidad](TRACEABILITY.md); sólo se declara completado al aportar evidencia válida y revisión. MVP, presupuesto, licencias y stack quedan pendientes de aprobación humana. Primer gate: priorización de REQ-001…080 y NFR, más entrevistas y threat model.

@@ -6,7 +6,7 @@
 
 ## Flujo RR
 
-1. Crear `docs/requirements/records/RR-XXXX.md` usando la plantilla; indicar problema, actor, alternativa, impacto y prioridad.
+1. Crear `docs/requirements/records/RR-XXXX-slug.md` a partir de la [plantilla](records/RR-0000-template.md) (la versión rápida de abajo sirve para borradores); indicar problema, actor, alternativa, impacto y prioridad.
 2. Analista identifica REQ afectados, compatibilidad, riesgos, costo, cronograma y datos; Planner realiza análisis de impacto en WBS/ROADMAP/TRACEABILITY.
 3. Revisar con seguridad/arquitectura/usuarios según riesgo; registrar decisión en RR: `proposed / approved / rejected / deferred`.
 4. Mantenedor aprueba cambios de contrato público, baseline, privacidad, dinero o licencia.

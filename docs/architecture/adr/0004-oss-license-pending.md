@@ -24,4 +24,4 @@ Pendiente de autorización explícita. **No añadir LICENSE inventado.** Antes d
 
 ## Consecuencia de no decidir
 
-El repositorio puede servir para concepción pública y discusión, pero no debe anunciarse redistribuible bajo licencia OSS aún. Un modelo propietario anterior queda reemplazado por la intención OSS expresada en esta concepción, no por una licencia determinada.
+El repositorio puede servir para concepción pública y discusión, pero no debe anunciarse redistribuible bajo licencia OSS aún. La intención OSS de esta concepción sustituye cualquier planteamiento propietario previo, pero esa intención no equivale a haber elegido una licencia.

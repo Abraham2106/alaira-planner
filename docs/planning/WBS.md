@@ -1,6 +1,6 @@
 # EDT / WBS — Work Breakdown Structure de Alaira Planner
 
-**Versión 0.1 · Estado:** propuesta inicial por entregables, no una lista de tareas de código. **Dueño:** Planner de Alaira. **Alcance:** creación, verificación y preparación de lanzamiento de una plataforma OSS, no sólo GitHub. **Diccionario:** `WBS_DICTIONARY.md`.
+**Versión 0.1 · Estado:** propuesta inicial por entregables, no una lista de tareas de código. **Dueño:** Planner de Alaira. **Alcance:** creación, verificación y preparación de lanzamiento de una plataforma OSS, no sólo GitHub. **Diccionario:** [WBS_DICTIONARY](WBS_DICTIONARY.md).
 
 ## 1. Reglas
 

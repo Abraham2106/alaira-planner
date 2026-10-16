@@ -15,8 +15,7 @@ if [[ ! "$slug" =~ ^TASK-[0-9]{4}-[a-z0-9-]+$ ]]; then
   echo "Formato esperado: TASK-0001-slug (minúsculas y guiones)" >&2
   exit 2
 fi
-root="$(git rev-parse --show-toplevel)"
-if [ -z "$root" ]; then
+if ! root="$(git rev-parse --show-toplevel 2>/dev/null)"; then
   echo "No se encontró repositorio Git." >&2
   exit 2
 fi

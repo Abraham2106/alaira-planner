@@ -8,7 +8,7 @@ Consistencia en transiciones de negocio (aceptación, baseline, costo), portabil
 
 ## Arquitectura candidata
 
-La opción inicialmente preferida para validar es **monolito modular con trabajos asíncronos y APIs**, no microservicios por defecto. Los límites de módulos reflejan el dominio de `DOMAIN_MODEL.md`. Evaluar también backend modular distribuido y patrón event-sourced completo antes de decidir con ADR. Se propone una fuente transaccional para reglas críticas, cola/outbox para conectores/IA y almacenamiento de objetos para evidencias, con índices derivados para búsqueda y proyecciones. No elegir motor concreto por intuición.
+La opción inicialmente preferida para validar es **monolito modular con trabajos asíncronos y APIs**, no microservicios por defecto. Los límites de módulos reflejan el dominio de [DOMAIN_MODEL](DOMAIN_MODEL.md). Evaluar también backend modular distribuido y patrón event-sourced completo antes de decidir con ADR. Se propone una fuente transaccional para reglas críticas, cola/outbox para conectores/IA y almacenamiento de objetos para evidencias, con índices derivados para búsqueda y proyecciones. No elegir motor concreto por intuición.
 
 ```mermaid
 flowchart LR
@@ -73,4 +73,4 @@ Ambientes local, CI, staging y producción; contenedores o método reproducible;
 
 ## ADRs obligatorios antes de implementación
 
-Stack/runtime, DB/tenancy, auth/OAuth, object storage, eventos/outbox, licencia, hosting y autoservicio, reglas progreso aceptado, fórmula EVA/EVM y alcance de IA. Propuestas se elevan en `adr/`. No atribuir decisiones definitivas a este documento.
+Stack/runtime, DB/tenancy, auth/OAuth, object storage, eventos/outbox, licencia, hosting y autoservicio, reglas progreso aceptado, fórmula EVA/EVM y alcance de IA. Propuestas se elevan en [adr/](adr/). No atribuir decisiones definitivas a este documento.

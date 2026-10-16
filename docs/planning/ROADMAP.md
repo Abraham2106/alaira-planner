@@ -21,7 +21,7 @@ Equipo ilustrativo, **no asignado**: 1 responsable de producto/Planner, 2 desarr
 
 **G0 Concepción aprobada:** entrevistas e hipótesis documentadas, licencia decidida o restricción explícita sobre distribución, baseline SRS M1, priorización, riesgo, ADRs iniciales, requisitos de seguridad.
 
-**G1 Núcleo:** TC tenant/aceptación/reversa/auditoría ejecutados, evidencia no Git, demo de PM y colaborador; no fallas P0.
+**G1 Núcleo:** TC de tenant, aceptación, reversión, auditoría, secretos y cifrado (TC-SEC-01..03, TC-SEC-05..06) ejecutados, evidencia no Git, demo de PM y colaborador; no fallas P0.
 
 **G2 Predictivo:** CPM FS/SS/FF/SF y calendario con casos límite, baseline congelada, proyección Gantt fiel y autorización cambios.
 

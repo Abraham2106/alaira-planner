@@ -21,6 +21,7 @@
 - [ ] Criterios de aceptación enlazados y probados o limitación documentada.
 - [ ] Autorización, tenant isolation y secretos revisados si aplica.
 - [ ] Documentación y matriz REQ→WBS→TC actualizadas si cambió comportamiento.
+- [ ] `python scripts/validate_docs.py` ejecutado sin errores; documentos nuevos enlazados desde `docs/INDEX.md`.
 - [ ] No se atribuye avance por commits/mensajes sin aceptación.
 - [ ] Revisor distinto del implementador.
 - [ ] Riesgos, migración y rollback descritos.

@@ -27,7 +27,7 @@ Cada cambio debe validar negocio, permisos, regresión, interoperabilidad y obse
 - Proyecto híbrido que mapea múltiples historias a un solo entregable.
 - Evidencia documental independiente de repositorio y rechazada/aceptada/revertida.
 - Bot Slack con mensaje duplicado, usuario no vinculado, proyecto homónimo y evento falsificado.
-- EVM con BAC=100 000, PV=60 000, EV=50 000, AC=62 500, más AC=0, PV=0 y falta baseline.
+- EVM con BAC = 100 000 USD, PV = 60 000, EV = 50 000, AC = 62 500, más AC = 0, PV = 0 y falta baseline.
 - RAG con documento marcado secreto por tenant/rol e intento de prompt injection.
 
 ## 4. Estrategia de ejecución
@@ -40,4 +40,4 @@ S0: fuga entre tenants, acciones críticas no autorizadas, corrupción irreversi
 
 ## 6. Relación con trazabilidad
 
-REQ/NFR → WBS → TC → resultado → evidencia → aprobación. Ver `../requirements/TRACEABILITY.md` y `ACCEPTANCE_SCENARIOS.md`. La cobertura de identificadores no equivale a calidad ni a conformidad ejecutada.
+REQ/NFR → WBS → TC → resultado → evidencia → aprobación. Ver [TRACEABILITY](../requirements/TRACEABILITY.md) y [ACCEPTANCE_SCENARIOS](ACCEPTANCE_SCENARIOS.md). La cobertura de identificadores no equivale a calidad ni a conformidad ejecutada.

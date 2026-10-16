@@ -75,7 +75,7 @@
 | WBS-8.3 | A11y, perfiles de carga, observabilidad, restauración, SLO candidatos | 2.x, 8.1; transversal | SRE/UX; 14–26 JPI | flujos críticos WCAG objetivo, backups restaurados, latencia medida |
 | WBS-8.4 | Manual de usuario, guías OSS, DX, instalación de referencia y exportabilidad | 1.5, 2.5, 8.1 | Docs/DX; 10–20 JPI | tercero instala desde guía sin información privada y exporta datos |
 | WBS-8.5 | Piloto controlado, métricas, entrevistas y hallazgos verificados | 3.5, 8.2, 8.3, funcionalidades del corte | Research/PM; 12–24 JPI | usuarios completan flujos con consentimiento; errores y aprendizajes registrados |
-| WBS-8.6 | Release checklist, aceptación final, etiquetado, changelog y rollback | 8.1–8.5, 1.5 | Planner/Mantenedor; 6–14 JPI | sign-off, licencia y licencia dependencias, severidades bloqueantes cero |
+| WBS-8.6 | Release checklist, aceptación final, etiquetado, changelog y rollback | 8.1–8.5, 1.5 | Planner/Mantenedor; 6–14 JPI | sign-off humano, licencia del proyecto publicada y dependencias compatibles, cero severidades bloqueantes |
 
 ## Reglas de cierre
 
