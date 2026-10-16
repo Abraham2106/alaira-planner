@@ -14,7 +14,8 @@
     "./wbs": "./src/wbs/index.ts",
     "./assignments": "./src/assignments/index.ts",
     "./eventlog": "./src/eventlog/index.ts",
-    "./scheduling": "./src/scheduling/index.ts"
+    "./scheduling": "./src/scheduling/index.ts",
+    "./baseline": "./src/baseline/index.ts"
   },
   "scripts": {
     "lint": "eslint src --max-warnings 0",
