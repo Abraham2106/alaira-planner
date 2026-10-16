@@ -1,8 +1,8 @@
 # TASK-0119 — Connector Fabric: tokens, webhooks, dedup y DLQ (M1c)
 
-- **Estado:** ready
+- **Estado:** in_progress
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0119 (pendiente) / revisor-0119 (pendiente)
+- **Agente ejecutor / revisor distinto:** implementador-0119 (instancia `bc-67098c38`) / revisor-0119 (pendiente)
 - **WBS:** WBS-5.2 (parte 2)
 - **Requisitos:** REQ-064, REQ-087; TC-INT-01, TC-SEC-05
 - **ADRs:** ADR-0003, ADR-0006, ADR-0007

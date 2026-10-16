@@ -1,8 +1,8 @@
 # TASK-0118 — Evidencias y EvidenceEvent persistido (M1c)
 
-- **Estado:** ready
+- **Estado:** in_progress
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0118 (pendiente) / revisor-0118 (pendiente)
+- **Agente ejecutor / revisor distinto:** implementador-0118 (instancia `bc-bfe3777a`) / revisor-0118 (pendiente)
 - **WBS:** WBS-3.4
 - **Requisitos:** REQ-087; TC-EV-03, TC-EV-04
 - **ADRs:** ADR-0001, ADR-0006, ADR-0007; [RR-0003](../../requirements/records/RR-0003-m1-dev-sin-emulador-s3.md) (almacenamiento binario local sin MinIO obligatorio)
