@@ -122,7 +122,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0121](agents/tasks/TASK-0121-slack-intake.md) | Slack: verificación e intake seguro | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0121.md) |
 | [TASK-0122](agents/tasks/TASK-0122-aceptacion-progreso.md) | Aceptación y progreso (M1d) | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0122.md) |
 | [TASK-0123](agents/tasks/TASK-0123-recuperacion.md) | Recuperación vectorial con permisos | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0123.md) |
-| [TASK-0124](agents/tasks/TASK-0124-ai-runtime-dominio.md) | AI runtime dominio y AIProposal | Ficha (review) · [reporte](quality/reports/TASK-0124.md) |
+| [TASK-0124](agents/tasks/TASK-0124-ai-runtime-dominio.md) | AI runtime dominio y AIProposal | Ficha (in_progress) · [reporte](quality/reports/TASK-0124.md) |
 | [TASK-0125](agents/tasks/TASK-0125-slack-consecuencias.md) | Slack: consecuencias de acciones | Ficha (proposed) |
 | [TASK-0126](agents/tasks/TASK-0126-agente-progress.md) | Agente Progress | Ficha (proposed) |
 | [TASK-0127](agents/tasks/TASK-0127-control-tower-min.md) | Control Tower mínimo | Ficha (proposed) |

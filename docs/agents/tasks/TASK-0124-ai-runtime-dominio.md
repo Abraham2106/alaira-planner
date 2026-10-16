@@ -1,8 +1,8 @@
 # TASK-0124 — AI runtime: herramientas de dominio y AIProposal (M1d)
 
-- **Estado:** review (implementación en `main`; no `accepted`)
+- **Estado:** in_progress (fix ronda 1 tras **changes_requested**; no `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0124 (instancia `bc-31f0b2b4`) / revisor-0124 (pendiente asignación; en vuelo)
+- **Agente ejecutor / revisor distinto:** implementador-0124 (instancia `bc-31f0b2b4`, fix r1) / revisor-0124 (instancia `bc-d26034fd`, ronda 1/1 — **changes_requested**)
 - **WBS:** WBS-7.2 (parte 2)
 - **Requisitos:** REQ-090–REQ-092; TC-AI-04..07, TC-AI-09
 - **ADRs:** ADR-0005 (condicionado), ADR-0006, ADR-0007
