@@ -40,8 +40,8 @@ Evitar compartir archivos de infraestructura de raíz entre implementadores. Cua
 
 ## Memoria y centralización
 
-`docs/agents/REGISTRY.md` contiene quién trabaja en qué; `docs/agents/runs/TEMPLATE.md` define el registro por ejecución; los hallazgos duraderos se transfieren a `SRS`, `RR` o `ADR`. No depender de memoria de chat ni de prompts efímeros para decisiones. El registro no debe almacenar secretos ni identificadores personales innecesarios.
+[REGISTRY](REGISTRY.md) contiene quién trabaja en qué; la [plantilla RUN](runs/TEMPLATE.md) define el registro por ejecución y la [plantilla TASK](TASK_TEMPLATE.md), la ficha de tarea, que se guarda en `docs/agents/tasks/TASK-NNNN-slug.md`; los hallazgos duraderos se transfieren a `SRS`, `RR` o `ADR`. No depender de memoria de chat ni de prompts efímeros para decisiones. El registro no debe almacenar secretos ni identificadores personales innecesarios.
 
 ## Gobernanza
 
-Los agentes pueden proponer cambios, no autorizar cambios de baseline, derechos de acceso, borrado de datos, contratos externos ni gastos. Consultar `AGENTS.md` y `docs/quality/DEFINITION_OF_DONE.md`.
+Los agentes pueden proponer cambios, no autorizar cambios de baseline, derechos de acceso, borrado de datos, contratos externos ni gastos. Consultar [AGENTS.md](../../AGENTS.md), [ROLES](ROLES.md) y [DEFINITION_OF_DONE](../quality/DEFINITION_OF_DONE.md).

@@ -1,20 +1,20 @@
 # SRS — Especificación de requisitos de software de Alaira Planner
 
-**ID:** SRS-ALP · **Versión:** 0.1.0 · **Fecha:** 2026-10-15 · **Estado:** propuesta, sin aprobación de baseline. **Convención:** «DEBE» indica obligación de producto propuesta, no funcionalidad existente.
+**ID:** SRS-ALP · **Versión:** 0.2.0 ([RR-0002](records/RR-0002-baseline-m1-y-g0.md)) · **Fecha:** 2026-10-15 · **Estado:** baseline M1 aprobada para los requisitos listados en RR-0002; el resto, propuesto. **Fuente de producto:** [PRODUCT_BRIEF](../product/PRODUCT_BRIEF.md). **Convención:** «DEBE» indica obligación de producto, no funcionalidad existente.
 
 ## 1. Propósito, alcance y vocabulario
 
-Especificar de forma comprobable una plataforma OSS de gestión multi-metodología de proyectos, programas y portafolios, asistida por IA y conectores. Audiencia: Alaira, Product, ingeniería, QA, seguridad, diseño, responsables de proyectos y agentes ejecutores. Sus cambios siguen el procedimiento de `CHANGE_CONTROL.md`.
+Especificar de forma comprobable un *Project Control Plane* OSS con IA nativa: plan, ejecución, evidencia y dinero en un mismo modelo de datos, con modos predictivo, adaptativo e híbrido por rama, y una capa de IA que mantiene ese modelo actualizado a partir del trabajo real bajo política de autonomía. Audiencia: Alaira, producto, ingeniería, QA, seguridad, diseño, responsables de proyectos y agentes ejecutores. Sus cambios siguen el procedimiento de [CHANGE_CONTROL](CHANGE_CONTROL.md).
 
-**Actores:** propietario de organización, administrador, PM, PMO, PO/SM, ejecutor, revisor de entregable, finanzas, invitado limitado, integrador externo y agente de IA delegado. Un actor puede ocupar varios roles bajo políticas explícitas.
+**Actores:** propietario de organización, administrador, Project/Program Manager, PMO, Product Manager, Scrum Master/PO, Tech Lead, ejecutor, revisor de entregable, finanzas, dirección, stakeholder o invitado limitado, integrador externo y agente de IA delegado. Un actor puede ocupar varios roles bajo políticas explícitas.
 
-**Glosario mínimo:** WBS/EDT = descomposición de entregables; baseline = versión aprobada congelada; BAC = presupuesto a terminación; PV = valor planificado; EV = valor ganado; AC = costo real; evidencia = artefacto o constancia con procedencia; aceptación = decisión de cumplimiento; idempotencia = reintentar sin aplicar duplicadamente; tenant = organización con aislamiento lógico.
+**Glosario mínimo:** WBS/EDT = descomposición de entregables; baseline = versión aprobada congelada; forecast = expectativa actual; real = lo ocurrido; BAC = presupuesto a terminación; PV = valor planificado; EV = valor ganado; AC = costo real; evidencia = artefacto o constancia con procedencia; EvidenceEvent = evento externo normalizado e interpretado; propuesta de IA = cambio sugerido pendiente de la política de autonomía; aceptación = decisión de cumplimiento de criterios; idempotencia = reintentar sin aplicar duplicadamente; tenant = organización con aislamiento lógico. Glosario completo en [GLOSSARY](../governance/GLOSSARY.md).
 
-**Priorización:** P0 = núcleo y seguridad; P1 = primera expansión; P2 = avanzado. **Fases M0–M5:** se describen en `../product/PRD.md`, no son fechas comprometidas.
+**Priorización:** P0 = núcleo y seguridad; P1 = primera expansión; P2 = avanzado. La prioridad expresa criticidad, no fase: un requisito P0 **bloquea cualquier piloto externo o release que incluya la capacidad afectada**, aunque esa capacidad se entregue después de M1 (por ejemplo, NFR-018 de retención bloquea el primer piloto externo). **Fases M0–M5:** se describen en el [PRD](../product/PRD.md) y el [ROADMAP](../planning/ROADMAP.md), no son fechas comprometidas; la fase de cada requisito figura en la [matriz de trazabilidad](TRACEABILITY.md).
 
 ## 2. Contexto, interfaces y supuestos
 
-Usuarios interactúan desde web responsive y, cuando se diseñe, integración Slack/Teams y API. Entradas pueden provenir de uploads, documentos, canales de comunicación, aprobaciones manuales, CSV y conectores. Salidas: estado, vistas WBS/Gantt/Kanban, reportes, eventos, webhooks y exportaciones. Se asume por validar soporte cloud primero; modo autoalojado OSS, multi-región/offline y modelo de licencia se deciden con ADR/RR.
+Usuarios interactúan desde web (desktop primero; móvil para My Work, aprobaciones y actualizaciones), Slack, la barra Ask/Command y la API. Integraciones iniciales: Slack y GitHub (M1) y Google Drive/Docs/Sheets (M2); posteriores: Teams, Microsoft 365, Jira, Linear, Figma, ERP, CI/CD y calendarios. Entradas: eventos de conectores normalizados como EvidenceEvent, uploads, documentos, aprobaciones manuales, CSV e intenciones en lenguaje natural. Salidas: estado y consecuencias, vistas WBS/Gantt/Board/Backlog/cockpit, Project Event Log, reportes, eventos, webhooks y exportaciones. Despliegue de referencia autoalojado ([ADR-0006](../architecture/adr/0006-stack-base.md)); licencia Apache-2.0 ([ADR-0004](../architecture/adr/0004-oss-license-pending.md)).
 
 ## 3. Catálogo de requisitos funcionales
 
@@ -130,45 +130,80 @@ Cada fila define requisito, prioridad y prueba de conformidad observable; ningú
 | REQ-079 | P2 | tener reglas de extensibilidad y automatización gobernadas por organización | TC-EXT-01 |
 | REQ-080 | P0 | exportar auditoría pertinente sin revelar información de otros tenants | TC-AUD-03 |
 
+### 3.7 Grafo de proyecto, IA transaccional y control (REQ-081–103)
+
+Incorporados desde el [PRODUCT_BRIEF](../product/PRODUCT_BRIEF.md) por [RR-0002](records/RR-0002-baseline-m1-y-g0.md).
+
+| ID | P | El sistema DEBE… | Verificación |
+|---|---|---|---|
+| REQ-081 | P0 | asignar a cada proyecto un `delivery_profile` (modo de planificación, motor de programación, ejecución ágil, control financiero, planificación de recursos, baseline obligatoria) y permitir que cada rama o paquete sobrescriba su modo de ejecución (predictivo, Scrum o Kanban) | TC-HYB-02 |
+| REQ-082 | P1 | aplicar restricciones de fecha (no antes de, no después de, fecha impuesta), calcular holgura total y libre y admitir programación automática o manual por actividad | TC-SCH-07 |
+| REQ-083 | P1 | distinguir trabajo, duración y unidades de asignación, con calendarios por persona o recurso | TC-RES-04 |
+| REQ-084 | P2 | proponer nivelación de recursos como escenario sin alterar plan aprobado ni baseline | TC-RES-05 |
+| REQ-085 | P0 | mantener por actividad y paquete fechas de baseline, forecast y reales separadas y calcular su varianza; ninguna acción de IA modifica una baseline | TC-BASE-04 |
+| REQ-086 | P1 | modelar recursos no humanos (materiales y categorías de costo) además de personas y equipos, mostrando en la interfaz Personas, Equipos, Capacidad y Recursos no humanos | TC-RES-06 |
+| REQ-087 | P0 | normalizar todo evento externo en un EvidenceEvent con fuente, ID externo, actor, instante, tipo, artefacto, candidatos de proyecto e ítem, confianza, referencia original, payload normalizado, interpretación de IA, aceptante y efecto | TC-EV-04 |
+| REQ-088 | P1 | integrar GitHub: issues ↔ work items y PR, review, merge, Actions y releases como evidencia, sin usar GitHub como fuente directa del porcentaje de avance | TC-GH-01 |
+| REQ-089 | P1 | integrar Google Drive/Docs/Sheets como artefactos y contenedores de evidencia y avisar cuando un documento enlazado cambia después de su última aprobación, ofreciendo comparar y evaluar impacto | TC-GDR-01 |
+| REQ-090 | P0 | clasificar cada acción de IA como informar (automática), proponer (confirmación ligera) o controlada (aprobación obligatoria); son controladas al menos modificar baseline, aprobar cambios, modificar presupuesto, cambiar hitos contractuales, borrar proyectos y cambiar permisos | TC-AI-05 |
+| REQ-091 | P0 | registrar en cada cambio originado por IA quién, qué, cuándo, por qué, evidencia, modelo o regla que intervino, estado anterior, estado posterior y aprobador | TC-AI-06 |
+| REQ-092 | P0 | evaluar propuestas de avance contra los criterios de aceptación o DoD, indicando criterios cumplidos y pendientes, y no cerrar un ítem cuya evidencia esté incompleta | TC-AI-07 |
+| REQ-093 | P1 | responder a cada acción (Slack, UI, API) con sus consecuencias: fechas reales, efecto en hitos, ruta crítica y forecast, y aclaración de lo que no se modificó | TC-BOT-03 |
+| REQ-094 | P1 | generar un stand-up asíncrono: actualización sugerida por persona a partir de evidencia, confirmable o corregible, y resumen por excepciones para el PM | TC-AI-08 |
+| REQ-095 | P1 | permitir elegir por paquete una estrategia de progreso versionada: manual, por duración, por trabajo, % físico, hitos ponderados, checklist ponderado, aceptación de entregable, completitud de historias, técnica de valor ganado o evidencia externa | TC-PROG-02 |
+| REQ-096 | P1 | ofrecer las experiencias My Work, Team, Project Control y Portfolio, un centro de excepciones y una barra Ask/Command disponible en toda la aplicación, sujeta a permisos y a la política de autonomía | TC-UX-04 |
+| REQ-097 | P1 | mostrar un Project Event Log legible que reconstruya qué cambió, por qué, con qué evidencia y con qué efecto | TC-AUD-04 |
+| REQ-098 | P1 | calcular por separado el saldo disponible (autorizado − real − compromisos abiertos − reserva protegida) y la holgura de forecast (autorizado − forecast a terminación) | TC-FIN-08 |
+| REQ-099 | P2 | distribuir el presupuesto en el tiempo y proyectar flujo de caja con periodos fiscales, proveedor y referencia de compra | TC-FIN-09 |
+| REQ-100 | P1 | tramitar solicitudes de cambio con deltas de alcance, cronograma, costo, recursos y riesgo, baseline afectada, aprobadores, decisión y fecha efectiva; aprobar crea una nueva versión de baseline sin destruir la anterior | TC-BASE-05 |
+| REQ-101 | P1 | registrar riesgos con probabilidad, impacto, exposición, dueño, disparador, respuesta, contingencia y nodos relacionados; la IA propone riesgos, no los declara | TC-RAID-02 |
+| REQ-102 | P1 | ofrecer story points y estimación temporal separados, burndown, burnup, flujo acumulado, cambio de alcance y carryover, sin métricas de productividad individual | TC-AG-08 |
+| REQ-103 | P2 | enlazar objetivos estratégicos y outcomes con portafolios, programas, proyectos y paquetes | TC-ORG-02 |
+
 ## 4. Atributos de calidad — NFR
 
 **Las cifras son objetivos candidatos para validar, NO resultados medidos ni SLA comprometidos.** Los requisitos de seguridad P0 aplican antes de cualquier piloto externo.
 
-| ID | P | Criterio medible propuesto / gate |
-|---|---|---|
-| NFR-001 | P0 | ninguna consulta o acción cruza tenants sin permiso explícito; pruebas negativas automatizadas |
-| NFR-002 | P0 | RBAC + reglas por recurso evaluadas en servidor, nunca sólo en UI |
-| NFR-003 | P0 | todas las acciones relevantes incluyen actor, resultado, momento, causa y correlation ID |
-| NFR-004 | P0 | claves OAuth, secretos y credenciales cifrados/rotables; no quedan en logs |
-| NFR-005 | P0 | cifrado en tránsito y reposo en implementación seleccionada |
-| NFR-006 | P0 | protección contra SSRF, inyección, XSS, CSRF cuando aplique, prompt injection y replay |
-| NFR-007 | P0 | pruebas de autorización y autorización de herramientas de IA antes de habilitar acciones |
-| NFR-008 | P0 | cambios externos idempotentes bajo entrega al menos una vez; reintentos observables |
-| NFR-009 | P1 | lectura normal p95 objetivo < 500 ms bajo carga definida en el piloto; medir y revisar |
-| NFR-010 | P1 | objetivo candidato disponibilidad mensual 99.9% una vez en servicio; excluir mantenimiento según futuro SLO |
-| NFR-011 | P1 | restauración de backup probada; definir RPO/RTO antes del primer piloto |
-| NFR-012 | P0 | migraciones reversibles o con plan de restauración y aprobación para pérdida de datos |
-| NFR-013 | P0 | accesibilidad de referencia WCAG 2.2 AA, verificada en flujos críticos |
-| NFR-014 | P1 | navegador moderno responsivo; matriz de soporte se define antes del MVP |
-| NFR-015 | P1 | exportación utilizable de datos en formatos documentados y sin dependencia de proveedor |
-| NFR-016 | P0 | observabilidad de auditoría, errores, cola, webhooks y sincronización sin PII innecesaria |
-| NFR-017 | P1 | APIs con versionado, paginación, validación y deprecación documentada |
-| NFR-018 | P0 | retención/borrado legal y backups bajo política aprobada, sin promesas regulatorias no verificadas |
-| NFR-019 | P1 | pruebas de reproducibilidad de programación/CPM/EVM en casos y límites |
-| NFR-020 | P1 | plan de evaluación IA con falsos positivos, abstención, aislamiento y regresión |
+| ID | P | Criterio medible propuesto / gate | Verificación |
+|---|---|---|---|
+| NFR-001 | P0 | ninguna consulta o acción cruza tenants sin permiso explícito; pruebas negativas automatizadas | TC-SEC-01 |
+| NFR-002 | P0 | RBAC + reglas por recurso evaluadas en servidor, nunca sólo en UI | TC-SEC-03 |
+| NFR-003 | P0 | todas las acciones relevantes incluyen actor, resultado, momento, causa y correlation ID | TC-AUD-02 |
+| NFR-004 | P0 | claves OAuth, secretos y credenciales cifrados/rotables; no quedan en logs | TC-SEC-05 |
+| NFR-005 | P0 | cifrado en tránsito y reposo en implementación seleccionada | TC-SEC-06 |
+| NFR-006 | P0 | protección contra SSRF, inyección, XSS, CSRF cuando aplique, prompt injection y replay | TC-SAFE-01, TC-AI-03/04, TC-INT-03 |
+| NFR-007 | P0 | pruebas de autorización y autorización de herramientas de IA antes de habilitar acciones | TC-AI-04 |
+| NFR-008 | P0 | cambios externos idempotentes bajo entrega al menos una vez; reintentos observables | TC-INT-01, TC-INT-03 |
+| NFR-009 | P1 | lectura normal p95 objetivo < 500 ms bajo carga definida en el piloto; medir y revisar | TC-PERF-01 |
+| NFR-010 | P1 | objetivo candidato disponibilidad mensual 99.9% una vez en servicio; excluir mantenimiento según futuro SLO | TC-SLO-01 |
+| NFR-011 | P1 | restauración de backup probada; definir RPO/RTO antes del primer piloto | TC-OPS-01 |
+| NFR-012 | P0 | migraciones reversibles o con plan de restauración y aprobación para pérdida de datos | TC-OPS-02 |
+| NFR-013 | P0 | accesibilidad de referencia WCAG 2.2 AA, verificada en flujos críticos | TC-UX-01 |
+| NFR-014 | P1 | navegador moderno responsivo; matriz de soporte se define antes del MVP | TC-UX-02 |
+| NFR-015 | P1 | exportación utilizable de datos en formatos documentados y sin dependencia de proveedor | TC-PORT-01 |
+| NFR-016 | P0 | observabilidad de auditoría, errores, cola, webhooks y sincronización sin PII innecesaria | TC-OPS-03, TC-PRIV-01 |
+| NFR-017 | P1 | APIs con versionado, paginación, validación y deprecación documentada | TC-API-02 |
+| NFR-018 | P0 | retención/borrado legal y backups bajo política aprobada, sin promesas regulatorias no verificadas | TC-PRIV-01 |
+| NFR-019 | P1 | pruebas de reproducibilidad de programación/CPM/EVM en casos y límites | TC-SCH-05, TC-EVM-01..03 |
+| NFR-020 | P1 | plan de evaluación IA con falsos positivos, abstención, aislamiento y regresión | TC-AI-01..04 |
+| NFR-021 | P0 | fechas, calendarios, dependencias, capacidad, costos, baseline, permisos, estados y fórmulas los calcula solo el motor determinista; la IA nunca muta datos directamente, solo mediante herramientas tipadas que aplican las mismas reglas de dominio que la UI | TC-AI-09 |
+| NFR-022 | P1 | frescura: tiempo desde el evento externo hasta la actualización o propuesta en el proyecto medido por conector; objetivo candidato a fijar antes del piloto | TC-PERF-02 |
 
 ## 5. Reglas del negocio e invariantes
 
-- El avance de un paquete no puede superar 100% ni ser negativo; no se duplica al tener varias evidencias. La aceptación se versiona, conserva actor y justificación; rechazo y reversión preservan historia.
+- El avance de un paquete no puede superar 100% ni ser negativo; no se duplica al tener varias evidencias. Lo calcula la estrategia de progreso versionada del paquete (REQ-095); no existe una fórmula universal de «% completado». La aceptación se versiona, conserva actor y justificación; rechazo y reversión preservan historia.
+- Baseline, forecast y real son valores distintos. La baseline solo cambia por una solicitud de cambio aprobada que crea una nueva versión; forecast y real se actualizan sin tocarla.
 - Una WBS carece de ciclos y no mezcla agregados padre/hijo en la misma suma; cada regla de ponderación indica denominador y tratamiento de paquetes excluidos.
 - Un calendario posee zona horaria y excepciones; un cálculo de CPM exige una red válida y fecha de corte, y marca calendarios/capacidad no modelados como limitaciones.
 - Los cálculos de EVM usan la misma baseline y fecha de corte; AC es costo realmente reconocido bajo política, no necesariamente pagos bancarios ni horas registradas.
 - Las acciones del agente están sujetas al permiso del solicitante y al de la integración; ninguna instrucción remota amplía el alcance del token.
-- No hay opción de completar automáticamente por un mero documento recibido, commit u observación de chat, salvo una regla objetiva aprobada previamente.
+- La evidencia (documento, commit, PR, mensaje) no cambia el avance por sí sola: genera un EvidenceEvent que puede producir una propuesta de IA. La propuesta se aplica según la política de autonomía (informar, proponer, controlado) y nunca cierra un ítem con criterios de aceptación o DoD pendientes. El cierre automático solo procede si una regla objetiva aprobada previamente lo permite.
+- El motor determinista es la única autoridad sobre fechas, calendarios, dependencias, capacidad, costos, baseline, permisos, estados y fórmulas; la IA interpreta, resuelve entidades, propone y explica.
+- La velocidad, el tiempo registrado y la actividad son datos de planificación del equipo, nunca puntuaciones individuales. `Velocity ≠ horas`, `story points ≠ costo`, `cycle time ≠ esfuerzo`, `progreso ≠ tiempo registrado`.
 
 ## 6. Interfaces externas y fallos
 
-Autenticación de API según ADR, versión de contrato, scopes de conectores, rate limits y deduplicación. Slack requiere verificación de origen, mapeo de usuario y autorización local, desambiguación y confirmación. Cualquier sync parcial se marca error y se reintenta sin confirmar estado ficticio. Los errores nunca exponen datos de otro tenant. Ver `../architecture/INTEGRATIONS.md`.
+Autenticación de API según [ADR-0007](../architecture/adr/0007-tenancy-y-autenticacion.md), versión de contrato, scopes de conectores, rate limits y deduplicación. Cada conector implementa el contrato uniforme del Connector SDK y declara sus capacidades. Slack requiere verificación de origen, mapeo de usuario y autorización local, desambiguación y confirmación. Cualquier sync parcial se marca error y se reintenta sin confirmar estado ficticio. Los errores nunca exponen datos de otro tenant. Ver [INTEGRATIONS](../architecture/INTEGRATIONS.md).
 
 ## 7. Escenarios críticos de aceptación
 
@@ -182,8 +217,14 @@ Autenticación de API según ADR, versión de contrato, scopes de conectores, ra
 
 **UC-05:** usuario de tenant B intenta acceso por ID directo a evidencia de A, también mediante búsqueda/RAG/webhook; todos los caminos deniegan sin fuga.
 
-Detalles de TC y datos esperados: `../quality/ACCEPTANCE_SCENARIOS.md`.
+**UC-06 (primer vertical slice):** PM crea el proyecto «Lanzamiento de API» con WBS, dependencias, personas y baseline. Un PR enlazado se mergea en GitHub; se registra un EvidenceEvent; la IA identifica el ítem y propone avance indicando los criterios de DoD cumplidos y pendientes; el responsable confirma desde Slack; el motor recalcula el cronograma; Slack y el cockpit muestran la consecuencia (hito sin cambio o con días de riesgo), y el Project Event Log registra toda la cadena.
+
+**UC-07 (híbrido):** una release del equipo Scrum está enlazada al hito «Release candidate aceptado» de una fase predictiva; al completarse las historias de la release y aceptarse el entregable, el forecast de la fase dependiente se recalcula sin modificar la baseline.
+
+**UC-08 (dinero):** se registra un costo externo; cambian el real, el forecast a terminación, el saldo disponible y la holgura de forecast, y la baseline no cambia. El PM pregunta «¿podemos gastar 20 000 USD más y mantener el margen?» y la respuesta proviene del motor financiero, citando las cifras usadas.
+
+Detalles de TC y datos esperados: [ACCEPTANCE_SCENARIOS](../quality/ACCEPTANCE_SCENARIOS.md).
 
 ## 8. Validación, dependencias y trazabilidad
 
-El alcance de cada requisito se recoge en WBS y TC mediante `TRACEABILITY.md`; sólo se declara completado al aportar evidencia válida y revisión. MVP, presupuesto, licencias y stack quedan pendientes de aprobación humana. Primer gate: priorización de REQ-001…080 y NFR, más entrevistas y threat model.
+El alcance de cada requisito se recoge en WBS y TC mediante la [matriz de trazabilidad](TRACEABILITY.md); sólo se declara completado al aportar evidencia válida y revisión. La baseline M1 y las decisiones de G0 están en [RR-0002](records/RR-0002-baseline-m1-y-g0.md); fechas y presupuesto del proyecto de construcción no están comprometidos.

@@ -1,6 +1,6 @@
 # ADR-0001 — Separar evidencia, declaración y aceptación de avance
 
-- **Estado:** Proposed (principio de producto por ratificar)
+- **Estado:** Accepted (principio de producto ratificado por el mantenedor el 2026-10-15, [RR-0002](../../requirements/records/RR-0002-baseline-m1-y-g0.md))
 - **Fecha:** 2026-10-15
 - **Relacionados:** REQ-031 a REQ-039, WBS-3.4, WBS-3.5
 
@@ -14,10 +14,10 @@ Un cambio en GitHub, un mensaje en Slack o un documento creado son señales de a
 2. Solicitar sólo actualizaciones manuales — fiable pero fricción alta.
 3. Capturar evidencia e intención, evaluar políticas de aceptación, y aprobar explícitamente — mayor costo inicial y trazabilidad.
 
-## Decisión propuesta
+## Decisión
 
 Adoptar opción 3. Modelar `WorkItem`, `Evidence`, `CompletionRequest`, `ReviewDecision` y `ProgressEvent` distintos. La IA puede proponer un estado, pero sólo una transición autorizada satisface la definición de terminado. Para ítems donde política permita autoaceptación objetiva, registrar regla, pruebas y quién aprobó la política. Agregados se calculan con regla versionada.
 
 ## Consecuencias
 
-Se necesita UI de revisión, deduplicación, registro de auditoría, reversiones compensatorias y pruebas para documentos/entregables no-código. No vincular progreso únicamente a GitHub. Pendiente validar costo de UX y política mínima de aceptación.
+Se necesita UI de revisión, deduplicación, registro de auditoría, reversiones compensatorias y pruebas para documentos/entregables no-código. No vincular progreso únicamente a GitHub. La política de avance (estrategias de progreso por paquete, con 0/100 por aceptación como defecto para entregables y propuestas de IA que exigen confirmación) queda fijada en [RR-0002 §4](../../requirements/records/RR-0002-baseline-m1-y-g0.md); el EvidenceEvent y la AIProposal de [ADR-0005](0005-agent-tools-policy-gate.md) concretan esta separación; el costo de UX se valida en los prototipos de WBS-2.6.

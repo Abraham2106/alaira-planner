@@ -2,11 +2,17 @@
 
 **Estado:** investigación inicial cualitativa y plan de verificación; los precios, licencias, límites de API y features por plan cambian y **no se consideran verificados en este documento**. Este archivo no debe utilizarse como afirmación de mercado «actual» sin completar fecha/fuente por celda. Incorporar resultados posteriores de investigación profunda mediante RR y referencias.
 
+La síntesis competitiva del mantenedor está en el [PRODUCT_BRIEF](../product/PRODUCT_BRIEF.md). Sus conclusiones, que este plan debe verificar con fuentes fechadas:
+
+- Microsoft Project for the web fue retirado en agosto de 2025 y su funcionalidad pasó a Planner, cuyas capacidades avanzadas dependen del plan.
+- ClickUp es el competidor conceptual más cercano en amplitud; por eso «Gantt + Kanban + IA + Slack» no basta para diferenciarse.
+- El hueco está en la combinación profunda de baseline, cambio, presupuesto, evidencia, planificación adaptativa, ejecución ágil, capacidad e IA transaccional.
+
 ## 1. Universo de plataformas
 
 | Plataforma / ecosistema | Usuario y punto de entrada típico | Dimensiones a analizar | Diferenciación a contrastar |
 |---|---|---|---|
-| Microsoft Planner básico y premium / Project | usuarios Microsoft 365, PMs | tareas, cronograma, capacidad, licencias, Teams | integración suite Microsoft y gestión más estructurada en planes apropiados |
+| Microsoft Planner (planes básico y premium; absorbe Project for the web) / Project de escritorio | usuarios Microsoft 365, PMs | tareas, cronograma, capacidad, licencias, Teams | integración con la suite Microsoft y gestión más estructurada en planes superiores |
 | Jira Software + Plans + Product Discovery | equipos de producto/ingeniería | backlog, workflow, roadmap, automatización | adaptabilidad ágil y ecosistema Atlassian |
 | ClickUp | equipos multifuncionales | espacio, vistas, docs, automatización, API | consolidación de trabajo y configuración |
 | Asana | equipos cross-functional | proyectos, portfolio, dependencias, workflows | colaboración y visibilidad |
@@ -26,15 +32,15 @@ Para cada producto y edición/plan: año/versión, segmento, pricing público y 
 
 ## 3. Hipótesis de diferenciación Alaira
 
-- Progreso de entregables aceptados con evidencia independiente de GitHub, aplicable a servicios, campo, finanzas y software.
-- Modelado predecible/ágil/híbrido coherente con una sola trazabilidad y baseline.
-- Bot que puede proponer un cambio desde Slack con identidad/seguridad y aceptación, no solo crear tareas.
-- Capacidades avanzadas accesibles en una distribución OSS definida: la cobertura concreta y hosting deben decidirse; no asumir «todo premium gratis» sin costos de mantenimiento.
-- Transparencia de fórmulas y predicción IA que no sustituye al responsable del proyecto.
+- **Evidence-to-progress:** la evidencia externa (PR, documentos, decisiones en Slack, costos) se convierte en propuestas de avance evaluadas contra criterios de aceptación, aplicable a software y a trabajo no técnico.
+- Planificación metodológicamente adaptable: predictivo, ágil e híbrido como perfiles del mismo Project Graph, con una sola baseline.
+- IA transaccional gobernada: actúa desde Slack o la barra Ask/Command con identidad, permisos, política de autonomía y respuesta con consecuencias, no solo crea tareas.
+- Metodología nunca premium en la edición Apache-2.0 ([ADR-0004](../architecture/adr/0004-oss-license-pending.md)); el gobierno empresarial puede ser comercial.
+- Fórmulas transparentes y motor determinista como autoridad; la IA no sustituye al responsable del proyecto.
 
 ## 4. Evidencia de campo a reunir
 
-6–12 entrevistas iniciales para identificar elección de herramienta, fricción de migración, forma de demostrar progreso y cumplimiento financiero. Prototipos comparados por tiempo y errores para crear WBS, revisar una evidencia y pedir avance en Slack. Identificar el mercado de entrada viable y una razón suficiente para migrar antes de prometer superioridad general.
+8–12 entrevistas iniciales (criterio de [WBS-1.1](../planning/WBS_DICTIONARY.md)) para identificar elección de herramienta, fricción de migración, forma de demostrar progreso y cumplimiento financiero. Prototipos comparados por tiempo y errores para crear WBS, revisar una evidencia y pedir avance en Slack. Identificar el mercado de entrada viable y una razón suficiente para migrar antes de prometer superioridad general.
 
 ## 5. Fuentes primarias para revisar
 

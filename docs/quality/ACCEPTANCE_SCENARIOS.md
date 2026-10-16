@@ -32,7 +32,7 @@
 
 ## TC-EVM-01–03 — Finanzas
 
-**Given** BAC 100000, PV 60000, EV 50000, AC 62500. **When** se calcula al mismo corte. **Then** CPI 0.8, SPI 5/6, CV -12500, SV -10000, EAC bajo CPI 125000 y VAC -25000. Verificar AC=0, PV=0, baseline ausente y moneda distinta. **REQ:** 051–060.
+**Given** BAC 100 000 USD, PV 60 000, EV 50 000, AC 62 500. **When** se calcula al mismo corte. **Then** CPI 0,80, SPI 5/6 ≈ 0,8333, CV −12 500, SV −10 000, EAC bajo CPI 125 000 y VAC −25 000 (desarrollo en [FINANCIAL_MODEL](../architecture/FINANCIAL_MODEL.md)). Verificar AC=0, PV=0, baseline ausente y moneda distinta. **REQ:** 051–060.
 
 ## TC-BOT-01 / TC-INT-03 — Slack comando seguro
 
@@ -45,5 +45,91 @@
 ## TC-UX-01 — Accesibilidad crítica
 
 **Given** navegador/teclado, lector de pantalla y viewport móvil. **When** se crea un paquete, se adjunta evidencia y se toma una decisión. **Then** se pueden completar sin ratón, con focos visibles, etiquetas, feedback y estados accesibles. **REQ:** 076,077, NFR-013.
+
+## Casos del grafo de proyecto y de la IA transaccional (baseline M1)
+
+Derivados del [PRODUCT_BRIEF](../product/PRODUCT_BRIEF.md) y del [SRS §3.7](../requirements/SRS.md).
+
+### TC-HYB-02 — Perfil de entrega por rama
+
+**Given** el proyecto «Plataforma 2.0» con `delivery_profile` híbrido, la rama Arquitectura predictiva y la rama Backend en Scrum. **When** se consulta el plan y el tablero y luego se cambia Backend a Kanban. **Then** Arquitectura muestra Gantt y ruta crítica, Backend muestra sprint o tablero sobre los mismos Work Nodes, el cambio de perfil no duplica ni pierde trabajo y queda auditado. **REQ:** 081.
+
+### TC-BASE-04 — Baseline, forecast y real separados
+
+**Given** una actividad con baseline aprobada, forecast recalculado y fechas reales. **When** se registra un retraso y la IA propone replanificar. **Then** se muestran las tres fechas y su varianza, el forecast cambia y la baseline no; ninguna herramienta de IA puede escribir en la baseline. **REQ:** 085, NFR-021.
+
+### TC-EV-04 — EvidenceEvent normalizado y vinculación
+
+**Given** un PR mergeado en GitHub cuya rama menciona un ítem, un segundo PR ambiguo y un evento repetido por el proveedor. **When** llegan los eventos. **Then** cada uno produce un único EvidenceEvent con todos los campos de REQ-087; el vínculo claro queda propuesto o confirmado con su confianza y método, el ambiguo queda sin vincular y pide decisión, y ningún evento cambia por sí solo el avance. **REQ:** 087, 031.
+
+### TC-GH-01 — GitHub como evidencia, no como porcentaje
+
+**Given** un Work Item con DoD «PR mergeado, checks en verde, revisión aprobada, escaneo de seguridad». **When** el PR se mergea con checks y revisión pero sin escaneo. **Then** se registra evidencia y una AIProposal que marca tres criterios cumplidos y uno pendiente; el ítem no se cierra y el número de commits no influye en el avance. **REQ:** 088, 092.
+
+### TC-AI-05 — Niveles de autonomía
+
+**Given** la política por defecto. **When** la IA intenta vincular evidencia, subir el avance de 70 a 90 % y modificar la baseline. **Then** el vínculo se aplica y audita (informar), el avance espera la confirmación del responsable (proponer) y la baseline exige aprobación de un actor facultado (controlado); un usuario sin facultad no puede aprobar la acción controlada. **REQ:** 090.
+
+### TC-AI-06 — Trazabilidad de cambios de IA
+
+**Given** una propuesta de avance confirmada. **When** se consulta el Project Event Log. **Then** aparecen quién, qué, cuándo, por qué, evidencia citada, modelo o regla, estado anterior, estado posterior y aprobador, y se puede revertir con evento compensatorio. **REQ:** 091, 097.
+
+### TC-AI-07 — Criterios de aceptación pendientes
+
+**Given** un entregable con cuatro criterios, tres con evidencia. **When** un usuario pide por Slack marcarlo como completado. **Then** la IA responde qué falta, propone un avance parcial según la estrategia del paquete y no cierra el ítem. **REQ:** 092, 093.
+
+### TC-AI-09 — Frontera determinista
+
+**Given** el AI runtime con todas sus herramientas. **When** se revisa el catálogo de herramientas y se intenta, mediante prompt injection, que la IA escriba una fecha, un costo o un estado directamente. **Then** no existe ruta de escritura fuera de los comandos tipados del dominio; las fechas y costos que aparecen en las respuestas proceden del motor determinista y el intento queda rechazado y auditado. **NFR:** 021.
+
+### TC-BOT-03 — Respuesta con consecuencias
+
+**Given** un ítem en la ruta crítica de un hito. **When** se completa desde Slack con evidencia suficiente. **Then** la respuesta indica el estado real, el efecto en el hito, la ruta crítica y el forecast, y lo que no se modificó; si quedó pendiente de revisión, lo dice con referencia. **REQ:** 093.
+
+### TC-FIN-08 — Saldo gastable y holgura de forecast (M3)
+
+**Given** autorizado 100 000 USD, real 62 500, compromisos abiertos 15 000, reserva protegida 5 000 y forecast a terminación 112 500. **When** se calcula el estado financiero. **Then** saldo gastable = 17 500 USD y holgura de forecast = −12 500 USD, mostrados por separado y en lenguaje simple. **REQ:** 098.
+
+## Casos derivados de atributos de calidad (NFR)
+
+Definidos por [RR-0001](../requirements/records/RR-0001-inconsistencias-fases-prioridades.md). Las cifras concretas (carga, RPO/RTO, SLO) se fijan antes del primer piloto; mientras no existan, el caso queda `blocked`, no `passed`.
+
+### TC-SEC-05 — Secretos fuera de logs y rotables
+
+**Given** un conector con token OAuth y logs en nivel de depuración. **When** se ejecuta una sincronización con error y después se rota la credencial. **Then** ningún log, traza, mensaje de error ni export contiene el secreto; el token anterior deja de funcionar y el conector usa el nuevo sin intervención en código. **NFR:** 004.
+
+### TC-SEC-06 — Cifrado en tránsito y en reposo
+
+**Given** el despliegue de referencia. **When** se inspeccionan endpoints, conexiones internas, base de datos, almacenamiento de evidencias y backups. **Then** todo canal externo exige TLS vigente, no hay endpoints en claro y los datos y backups en reposo están cifrados con claves gestionadas y rotables. **NFR:** 005.
+
+### TC-SAFE-01 — Entradas hostiles
+
+**Given** un adjunto con tipo de contenido falsificado, una URL de evidencia que apunta a una red interna o redirige a ella y campos de texto con cargas XSS/inyección. **When** se suben, se enlazan y se renderizan. **Then** el archivo se rechaza o se pone en cuarentena, la URL no se descarga desde la red interna, ninguna carga se ejecuta en el navegador y cada rechazo queda auditado. **NFR:** 006.
+
+### TC-PERF-01 — Latencia de lectura
+
+**Given** el perfil de carga y el volumen de datos acordados para el piloto. **When** se ejecuta la prueba de carga sobre las lecturas frecuentes (proyecto, WBS, tablero, entregable). **Then** se registra el p95 por endpoint con versión, entorno y fecha, y se compara con el objetivo < 500 ms; un incumplimiento abre defecto, no se reescribe el objetivo. **NFR:** 009.
+
+### TC-SLO-01 — Disponibilidad medida
+
+**Given** un servicio en operación con SLO aprobado y ventanas de mantenimiento publicadas. **When** se cierra el periodo mensual. **Then** la disponibilidad se calcula desde la monitorización externa con la fórmula publicada y se informa frente al objetivo candidato de 99,9 %. **NFR:** 010.
+
+### TC-OPS-01 — Restauración de backup
+
+**Given** un backup de producción o staging con RPO/RTO aprobados. **When** se restaura en un entorno aislado. **Then** el tiempo de restauración y la pérdida de datos quedan dentro del RTO/RPO, y una muestra de proyectos, evidencias y auditoría verifica integridad (checksums, recuentos). **NFR:** 011.
+
+### TC-OPS-02 — Migración reversible
+
+**Given** una migración de esquema con datos de prueba representativos. **When** se aplica y se revierte, o se ejecuta su plan de restauración. **Then** el estado final coincide con el inicial; si la migración destruye datos, existe aprobación humana registrada antes de ejecutarla. **NFR:** 012.
+
+### TC-OPS-03 — Observabilidad operativa
+
+**Given** fallos provocados en cola, webhook entrante y sincronización. **When** ocurren. **Then** cada fallo genera métrica, log estructurado con correlation ID y alerta según umbral, y el operador puede reintentar desde la DLQ con replay auditado. **NFR:** 016.
+
+### TC-PRIV-01 — Minimización y retención de datos personales
+
+**Given** logs, auditoría y telemetría con usuarios reales de prueba, mensajes de Slack procesados y una política de retención aprobada. **When** se revisan los registros y se ejecuta un borrado solicitado y la purga por retención. **Then** los registros contienen solo los campos necesarios (sin texto íntegro de canales, salarios ni datos sensibles en claro), el borrado respeta las excepciones de auditoría documentadas y lo purgado no reaparece tras restaurar un backup fuera de plazo. **NFR:** 016, 018.
+
+## Casos pendientes de detalle
 
 Los TC restantes nombrados por catálogo SRS se descompondrán antes de desarrollar el paquete correspondiente. Ningún nombre TC puede figurar como «completado» sin ejecutar el caso real.

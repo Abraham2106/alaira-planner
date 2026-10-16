@@ -1,0 +1,23 @@
+# TASK-0003 — Discovery con usuarios (en paralelo a M1)
+
+- **Estado:** ready
+- **Planificador:** Planner
+- **Agente ejecutor / revisor distinto:** mantenedor u otra persona de producto (las entrevistas son humanas; un agente puede preparar guiones y sintetizar notas anonimizadas) / revisor de producto distinto
+- **WBS:** WBS-1.1
+- **Requisitos:** valida las hipótesis del [PRODUCT_BRIEF](../../product/PRODUCT_BRIEF.md) y la baseline M1
+- **ADRs:** ninguno
+- **RR relacionada:** [RR-0002 §5](../../requirements/records/RR-0002-baseline-m1-y-g0.md)
+- **Rama / worktree:** `agent/TASK-0003-discovery` · `../alaira-wt-TASK-0003-discovery`
+- **Rutas reservadas:** `docs/research/discovery/`
+- **Rutas prohibidas:** SRS, ADRs, REGISTRY; cualquier dato personal sin anonimizar
+- **Dependencias:** ninguna
+- **Objetivo y alcance:** 8–12 entrevistas con PM, PO/tech leads, finanzas/PMO y ejecutores; 3 flujos de usuario; hipótesis aceptadas o rechazadas, en especial que el PM dedica la mayor parte de su tiempo a reconciliar estado (PM Attention Efficiency).
+- **Fuera de alcance:** construir; prometer funcionalidades a entrevistados.
+- **Entradas:** guion basado en el brief, consentimiento de los entrevistados.
+- **Salidas:** informe en `docs/research/discovery/`, notas anonimizadas, RR si alguna hipótesis contradice la baseline.
+- **Criterios de aceptación:** criterio de WBS-1.1 en el [diccionario](../../planning/WBS_DICTIONARY.md); informe revisado antes de G1.
+- **Plan de pruebas:** no aplica; la evidencia es el informe revisado.
+- **Riesgos / condiciones de parada:** falta de entrevistados (R-14); hallazgos que niegan la tesis (R-16) se elevan de inmediato al Planner.
+- **Evidencia:** informe y RR resultantes.
+- **Revisión / autorización humana:** mantenedor.
+- **Rollback:** no aplica.

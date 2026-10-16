@@ -6,7 +6,7 @@
 
 ## Flujo RR
 
-1. Crear `docs/requirements/records/RR-XXXX.md` usando la plantilla; indicar problema, actor, alternativa, impacto y prioridad.
+1. Crear `docs/requirements/records/RR-XXXX-slug.md` a partir de la [plantilla](records/RR-0000-template.md) (la versión rápida de abajo sirve para borradores); indicar problema, actor, alternativa, impacto y prioridad.
 2. Analista identifica REQ afectados, compatibilidad, riesgos, costo, cronograma y datos; Planner realiza análisis de impacto en WBS/ROADMAP/TRACEABILITY.
 3. Revisar con seguridad/arquitectura/usuarios según riesgo; registrar decisión en RR: `proposed / approved / rejected / deferred`.
 4. Mantenedor aprueba cambios de contrato público, baseline, privacidad, dinero o licencia.
@@ -15,7 +15,7 @@
 
 ## Línea base
 
-La versión 0.1 es **propuesta, no aprobada**. El primer gate humano congela alcance M1, trazabilidad y reglas de cambio. Mantener al menos estado anterior, autor, hora y razonamiento del cambio; la replanificación no borra baseline aprobada.
+G0 congeló la **baseline M1** con el SRS 0.2.0 ([RR-0002](records/RR-0002-baseline-m1-y-g0.md)); cualquier cambio a esos requisitos exige una RR aprobada. Los requisitos de cortes posteriores siguen propuestos y se congelan en el gate previo a su corte. Mantener al menos estado anterior, autor, hora y razonamiento del cambio; la replanificación no borra baseline aprobada.
 
 ## Plantilla rápida RR
 

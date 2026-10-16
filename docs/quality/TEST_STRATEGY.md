@@ -17,7 +17,7 @@ Cada cambio debe validar negocio, permisos, regresión, interoperabilidad y obse
 | E2E | crear proyecto, adjuntar evidencia, pedir y aprobar, revertir; Slack safe flow | ejecución en staging autorizada |
 | UX/a11y | teclado, lector pantalla, contraste, mobile, mensajes de error | flujos P0 cumplen criterios definidos |
 | rendimiento/resiliencia | carga, latencia p95, caídas de cola, restore y SLO | mediciones registradas, no supuestos |
-| IA/evals | citas correctas, abstención, suplantación, tools policy y leakage | límites de error definidos por riesgo |
+| IA/evals | precisión de vinculación de evidencia, criterios cumplidos y pendientes, citas, abstención, suplantación, política de autonomía, frontera determinista y fugas | umbrales fijados en WBS-7.3 antes de G1 |
 
 ## 3. Fixtures mínimos
 
@@ -26,8 +26,13 @@ Cada cambio debe validar negocio, permisos, regresión, interoperabilidad y obse
 - Proyecto ágil con estados, WIP=2, sprint y workflow cambiado.
 - Proyecto híbrido que mapea múltiples historias a un solo entregable.
 - Evidencia documental independiente de repositorio y rechazada/aceptada/revertida.
-- Bot Slack con mensaje duplicado, usuario no vinculado, proyecto homónimo y evento falsificado.
-- EVM con BAC=100 000, PV=60 000, EV=50 000, AC=62 500, más AC=0, PV=0 y falta baseline.
+- Proyecto híbrido «Plataforma 2.0» con `delivery_profile` por rama (Arquitectura predictiva, Backend Scrum) y baseline, forecast y real distintos.
+- Bot Slack con mensaje duplicado, usuario no vinculado, proyecto homónimo, evento falsificado, confirmación de una propuesta y petición de acción controlada.
+- Eventos de GitHub: PR mergeado con checks verdes y escaneo pendiente, PR ambiguo sin ítem claro, evento repetido por el proveedor y rama con nombre manipulado.
+- AIProposals de los tres niveles de autonomía (informar, proponer, controlado) e intento de escritura directa de una fecha o costo.
+- EVM con BAC = 100 000 USD, PV = 60 000, EV = 50 000, AC = 62 500, más AC = 0, PV = 0 y falta baseline; compromisos abiertos de 15 000 y reserva protegida de 5 000 para saldo gastable.
+
+Todos los fixtures son datos sintéticos; no se usan datos reales de clientes ni de terceros hasta aprobar la política de privacidad ([SECURITY_PRIVACY §4](../architecture/SECURITY_PRIVACY.md)).
 - RAG con documento marcado secreto por tenant/rol e intento de prompt injection.
 
 ## 4. Estrategia de ejecución
@@ -40,4 +45,4 @@ S0: fuga entre tenants, acciones críticas no autorizadas, corrupción irreversi
 
 ## 6. Relación con trazabilidad
 
-REQ/NFR → WBS → TC → resultado → evidencia → aprobación. Ver `../requirements/TRACEABILITY.md` y `ACCEPTANCE_SCENARIOS.md`. La cobertura de identificadores no equivale a calidad ni a conformidad ejecutada.
+REQ/NFR → WBS → TC → resultado → evidencia → aprobación. Ver [TRACEABILITY](../requirements/TRACEABILITY.md) y [ACCEPTANCE_SCENARIOS](ACCEPTANCE_SCENARIOS.md). La cobertura de identificadores no equivale a calidad ni a conformidad ejecutada.

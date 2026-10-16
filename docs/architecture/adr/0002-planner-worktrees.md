@@ -1,6 +1,6 @@
 # ADR-0002 — Planificador central y worktree exclusivo por tarea
 
-- **Estado:** Proposed (mandato operativo inicial)
+- **Estado:** Accepted (mandato operativo, aceptado por el mantenedor el 2026-10-15, [RR-0002](../../requirements/records/RR-0002-baseline-m1-y-g0.md))
 - **Fecha:** 2026-10-15
 - **Relacionados:** WBS-1.4, AGENTS.md
 
@@ -14,9 +14,9 @@ Múltiples agentes producen cambios concurrentes y pueden sobrescribir contexto,
 - B: clones totalmente independientes (aislamiento, pero más costo de configuración).
 - C: `git worktree` por ticket y branch exclusiva, despacho y reservas por Planner (aislamiento ligero, requiere disciplina de integración).
 
-## Decisión propuesta
+## Decisión
 
-Opción C. Planner único consolida tareas y registro; implementador trabaja sólo en su worktree; QA revisa separadamente; merge con controles. Los documentos canónicos se editan mediante asignación explícita, sin escrituras simultáneas del registro.
+Opción C. Rama `agent/TASK-NNNN-slug` y directorio `../alaira-wt-TASK-NNNN-slug`, creados con `scripts/new-agent-worktree.sh`. Planner único consolida tareas y registro; implementador trabaja sólo en su worktree; QA revisa separadamente; merge con controles. Los documentos canónicos se editan mediante asignación explícita, sin escrituras simultáneas del registro.
 
 ## Consecuencias
 
