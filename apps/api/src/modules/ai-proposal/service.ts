@@ -3,7 +3,7 @@ import { runAiRuntime } from "@alaira/ai/runtime";
 import type { AiProposalDto, RuntimeAuditEntryDto } from "@alaira/contracts/ai";
 import { getToolDefinition } from "@alaira/contracts/ai";
 import type { AiProposalRecordDto } from "@alaira/contracts/ai-proposal";
-import { DomainError, type ActorContext } from "@alaira/domain";
+import { DomainError, type ActorContext, type TenantId } from "@alaira/domain";
 import {
   defaultStrategyForNodeType,
   progressFromManualPercent,
@@ -51,7 +51,7 @@ function toRuntimeActor(authz: AuthzActor, projectId: string): ActorContext {
   const projectRole = authz.projectRoles[projectId];
   if (projectRole === "pm") roles.push("pm_lead");
   return {
-    tenantId: authz.tenantId,
+    tenantId: authz.tenantId as TenantId,
     userId: authz.userId,
     roles,
   };
