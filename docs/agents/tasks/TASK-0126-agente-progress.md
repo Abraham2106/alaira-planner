@@ -1,13 +1,13 @@
 # TASK-0126 — Agente Progress: evidencia → propuesta de avance (M1d)
 
-- **Estado:** review (no `accepted`)
+- **Estado:** integrated_provisional (integrado en `main`; no marcar `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0126 (instancia `bc-c10fa099`, entrega `d9371f4`) / revisor-0126 (en vuelo)
+- **Agente ejecutor / revisor distinto:** implementador-0126 (instancia `bc-c10fa099`, entrega `d9371f4`) / revisor-0126 (instancia `bc-c31c3047` — **approve**)
 - **WBS:** WBS-7.4 (Progress)
 - **Requisitos:** REQ-092; TC-AI-07
 - **ADRs:** ADR-0005 (condicionado), ADR-0006
 - **Rama / worktree:** `main`. Sin ramas. `git commit -s` y push.
-- **Rutas reservadas:** `packages/ai/src/agents/progress/`, `apps/worker/src/jobs/ai-progress/`, `docs/quality/reports/TASK-0126.md`
+- **Rutas reservadas:** liberadas (provisional)
 - **Rutas prohibidas:** Control Tower UI (0127), evals (0128), REGISTRY, raíz
 - **Bloque de migraciones:** ninguna (reusa 0124)
 - **Dependencias:** TASK-0124, TASK-0120 (evidencia GitHub)
@@ -16,6 +16,6 @@
 - **Criterios de aceptación (80/20):** propuesta lista criterios cumplidos/pendientes.
 - **Plan de pruebas:** Vitest con fixtures; job worker en test.
 - **Evidencia:** `d9371f4`; [informe TASK-0126](../../quality/reports/TASK-0126.md). ai progress **3**; worker **1**; worker typecheck.
-- **Revisión:** revisor en vuelo; rutas progress/worker reservadas hasta veredicto.
-- **Revisión / autorización humana:** gate **TASK-0108** / ADR-0005 abierto; no `accepted`.
+- **Revisión:** **approve** (`bc-c31c3047`); hallazgo no bloqueante: tick worker store memoria/fixture, no persiste `ai_proposal`.
+- **Revisión / autorización humana:** gate **TASK-0108** / ADR-0005 **sigue abierto**; no `accepted`.
 - **Rollback:** `git revert`.

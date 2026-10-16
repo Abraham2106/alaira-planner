@@ -124,13 +124,14 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0123](agents/tasks/TASK-0123-recuperacion.md) | Recuperación vectorial con permisos | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0123.md) |
 | [TASK-0124](agents/tasks/TASK-0124-ai-runtime-dominio.md) | AI runtime dominio y AIProposal | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0124.md) |
 | [TASK-0125](agents/tasks/TASK-0125-slack-consecuencias.md) | Slack: consecuencias de acciones | Ficha (proposed) |
-| [TASK-0126](agents/tasks/TASK-0126-agente-progress.md) | Agente Progress | Ficha (review) |
+| [TASK-0126](agents/tasks/TASK-0126-agente-progress.md) | Agente Progress | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0126.md) |
 | [TASK-0127](agents/tasks/TASK-0127-control-tower-min.md) | Control Tower mínimo | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0127.md) |
 | [TASK-0128](agents/tasks/TASK-0128-evals-ia.md) | Evals IA adversariales | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0128.md) |
 | [TASK-0129](agents/tasks/TASK-0129-e2e-g1.md) | E2E UC-06 y batería G1 | Ficha (proposed) |
 | [TASK-0130](agents/tasks/TASK-0130-seguridad-m1.md) | Seguridad M1 (threat model, deps) | Ficha (proposed) |
 | [RUN 2026-10-16 M1c→M1d](agents/runs/2026-10-16-planner-m1c-cierre-m1d-ola4.md) | Checkpoint Planner: cierre M1c, apertura M1d | Run |
 | [RUN 2026-10-16 M1d 0124](agents/runs/2026-10-16-planner-m1d-0124-cierre-ready.md) | Checkpoint Planner: 0124 provisional; ready 0126–0128 | Run |
+| [RUN 2026-10-16 M1d cierre](agents/runs/2026-10-16-planner-m1d-cierre-implementacion.md) | Checkpoint Planner: 0122–0128 provisional; gates G1 humanos | Run |
 | [Plantilla RUN](agents/runs/TEMPLATE.md) | Registro por ejecución de agente | Plantilla |
 | [SWARM_MASTER_PROMPT](agents/prompts/SWARM_MASTER_PROMPT.md) | Prompt del Planner para construir M1 con un enjambre de agentes Composer | Procedimiento operativo |
 
@@ -168,7 +169,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0123 report](quality/reports/TASK-0123.md) | Evidencia recuperación pgvector M1d | Evidencia (provisional) |
 | [TASK-0122 report](quality/reports/TASK-0122.md) | Evidencia aceptación/progreso M1d | Evidencia (provisional) |
 | [TASK-0124 report](quality/reports/TASK-0124.md) | Evidencia AI runtime dominio M1d | Evidencia (provisional; ADR-0005 / gate 0108) |
-| [TASK-0126 report](quality/reports/TASK-0126.md) | Evidencia agente Progress M1d | Evidencia (review; revisor en vuelo; gate 0108 / ADR-0005) |
+| [TASK-0126 report](quality/reports/TASK-0126.md) | Evidencia agente Progress M1d | Evidencia (provisional; gate 0108 / ADR-0005) |
 | [TASK-0127 report](quality/reports/TASK-0127.md) | Evidencia Control Tower mínimo M1d | Evidencia (provisional; ADR-0005 / gate 0108) |
 | [TASK-0128 report](quality/reports/TASK-0128.md) | Evidencia evals IA adversariales M1d | Evidencia (provisional; umbrales G1 no aprobados) |
 
