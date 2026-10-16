@@ -6,7 +6,8 @@
   "license": "Apache-2.0",
   "exports": {
     ".": "./src/index.ts",
-    "./schedule": "./src/schedule/index.ts"
+    "./schedule": "./src/schedule/index.ts",
+    "./capacity": "./src/capacity/index.ts"
   },
   "scripts": {
     "lint": "eslint src --max-warnings 0",

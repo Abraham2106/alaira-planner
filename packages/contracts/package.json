@@ -9,7 +9,10 @@
     "./discover": "./src/discover.ts",
     "./poc": "./src/poc/index.ts",
     "./schedule": "./src/schedule/index.ts",
-    "./iam": "./src/iam/index.ts"
+    "./capacity": "./src/capacity/index.ts",
+    "./iam": "./src/iam/index.ts",
+    "./authz": "./src/authz/index.ts",
+    "./ai": "./src/ai/index.ts"
   },
   "scripts": {
     "lint": "eslint src --max-warnings 0",
