@@ -118,8 +118,8 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0117](agents/tasks/TASK-0117-web-gantt.md) | Web Gantt accesible | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0117.md) |
 | [TASK-0118](agents/tasks/TASK-0118-evidencia.md) | Evidencias y EvidenceEvent persistido | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0118.md) |
 | [TASK-0119](agents/tasks/TASK-0119-connector-fabric.md) | Connector Fabric (webhooks, tokens, DLQ) | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0119.md) |
-| [TASK-0120](agents/tasks/TASK-0120-github.md) | Conector GitHub → EvidenceEvent | Ficha (in_progress) · [reporte](quality/reports/TASK-0120.md) |
-| [TASK-0121](agents/tasks/TASK-0121-slack-intake.md) | Slack: verificación e intake seguro | Ficha (review) · [reporte](quality/reports/TASK-0121.md) |
+| [TASK-0120](agents/tasks/TASK-0120-github.md) | Conector GitHub → EvidenceEvent | Ficha (review) · [reporte](quality/reports/TASK-0120.md) |
+| [TASK-0121](agents/tasks/TASK-0121-slack-intake.md) | Slack: verificación e intake seguro | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0121.md) |
 | [Plantilla RUN](agents/runs/TEMPLATE.md) | Registro por ejecución de agente | Plantilla |
 | [SWARM_MASTER_PROMPT](agents/prompts/SWARM_MASTER_PROMPT.md) | Prompt del Planner para construir M1 con un enjambre de agentes Composer | Procedimiento operativo |
 
@@ -150,8 +150,8 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0117 report](quality/reports/TASK-0117.md) | Evidencia web Gantt M1b | Evidencia (provisional) |
 | [TASK-0118 report](quality/reports/TASK-0118.md) | Evidencia evidencias M1c | Evidencia (provisional) |
 | [TASK-0119 report](quality/reports/TASK-0119.md) | Evidencia connector fabric M1c | Evidencia (provisional) |
-| [TASK-0120 report](quality/reports/TASK-0120.md) | Evidencia conector GitHub M1c | Evidencia (in_progress) |
-| [TASK-0121 report](quality/reports/TASK-0121.md) | Evidencia Slack intake M1c | Evidencia (review r2; revisor pendiente) |
+| [TASK-0120 report](quality/reports/TASK-0120.md) | Evidencia conector GitHub M1c | Evidencia (review; revisor pendiente) |
+| [TASK-0121 report](quality/reports/TASK-0121.md) | Evidencia Slack intake M1c | Evidencia (provisional) |
 
 ### Gobernanza, investigación y ejemplos
 

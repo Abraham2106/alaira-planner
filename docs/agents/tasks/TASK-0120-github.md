@@ -1,8 +1,8 @@
 # TASK-0120 — Conector GitHub: PR/merge → EvidenceEvent (M1c)
 
-- **Estado:** in_progress
+- **Estado:** review (implementación en `main`; no `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0120 (instancia `bc-953927ad`) / revisor-0120 (pendiente)
+- **Agente ejecutor / revisor distinto:** implementador-0120 (instancia `bc-953927ad`) / revisor-0120 (instancia `bc-31c93024` en vuelo; pendiente veredicto)
 - **WBS:** WBS-5.4
 - **Requisitos:** REQ-087; TC-GH-01
 - **ADRs:** ADR-0001, ADR-0003, ADR-0006
@@ -18,5 +18,5 @@
   2. Webhook falsificado o repetido sin pasar fabric → sin efecto.
   3. Tests del normalizador + integración mínima con 0118/0119 mockeados o en Postgres.
 - **Plan de pruebas:** payloads JSON de referencia en testkit; sin PAT real.
-- **Evidencia:** reporte TASK-0120.
+- **Evidencia:** `c591e24`, `83868ee`; [informe TASK-0120](../../quality/reports/TASK-0120.md). GitHub unit **2/2**; API integración **2/2**; revisor pendiente.
 - **Rollback:** `git revert`; migraciones down.
