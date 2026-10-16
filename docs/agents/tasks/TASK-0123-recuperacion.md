@@ -1,8 +1,8 @@
 # TASK-0123 — Recuperación vectorial con permisos (M1d)
 
-- **Estado:** ready
+- **Estado:** in_progress
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0123 (pendiente) / revisor-0123 (pendiente)
+- **Agente ejecutor / revisor distinto:** implementador-0123 (instancia `bc-38fc6f14`) / revisor-0123 (pendiente)
 - **WBS:** WBS-7.1
 - **Requisitos:** REQ-068; TC-AI-03
 - **ADRs:** ADR-0006, ADR-0007, ADR-0008 (pgvector); [RR-0003](../../requirements/records/RR-0003-m1-dev-sin-emulador-s3.md) (sin MinIO; blobs locales)

@@ -1,8 +1,8 @@
 # TASK-0122 — Aceptación, progreso y rollup (M1d)
 
-- **Estado:** ready
+- **Estado:** in_progress
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0122 (pendiente) / revisor-0122 (pendiente)
+- **Agente ejecutor / revisor distinto:** implementador-0122 (instancia `bc-bb5f7a94`) / revisor-0122 (pendiente)
 - **WBS:** WBS-3.5
 - **Requisitos:** REQ-033–REQ-038, REQ-095; TC-ACC-01..06, TC-PROG-02 (parcial M1)
 - **ADRs:** ADR-0001, ADR-0006, ADR-0007; [RR-0002](../../requirements/records/RR-0002-baseline-m1-y-g0.md) §4 (estrategias de progreso)
