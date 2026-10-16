@@ -19,7 +19,8 @@
     "./apiv1": "./src/apiv1/index.ts",
     "./ai": "./src/ai/index.ts",
     "./scheduling": "./src/scheduling/index.ts",
-    "./baseline": "./src/baseline/index.ts"
+    "./baseline": "./src/baseline/index.ts",
+    "./evidence": "./src/evidence/index.ts"
   },
   "scripts": {
     "lint": "eslint src --max-warnings 0",
