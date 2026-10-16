@@ -1,0 +1,24 @@
+# TASK-0119 — Connector Fabric: tokens, webhooks, dedup y DLQ (M1c)
+
+- **Estado:** ready
+- **Planificador:** Planner/Orchestrator
+- **Agente ejecutor / revisor distinto:** implementador-0119 (pendiente) / revisor-0119 (pendiente)
+- **WBS:** WBS-5.2 (parte 2)
+- **Requisitos:** REQ-064, REQ-087; TC-INT-01, TC-SEC-05
+- **ADRs:** ADR-0003, ADR-0006, ADR-0007
+- **Rama / worktree:** `main`. Sin ramas. `git commit -s` y push.
+- **Rutas reservadas:** `packages/connectors/src/fabric/`, `packages/contracts/src/connector-fabric/`, `apps/api/src/modules/connector-fabric/`, `apps/worker/src/jobs/connector-fabric/`, `apps/api/migrations/0210_*.sql`–`0219_*.sql`, `docs/quality/reports/TASK-0119.md`
+- **Rutas prohibidas:** SDK base (0104 salvo extensión vía imports), conectores GitHub/Slack reales (0120/0121), dominio evidence persistido (0118 salvo consumo), REGISTRY, raíz
+- **Bloque de migraciones:** `0210–0219`
+- **Dependencias:** TASK-0104 (Connector SDK), TASK-0109 (outbox / idempotencia)
+- **Objetivo y alcance:** almacenamiento cifrado de tokens OAuth/sintéticos; ingreso HTTP de webhooks con verificación de firma y anti-replay; deduplicación por clave externa; health por conexión; reintentos y DLQ en worker; sin apps OAuth reales (secretos sintéticos).
+- **Fuera de alcance:** normalización GitHub/Slack específica (0120/0121), persistencia final de EvidenceEvent (0118).
+- **Criterios de aceptación (80/20):**
+  1. Webhook duplicado o reordenado no produce doble efecto (TC-INT-01).
+  2. Firma inválida o replay rechazado sin persistir efecto lateral.
+  3. Secretos/tokens no aparecen en logs (TC-SEC-05 parcial).
+  4. Health connected/degraded/disconnected/revoked expuesto vía API o SDK fabric.
+  5. Tests Vitest + 2–4 integración Postgres/worker con payloads sintéticos.
+- **Plan de pruebas:** firmas HMAC con claves de testkit; cola DLQ simulada; sin llamadas a GitHub/Slack.
+- **Evidencia:** reporte TASK-0119.
+- **Rollback:** `git revert`; migraciones down; purga DLQ de prueba.

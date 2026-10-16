@@ -1,8 +1,8 @@
 # TASK-0117 — Web Gantt: baseline, forecast y real (M1b UI)
 
-- **Estado:** in_progress (implementación en vuelo; no `accepted`)
+- **Estado:** review (implementación en `main`; no `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0117 (instancia `10c8a9d6`, en vuelo) / revisor nuevo
+- **Agente ejecutor / revisor distinto:** implementador-0117 (instancia `10c8a9d6`) / revisor-0117 (pendiente asignación)
 - **WBS:** WBS-3.3 (UI)
 - **Requisitos:** REQ-028; NFR-015
 - **ADRs:** ADR-0006
@@ -18,5 +18,5 @@
   2. Alternativa tabular navegable por teclado.
   3. Sin mutar baseline desde UI.
   4. Build + tests de componente mínimos.
-- **Evidencia:** reporte TASK-0117.
+- **Evidencia:** `a1e3015`, `23b999f`, `e1bf796`; [informe TASK-0117](../../quality/reports/TASK-0117.md). Vitest web **18/18** (incl. 6 gantt); revisor pendiente.
 - **Rollback:** `git revert`.
