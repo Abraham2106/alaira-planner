@@ -1,8 +1,8 @@
 # TASK-0128 — Evals IA adversariales (M1d)
 
-- **Estado:** in_progress (no `accepted`)
+- **Estado:** review (no `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0128 (instancia `bc-e0fa0deb`) / revisor-0128 (pendiente)
+- **Agente ejecutor / revisor distinto:** implementador-0128 (instancia `bc-e0fa0deb`, entrega `b21fb79`) / revisor-0128 (en vuelo)
 - **WBS:** WBS-7.3
 - **Requisitos:** REQ-067 (parcial); TC-AI adversarial (ver TEST_STRATEGY)
 - **ADRs:** ADR-0005 (condicionado)
@@ -15,6 +15,7 @@
 - **Fuera de alcance:** red team completo (0130 parcial).
 - **Criterios de aceptación (80/20):** harness corre en CI con fixtures; informe de umbrales propuestos.
 - **Plan de pruebas:** comando documentado `pnpm` en paquete ai.
-- **Evidencia:** reporte TASK-0128.
-- **Revisión / autorización humana:** umbrales G1 requieren mantenedor.
+- **Evidencia:** `b21fb79`; [informe TASK-0128](../../quality/reports/TASK-0128.md). evals **15**; ai test **21**; typecheck:evals; lint.
+- **Revisión:** revisor en vuelo; rutas evals reservadas hasta veredicto.
+- **Revisión / autorización humana:** umbrales G1 **no** aprobados; requieren mantenedor (`CONTINUAR_TRAS_G1 = no`).
 - **Rollback:** `git revert`.

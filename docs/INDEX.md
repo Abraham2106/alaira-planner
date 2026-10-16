@@ -126,7 +126,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0125](agents/tasks/TASK-0125-slack-consecuencias.md) | Slack: consecuencias de acciones | Ficha (proposed) |
 | [TASK-0126](agents/tasks/TASK-0126-agente-progress.md) | Agente Progress | Ficha (in_progress) |
 | [TASK-0127](agents/tasks/TASK-0127-control-tower-min.md) | Control Tower mínimo | Ficha (in_progress) |
-| [TASK-0128](agents/tasks/TASK-0128-evals-ia.md) | Evals IA adversariales | Ficha (in_progress) |
+| [TASK-0128](agents/tasks/TASK-0128-evals-ia.md) | Evals IA adversariales | Ficha (review) |
 | [TASK-0129](agents/tasks/TASK-0129-e2e-g1.md) | E2E UC-06 y batería G1 | Ficha (proposed) |
 | [TASK-0130](agents/tasks/TASK-0130-seguridad-m1.md) | Seguridad M1 (threat model, deps) | Ficha (proposed) |
 | [RUN 2026-10-16 M1c→M1d](agents/runs/2026-10-16-planner-m1c-cierre-m1d-ola4.md) | Checkpoint Planner: cierre M1c, apertura M1d | Run |
@@ -141,6 +141,8 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TEST_STRATEGY](quality/TEST_STRATEGY.md) | Capas de prueba, fixtures y severidades | Plan |
 | [ACCEPTANCE_SCENARIOS](quality/ACCEPTANCE_SCENARIOS.md) | Casos Given/When/Then de referencia | Evidencia exigida |
 | [DEFINITION_OF_DONE](quality/DEFINITION_OF_DONE.md) | DoR, DoD de tarea, paquete y release | Evidencia exigida |
+| [Evals README](quality/evals/README.md) | Comandos y operación del harness evals IA (TASK-0128) | Evidencia exigida |
+| [Evals umbrales propuestos](quality/evals/THRESHOLDS_PROPOSAL.md) | Propuesta de umbrales G1 (no aprobados) | Evidencia exigida |
 | [TASK-0002 report](quality/reports/TASK-0002.md) | Evidencia bootstrap/POC | Evidencia (provisional) |
 | [TASK-0101 report](quality/reports/TASK-0101.md) | Evidencia IAM | Evidencia (provisional; auth humana) |
 | [TASK-0102 report](quality/reports/TASK-0102.md) | Evidencia motor CPM | Evidencia (provisional) |
@@ -166,6 +168,8 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0123 report](quality/reports/TASK-0123.md) | Evidencia recuperación pgvector M1d | Evidencia (provisional) |
 | [TASK-0122 report](quality/reports/TASK-0122.md) | Evidencia aceptación/progreso M1d | Evidencia (provisional) |
 | [TASK-0124 report](quality/reports/TASK-0124.md) | Evidencia AI runtime dominio M1d | Evidencia (provisional; ADR-0005 / gate 0108) |
+| [TASK-0127 report](quality/reports/TASK-0127.md) | Evidencia Control Tower mínimo M1d | Evidencia (en curso; TASK-0127 in_progress) |
+| [TASK-0128 report](quality/reports/TASK-0128.md) | Evidencia evals IA adversariales M1d | Evidencia (review; umbrales G1 no aprobados) |
 
 ### Gobernanza, investigación y ejemplos
 
