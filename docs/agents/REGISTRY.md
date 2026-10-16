@@ -20,4 +20,10 @@
 | [TASK-0111](tasks/TASK-0111-wbs-entregables.md) | implementador-0111 | Implementador | 3.1 | `main` | principal | liberadas | integrated_provisional | revisor approve (`0bc51793`); domain 4/4; api 4/4; entrega `3944d87`/`433431d` |
 | [TASK-0112](tasks/TASK-0112-api-io.md) | implementador-0112 | Implementador | 2.5 | `main` | principal | liberadas | integrated_provisional | revisor approve (`da61391c`); contracts 1/1; api 5/5; typecheck OK; OpenAPI público matiz; **aprobación humana** para `accepted` |
 
-Ola 3 M1a cerrada (0109–0112 provisional). Ola 2 cerrada. `CONTINUAR_TRAS_G1 = no`.
+| [TASK-0113](tasks/TASK-0113-programacion.md) | implementador-0113 | Implementador | 3.2 | `main` | principal | `packages/domain/src/scheduling/`, `packages/contracts/src/scheduling/`, `apps/api/src/modules/scheduling/`, `apps/api/migrations/0170_*.sql`–`0179_*.sql`, `docs/quality/reports/TASK-0113.md` | in_progress | M1b ola 1 |
+| [TASK-0114](tasks/TASK-0114-asignaciones.md) | implementador-0114 | Implementador | 3.6 | `main` | principal | `packages/domain/src/assignments/`, `packages/contracts/src/assignments/`, `apps/api/src/modules/assignments/`, `apps/api/migrations/0180_*.sql`–`0189_*.sql`, `docs/quality/reports/TASK-0114.md` | in_progress | M1b ola 1 |
+| [TASK-0115](tasks/TASK-0115-web-proyecto-wbs.md) | implementador-0115 | Implementador | 2.6 | `main` | principal | `apps/web/src/features/project/`, `apps/web/src/features/wbs/`, `docs/quality/reports/TASK-0115.md` | in_progress | M1b ola 1 |
+| [TASK-0116](tasks/TASK-0116-baseline.md) | — | Implementador | 3.3 | `main` | principal | `packages/domain/src/baseline/`, `packages/contracts/src/baseline/`, `apps/api/src/modules/baseline/`, `apps/api/migrations/0190_*.sql`–`0199_*.sql`, `docs/quality/reports/TASK-0116.md` | ready | depende 0113 |
+| [TASK-0117](tasks/TASK-0117-web-gantt.md) | — | Implementador | 3.3 | `main` | principal | `apps/web/src/features/gantt/`, `docs/quality/reports/TASK-0117.md` | ready | depende 0115, 0116 |
+
+Ola 3 M1a cerrada (0109–0112 provisional). M1b ola 1 abierta (0113–0117). `CONTINUAR_TRAS_G1 = no`. No M2/M3.

@@ -109,6 +109,11 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0110](agents/tasks/TASK-0110-project-graph.md) | Grafo de proyecto y delivery_profile | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0110.md) |
 | [TASK-0111](agents/tasks/TASK-0111-wbs-entregables.md) | WBS, entregables e hitos | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0111.md) |
 | [TASK-0112](agents/tasks/TASK-0112-api-io.md) | API v1, OpenAPI e import/export CSV | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0112.md) |
+| [TASK-0113](agents/tasks/TASK-0113-programacion.md) | Programación persistida y CPM | Ficha (in_progress) |
+| [TASK-0114](agents/tasks/TASK-0114-asignaciones.md) | Asignaciones y sobreasignación | Ficha (in_progress) |
+| [TASK-0115](agents/tasks/TASK-0115-web-proyecto-wbs.md) | Web: proyecto y WBS | Ficha (in_progress) |
+| [TASK-0116](agents/tasks/TASK-0116-baseline.md) | Baseline, forecast y real | Ficha (ready) |
+| [TASK-0117](agents/tasks/TASK-0117-web-gantt.md) | Web Gantt accesible | Ficha (ready) |
 | [Plantilla RUN](agents/runs/TEMPLATE.md) | Registro por ejecución de agente | Plantilla |
 | [SWARM_MASTER_PROMPT](agents/prompts/SWARM_MASTER_PROMPT.md) | Prompt del Planner para construir M1 con un enjambre de agentes Composer | Procedimiento operativo |
 
