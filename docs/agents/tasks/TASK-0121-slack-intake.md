@@ -1,8 +1,8 @@
 # TASK-0121 — Slack intake: verificación, identidad e intención (M1c)
 
-- **Estado:** proposed
+- **Estado:** in_progress
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0121 (pendiente) / revisor-0121 (pendiente)
+- **Agente ejecutor / revisor distinto:** implementador-0121 (instancia `bc-3a572855`) / revisor-0121 (pendiente)
 - **WBS:** WBS-5.1 (parte 1)
 - **Requisitos:** REQ-093 (parcial intake); TC-BOT-01, TC-INT-03
 - **ADRs:** ADR-0003, ADR-0005 (condicionado), ADR-0006, ADR-0007

@@ -1,8 +1,8 @@
 # TASK-0120 — Conector GitHub: PR/merge → EvidenceEvent (M1c)
 
-- **Estado:** proposed
+- **Estado:** in_progress
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0120 (pendiente) / revisor-0120 (pendiente)
+- **Agente ejecutor / revisor distinto:** implementador-0120 (instancia `bc-953927ad`) / revisor-0120 (pendiente)
 - **WBS:** WBS-5.4
 - **Requisitos:** REQ-087; TC-GH-01
 - **ADRs:** ADR-0001, ADR-0003, ADR-0006
