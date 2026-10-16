@@ -5,8 +5,8 @@ export {
   TENANT_B_ID,
 } from "./ids.js";
 export * from "./fixtures/index.js";
+export { applySqlMigrations } from "./harness/migrate.js";
 export {
-  applySqlMigrations,
   defaultApiMigrationsDir,
   defaultComposeFile,
   isDockerAvailable,
