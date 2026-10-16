@@ -21,6 +21,7 @@
     "./scheduling": "./src/scheduling/index.ts",
     "./baseline": "./src/baseline/index.ts",
     "./evidence": "./src/evidence/index.ts",
+    "./acceptance": "./src/acceptance/index.ts",
     "./connector-fabric": "./src/connector-fabric/index.ts",
     "./retrieval": "./src/retrieval/index.ts"
   },
