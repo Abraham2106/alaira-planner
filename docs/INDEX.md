@@ -116,8 +116,8 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0115](agents/tasks/TASK-0115-web-proyecto-wbs.md) | Web: proyecto y WBS | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0115.md) |
 | [TASK-0116](agents/tasks/TASK-0116-baseline.md) | Baseline, forecast y real | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0116.md) |
 | [TASK-0117](agents/tasks/TASK-0117-web-gantt.md) | Web Gantt accesible | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0117.md) |
-| [TASK-0118](agents/tasks/TASK-0118-evidencia.md) | Evidencias y EvidenceEvent persistido | Ficha (review) · [reporte](quality/reports/TASK-0118.md) |
-| [TASK-0119](agents/tasks/TASK-0119-connector-fabric.md) | Connector Fabric (webhooks, tokens, DLQ) | Ficha (review) · [reporte](quality/reports/TASK-0119.md) |
+| [TASK-0118](agents/tasks/TASK-0118-evidencia.md) | Evidencias y EvidenceEvent persistido | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0118.md) |
+| [TASK-0119](agents/tasks/TASK-0119-connector-fabric.md) | Connector Fabric (webhooks, tokens, DLQ) | Ficha (in_progress) · [reporte](quality/reports/TASK-0119.md) |
 | [TASK-0120](agents/tasks/TASK-0120-github.md) | Conector GitHub → EvidenceEvent | Ficha (proposed) |
 | [TASK-0121](agents/tasks/TASK-0121-slack-intake.md) | Slack: verificación e intake seguro | Ficha (proposed) |
 | [Plantilla RUN](agents/runs/TEMPLATE.md) | Registro por ejecución de agente | Plantilla |
@@ -148,8 +148,8 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0115 report](quality/reports/TASK-0115.md) | Evidencia web proyecto/WBS | Evidencia (provisional) |
 | [TASK-0116 report](quality/reports/TASK-0116.md) | Evidencia baseline M1 | Evidencia (provisional; línea base humana) |
 | [TASK-0117 report](quality/reports/TASK-0117.md) | Evidencia web Gantt M1b | Evidencia (provisional) |
-| [TASK-0118 report](quality/reports/TASK-0118.md) | Evidencia evidencias M1c | Evidencia (review r2; revisor pendiente) |
-| [TASK-0119 report](quality/reports/TASK-0119.md) | Evidencia connector fabric M1c | Evidencia (review; revisor pendiente) |
+| [TASK-0118 report](quality/reports/TASK-0118.md) | Evidencia evidencias M1c | Evidencia (provisional) |
+| [TASK-0119 report](quality/reports/TASK-0119.md) | Evidencia connector fabric M1c | Evidencia (in_progress; r1 changes_requested) |
 
 ### Gobernanza, investigación y ejemplos
 

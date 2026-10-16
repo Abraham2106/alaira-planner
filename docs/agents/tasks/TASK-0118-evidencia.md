@@ -1,13 +1,13 @@
 # TASK-0118 — Evidencias y EvidenceEvent persistido (M1c)
 
-- **Estado:** review (ronda 2 en `main`; no `accepted`)
+- **Estado:** integrated_provisional (integrado en `main`; no marcar `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0118 (instancia `bc-bfe3777a`) / revisor-0118 (instancia `bc-1ea2b198`, ronda 2/2 en vuelo); ronda 1 (`bc-de0a4de8`) — **changes_requested**
+- **Agente ejecutor / revisor distinto:** implementador-0118 (instancia `bc-bfe3777a`) / revisor-0118 (instancia `bc-1ea2b198`, ronda 2/2 — **approve**); ronda 1 (`bc-de0a4de8`) — **changes_requested**
 - **WBS:** WBS-3.4
 - **Requisitos:** REQ-087; TC-EV-03, TC-EV-04
 - **ADRs:** ADR-0001, ADR-0006, ADR-0007; [RR-0003](../../requirements/records/RR-0003-m1-dev-sin-emulador-s3.md) (almacenamiento binario local sin MinIO obligatorio)
 - **Rama / worktree:** `main`. Sin ramas. `git commit -s` y push.
-- **Rutas reservadas:** `packages/domain/src/evidence/`, `packages/contracts/src/evidence/`, `apps/api/src/modules/evidence/`, `apps/api/migrations/0200_*.sql`–`0209_*.sql`, `docs/quality/reports/TASK-0118.md`
+- **Rutas reservadas:** liberadas (provisional)
 - **Rutas prohibidas:** conectores GitHub/Slack (0120/0121), fabric webhooks (0119), progreso/aceptación (0122), REGISTRY, raíz, otras TASK
 - **Bloque de migraciones:** `0200–0209`
 - **Dependencias:** TASK-0111 (work items), TASK-0109 (event log / idempotencia)
@@ -19,6 +19,6 @@
   3. Tenant + authz; otro tenant no lee blob ni fila.
   4. 2–4 tests integración Postgres + tests dominio mínimos.
 - **Plan de pruebas:** Vitest dominio/contratos; integración API con fixtures sintéticos; sin MinIO en CI (Postgres + adaptador local).
-- **Evidencia:** r1 `282c2cf`, `997959e`; r2 `30aaff6`, `004bb3f`; [informe TASK-0118](../../quality/reports/TASK-0118.md). Dominio **5/5**; API integración **4/4**; revisor r2 pendiente.
-- **Revisión:** ronda 1 — **changes_requested** (`bc-de0a4de8`): alias Vitest → fabric 0119; ronda 2 — entrega fix (`30aaff6`); revisor r2 (`bc-1ea2b198`) en vuelo.
+- **Evidencia:** r1 `282c2cf`, `997959e`; r2 `30aaff6`, `004bb3f`; [informe TASK-0118](../../quality/reports/TASK-0118.md). Revisor r2 **approve** (`bc-1ea2b198`): dominio **5/5**; API **4/4**; alias fabric cerrado.
+- **Revisión:** ronda 1 — **changes_requested** (`bc-de0a4de8`): alias Vitest → fabric 0119; ronda 2 — **approve** (`bc-1ea2b198`). Rutas **liberadas** en REGISTRY.
 - **Rollback:** `git revert`; migraciones down.
