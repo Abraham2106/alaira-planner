@@ -1,8 +1,8 @@
 # TASK-0121 — Slack intake: verificación, identidad e intención (M1c)
 
-- **Estado:** in_progress
+- **Estado:** review (implementación en `main`; no `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0121 (instancia `bc-3a572855`) / revisor-0121 (pendiente)
+- **Agente ejecutor / revisor distinto:** implementador-0121 (instancia `bc-3a572855`) / revisor-0121 (pendiente asignación; instancia en vuelo)
 - **WBS:** WBS-5.1 (parte 1)
 - **Requisitos:** REQ-093 (parcial intake); TC-BOT-01, TC-INT-03
 - **ADRs:** ADR-0003, ADR-0005 (condicionado), ADR-0006, ADR-0007
@@ -18,5 +18,5 @@
   2. Usuario sin permiso recibe rechazo explícito.
   3. Tests con eventos Slack sintéticos y authz 0106.
 - **Plan de pruebas:** Vitest normalizador; integración API sin workspace Slack real.
-- **Evidencia:** reporte TASK-0121.
+- **Evidencia:** `ccf437e`, `0fc5d95`; [informe TASK-0121](../../quality/reports/TASK-0121.md). Connectors slack **3/3**; API integración **3/3**; revisor pendiente.
 - **Rollback:** `git revert`; migraciones down.
