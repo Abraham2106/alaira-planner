@@ -102,6 +102,9 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0103](agents/tasks/TASK-0103-web-shell.md) | Shell web, a11y y cliente API | Ficha (in_progress) |
 | [TASK-0104](agents/tasks/TASK-0104-connector-sdk.md) | Connector SDK y conector falso | Ficha (in_progress) |
 | [TASK-0105](agents/tasks/TASK-0105-testkit.md) | Testkit y fixtures sintéticos | Ficha (in_progress) |
+| [TASK-0106](agents/tasks/TASK-0106-authz.md) | RBAC deny-by-default | Ficha (in_progress) |
+| [TASK-0107](agents/tasks/TASK-0107-motor-capacidad.md) | Motor de capacidad puro | Ficha (in_progress) |
+| [TASK-0108](agents/tasks/TASK-0108-ai-runtime-core.md) | AI runtime core | Ficha (in_progress) |
 | [Plantilla RUN](agents/runs/TEMPLATE.md) | Registro por ejecución de agente | Plantilla |
 | [SWARM_MASTER_PROMPT](agents/prompts/SWARM_MASTER_PROMPT.md) | Prompt del Planner para construir M1 con un enjambre de agentes Composer | Procedimiento operativo |
 
