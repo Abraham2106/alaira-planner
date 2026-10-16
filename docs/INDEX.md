@@ -124,9 +124,9 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0123](agents/tasks/TASK-0123-recuperacion.md) | Recuperación vectorial con permisos | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0123.md) |
 | [TASK-0124](agents/tasks/TASK-0124-ai-runtime-dominio.md) | AI runtime dominio y AIProposal | Ficha (integrated_provisional) · [reporte](quality/reports/TASK-0124.md) |
 | [TASK-0125](agents/tasks/TASK-0125-slack-consecuencias.md) | Slack: consecuencias de acciones | Ficha (proposed) |
-| [TASK-0126](agents/tasks/TASK-0126-agente-progress.md) | Agente Progress | Ficha (ready) |
-| [TASK-0127](agents/tasks/TASK-0127-control-tower-min.md) | Control Tower mínimo | Ficha (ready) |
-| [TASK-0128](agents/tasks/TASK-0128-evals-ia.md) | Evals IA adversariales | Ficha (ready) |
+| [TASK-0126](agents/tasks/TASK-0126-agente-progress.md) | Agente Progress | Ficha (in_progress) |
+| [TASK-0127](agents/tasks/TASK-0127-control-tower-min.md) | Control Tower mínimo | Ficha (in_progress) |
+| [TASK-0128](agents/tasks/TASK-0128-evals-ia.md) | Evals IA adversariales | Ficha (in_progress) |
 | [TASK-0129](agents/tasks/TASK-0129-e2e-g1.md) | E2E UC-06 y batería G1 | Ficha (proposed) |
 | [TASK-0130](agents/tasks/TASK-0130-seguridad-m1.md) | Seguridad M1 (threat model, deps) | Ficha (proposed) |
 | [RUN 2026-10-16 M1c→M1d](agents/runs/2026-10-16-planner-m1c-cierre-m1d-ola4.md) | Checkpoint Planner: cierre M1c, apertura M1d | Run |

@@ -1,8 +1,8 @@
 # TASK-0128 — Evals IA adversariales (M1d)
 
-- **Estado:** ready
+- **Estado:** in_progress (no `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0128 (pendiente) / revisor-0128 (pendiente)
+- **Agente ejecutor / revisor distinto:** implementador-0128 (Composer en vuelo; id en follow-up) / revisor-0128 (pendiente)
 - **WBS:** WBS-7.3
 - **Requisitos:** REQ-067 (parcial); TC-AI adversarial (ver TEST_STRATEGY)
 - **ADRs:** ADR-0005 (condicionado)
