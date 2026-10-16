@@ -1,8 +1,8 @@
 # TASK-0111 — WBS: paquetes, entregables, hitos y criterios versionados
 
-- **Estado:** ready
+- **Estado:** in_progress
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** (sin asignar hasta `in_progress`) / revisor nuevo
+- **Agente ejecutor / revisor distinto:** implementador-0111 (instancia `19f6fc1f`, composer-2.5) / revisor nuevo (instancia distinta)
 - **WBS:** WBS-3.1
 - **Requisitos:** REQ-011, REQ-012, REQ-013, REQ-014, REQ-015, REQ-016
 - **ADRs:** ADR-0006, ADR-0007
