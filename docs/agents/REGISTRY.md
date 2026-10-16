@@ -14,6 +14,6 @@
 | [TASK-0105](tasks/TASK-0105-testkit.md) | implementador-0105 | Implementador | 8.1 | `main` | principal | liberadas | integrated_provisional | approve |
 | [TASK-0106](tasks/TASK-0106-authz.md) | implementador-0106 | Implementador | 2.2 | `main` | principal | `packages/domain/src/authz/`, `packages/contracts/src/authz/`, `apps/api/src/modules/authz/`, `apps/api/migrations/0120_*.sql`–`0129_*.sql`, `docs/quality/reports/TASK-0106.md` | in_progress | ola 2 |
 | [TASK-0107](tasks/TASK-0107-motor-capacidad.md) | implementador-0107 | Implementador | 3.6 | `main` | principal | `packages/engine/src/capacity/`, `packages/domain/src/capacity/`, `packages/contracts/src/capacity/`, `docs/quality/reports/TASK-0107.md` | review | entrega `72e6864`; engine 15 tests; revisor ronda 1 (`3202f30b`) en vuelo |
-| [TASK-0108](tasks/TASK-0108-ai-runtime-core.md) | implementador-0108 | Implementador | 7.2 | `main` | principal | `packages/ai/src/runtime/`, `packages/ai/src/tools/`, `packages/ai/src/providers/`, `packages/contracts/src/ai/`, `docs/quality/reports/TASK-0108.md` | in_progress | ola 2 |
+| [TASK-0108](tasks/TASK-0108-ai-runtime-core.md) | implementador-0108 | Implementador | 7.2 | `main` | principal | `packages/ai/src/runtime/`, `packages/ai/src/tools/`, `packages/ai/src/providers/`, `packages/contracts/src/ai/`, `docs/quality/reports/TASK-0108.md` | review | entrega `6c56234`; fake LLM; `poc/` intacto; revisor ronda 1 (nuevo, no implementador) en vuelo |
 
 Ola 2 abierta. `CONTINUAR_TRAS_G1 = no`.
