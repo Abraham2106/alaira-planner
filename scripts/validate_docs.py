@@ -10,7 +10,14 @@ if hasattr(sys.stdout, "reconfigure"):
 
 ROOT = Path(__file__).resolve().parents[1]
 ERRORS = []
-all_md = sorted(ROOT.rglob("*.md"))
+SKIP_DIR_NAMES = {"node_modules", "dist", ".git", "coverage"}
+
+
+def is_skipped(path: Path) -> bool:
+    return any(part in SKIP_DIR_NAMES for part in path.parts)
+
+
+all_md = sorted(p for p in ROOT.rglob("*.md") if not is_skipped(p))
 
 def error(msg):
     ERRORS.append(msg)
@@ -37,6 +44,8 @@ index_file = ROOT / "docs/INDEX.md"
 if index_file.exists():
     indexed = {found for _, found in local_links(index_file, index_file.read_text(encoding="utf-8"))}
     for file in sorted((ROOT / "docs").rglob("*.md")):
+        if is_skipped(file):
+            continue
         if file != index_file and file.resolve() not in indexed:
             error(f"docs/INDEX.md no enlaza {file.relative_to(ROOT).as_posix()}")
 else:

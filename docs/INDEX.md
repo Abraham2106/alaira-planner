@@ -112,6 +112,12 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TEST_STRATEGY](quality/TEST_STRATEGY.md) | Capas de prueba, fixtures y severidades | Plan |
 | [ACCEPTANCE_SCENARIOS](quality/ACCEPTANCE_SCENARIOS.md) | Casos Given/When/Then de referencia | Evidencia exigida |
 | [DEFINITION_OF_DONE](quality/DEFINITION_OF_DONE.md) | DoR, DoD de tarea, paquete y release | Evidencia exigida |
+| [TASK-0002 report](quality/reports/TASK-0002.md) | Evidencia bootstrap/POC | Evidencia (provisional) |
+| [TASK-0101 report](quality/reports/TASK-0101.md) | Evidencia IAM | Evidencia (provisional; auth humana) |
+| [TASK-0102 report](quality/reports/TASK-0102.md) | Evidencia motor CPM | Evidencia (provisional) |
+| [TASK-0103 report](quality/reports/TASK-0103.md) | Evidencia web shell | Evidencia (provisional) |
+| [TASK-0104 report](quality/reports/TASK-0104.md) | Evidencia Connector SDK | Evidencia (provisional) |
+| [TASK-0105 report](quality/reports/TASK-0105.md) | Evidencia testkit | Evidencia (provisional) |
 
 ### Gobernanza, investigación y ejemplos
 
