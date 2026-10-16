@@ -139,7 +139,9 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [TASK-0110 report](quality/reports/TASK-0110.md) | Evidencia grafo de proyecto | Evidencia (provisional) |
 | [TASK-0111 report](quality/reports/TASK-0111.md) | Evidencia WBS y entregables | Evidencia (provisional) |
 | [TASK-0112 report](quality/reports/TASK-0112.md) | Evidencia API v1 / OpenAPI | Evidencia (provisional; accepted humana) |
+| [TASK-0113 report](quality/reports/TASK-0113.md) | Evidencia programación CPM | Evidencia (en curso) |
 | [TASK-0114 report](quality/reports/TASK-0114.md) | Evidencia asignaciones M1 | Evidencia (review) |
+| [TASK-0115 report](quality/reports/TASK-0115.md) | Evidencia web proyecto/WBS | Evidencia (en curso) |
 
 ### Gobernanza, investigación y ejemplos
 
