@@ -1,8 +1,8 @@
 # TASK-0119 — Connector Fabric: tokens, webhooks, dedup y DLQ (M1c)
 
-- **Estado:** in_progress (fix ronda 2; no `accepted`)
+- **Estado:** review (ronda 2 en `main`; no `accepted`)
 - **Planificador:** Planner/Orchestrator
-- **Agente ejecutor / revisor distinto:** implementador-0119 (instancia `bc-67098c38`, fix ronda 2) / revisor-0119 (instancia `bc-b8f62d65`, ronda 1/1 — **changes_requested**)
+- **Agente ejecutor / revisor distinto:** implementador-0119 (instancia `bc-67098c38`) / revisor-0119 (instancia `bc-41e07b3d`, ronda 2/2 en vuelo); ronda 1 (`bc-b8f62d65`) — **changes_requested**
 - **WBS:** WBS-5.2 (parte 2)
 - **Requisitos:** REQ-064, REQ-087; TC-INT-01, TC-SEC-05
 - **ADRs:** ADR-0003, ADR-0006, ADR-0007
@@ -20,6 +20,6 @@
   4. Health connected/degraded/disconnected/revoked expuesto vía API o SDK fabric.
   5. Tests Vitest + 2–4 integración Postgres/worker con payloads sintéticos.
 - **Plan de pruebas:** firmas HMAC con claves de testkit; cola DLQ simulada; sin llamadas a GitHub/Slack.
-- **Evidencia:** r1 `66ef63b`, `110be1f`; r2 `1cc7c94`, `211c9aa`; [informe TASK-0119](../../quality/reports/TASK-0119.md). Connectors **7/7**; API integración **5/5** (r2); pendiente re-review.
-- **Revisión:** ronda 1 — **changes_requested** (`bc-b8f62d65`); ronda 2 — entrega fix (`1cc7c94`); volver a review.
+- **Evidencia:** r1 `66ef63b`, `110be1f`; r2 `1cc7c94`, `211c9aa`; [informe TASK-0119](../../quality/reports/TASK-0119.md). Connectors **7/7**; API integración **5/5**; revisor r2 pendiente.
+- **Revisión:** ronda 1 — **changes_requested** (`bc-b8f62d65`); ronda 2 — entrega fix (`1cc7c94`); revisor r2 (`bc-41e07b3d`) en vuelo.
 - **Rollback:** `git revert`; migraciones down; purga DLQ de prueba.
