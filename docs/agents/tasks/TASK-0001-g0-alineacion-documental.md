@@ -1,0 +1,23 @@
+# TASK-0001 — Resolución de G0 y alineación documental con la definición de producto
+
+- **Estado:** review
+- **Planificador:** agente bajo autoridad expresa del mantenedor (sin Planner independiente activo)
+- **Agente ejecutor / revisor distinto:** agente de documentación de Cursor / mantenedor Alaira (Abraham2106)
+- **WBS:** WBS-1.2, WBS-1.3 (decisiones), WBS-1.5
+- **Requisitos:** todo el SRS 0.2.0; baseline M1 de RR-0002
+- **ADRs:** ADR-0001, 0002 y 0004 (Accepted); ADR-0003, 0005, 0006 y 0007 (Accepted, condicionados a TASK-0002)
+- **RR relacionada:** [RR-0001](../../requirements/records/RR-0001-inconsistencias-fases-prioridades.md), [RR-0002](../../requirements/records/RR-0002-baseline-m1-y-g0.md)
+- **Rama / worktree:** `docs/revision-documental-0.1.1` en la copia principal. Es una excepción documentada a la convención `agent/TASK-NNNN-slug`, porque la tarea empezó antes de que existiera el registro; las siguientes TASK siguen la convención.
+- **Rutas reservadas:** `README.md`, `AGENTS.md`, `CONTRIBUTING.md`, `SECURITY.md`, `LICENSE`, `NOTICE`, `.gitattributes`, `.github/`, `docs/`, `scripts/validate_docs.py`
+- **Rutas prohibidas:** código de producto (no existe)
+- **Dependencias:** ninguna
+- **Objetivo y alcance:** cerrar G0 (licencia, ADRs, baseline M1, política de avance y autonomía, riesgos con dueño) y alinear toda la documentación con el [PRODUCT_BRIEF](../../product/PRODUCT_BRIEF.md).
+- **Fuera de alcance:** entrevistas de discovery (TASK-0003), código y POC (TASK-0002).
+- **Entradas:** definición de producto entregada por el mantenedor el 2026-10-15; documentación 0.1.1.
+- **Salidas:** documentación 0.2.0, LICENSE, NOTICE, ADR-0006, ADR-0007, RR-0002, fichas TASK-0001 a 0003.
+- **Criterios de aceptación:** `python scripts/validate_docs.py` sin errores; ninguna contradicción conocida entre PRODUCT_BRIEF, PRD, SRS, WBS y ROADMAP; aprobación del mantenedor en el PR.
+- **Plan de pruebas:** validador documental (enlaces, cobertura del índice, catálogos REQ/NFR contiguos, WBS del árbol igual al diccionario) y `bash -n scripts/new-agent-worktree.sh`. Pruebas de producto: `not_run` (no hay producto).
+- **Riesgos / condiciones de parada:** decisiones tomadas sin discovery (R-16); M1 grande (R-17).
+- **Evidencia:** PR de la rama `docs/revision-documental-0.1.1`.
+- **Revisión / autorización humana:** pendiente de la aprobación del PR por el mantenedor.
+- **Rollback:** revertir el commit de merge; las RR y ADR conservan el historial de decisiones.

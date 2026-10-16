@@ -42,28 +42,44 @@ if index_file.exists():
 else:
     error("Falta docs/INDEX.md")
 
+def contiguous_catalog(prefix, text):
+    """Filas de tabla `| PREFIX-NNN |` del SRS; exige numeración 1..máximo sin huecos ni duplicados."""
+    rows = [int(n) for n in re.findall(rf"^\| {prefix}-(\d{{3}}) \|", text, re.MULTILINE)]
+    if not rows:
+        error(f"SRS sin filas {prefix}")
+        return 0
+    for n in sorted({n for n in rows if rows.count(n) > 1}):
+        error(f"SRS define {prefix}-{n:03d} más de una vez")
+    for i in range(1, max(rows) + 1):
+        if i not in rows:
+            error(f"SRS falta {prefix}-{i:03d}")
+    return max(rows)
+
+req_count = nfr_count = 0
 srs_file = ROOT / "docs/requirements/SRS.md"
 if srs_file.exists():
     srs = srs_file.read_text(encoding="utf-8")
-    reqs = set(re.findall(r"REQ-\d{3}", srs))
-    nfrs = set(re.findall(r"NFR-\d{3}", srs))
-    for i in range(1, 81):
-        if f"REQ-{i:03d}" not in reqs:
-            error(f"SRS falta REQ-{i:03d}")
-    for i in range(1, 21):
-        if f"NFR-{i:03d}" not in nfrs:
-            error(f"SRS falta NFR-{i:03d}")
+    req_count = contiguous_catalog("REQ", srs)
+    nfr_count = contiguous_catalog("NFR", srs)
 else:
     error("Falta docs/requirements/SRS.md")
 
+wbs_count = 0
+wbs_file = ROOT / "docs/planning/WBS.md"
 dictionary = ROOT / "docs/planning/WBS_DICTIONARY.md"
-if dictionary.exists():
-    content = dictionary.read_text(encoding="utf-8")
-    ids = set(re.findall(r"WBS-[1-8]\.\d+", content))
-    if len(ids) != 35:
-        error(f"Esperados 35 paquetes WBS terminales, detectados {len(ids)}")
+if wbs_file.exists() and dictionary.exists():
+    tree = re.search(r"```text\n(.*?)```", wbs_file.read_text(encoding="utf-8"), re.DOTALL)
+    leaves = set(re.findall(r"^ {4}(\d\.\d+) ", tree.group(1), re.MULTILINE)) if tree else set()
+    defined = set(re.findall(r"^\| WBS-(\d\.\d+) \|", dictionary.read_text(encoding="utf-8"), re.MULTILINE))
+    if not leaves:
+        error("WBS.md sin árbol de paquetes terminales")
+    for wbs in sorted(leaves - defined):
+        error(f"WBS-{wbs} está en el árbol pero no en el diccionario")
+    for wbs in sorted(defined - leaves):
+        error(f"WBS-{wbs} está en el diccionario pero no en el árbol")
+    wbs_count = len(leaves)
 else:
-    error("Falta WBS_DICTIONARY.md")
+    error("Falta WBS.md o WBS_DICTIONARY.md")
 
 if ERRORS:
     print("VALIDACIÓN FALLIDA")
@@ -71,5 +87,5 @@ if ERRORS:
         print(f"- {issue}")
     sys.exit(1)
 
-print(f"OK: {len(all_md)} markdown; índice completo; catálogo 80 REQ, 20 NFR y 35 WBS presente.")
+print(f"OK: {len(all_md)} markdown; índice completo; catálogo {req_count} REQ, {nfr_count} NFR y {wbs_count} WBS coherente.")
 print("NOTA: validación estructural, NO equivale a aceptación ni ejecución de TC.")

@@ -28,9 +28,9 @@ Si un término se define también en el [SRS](../requirements/SRS.md), prevalece
 
 ## Priorización y fases
 
-**P0 / P1 / P2:** prioridad de un requisito: P0 = núcleo y seguridad; P1 = primera expansión; P2 = avanzado. La prioridad expresa criticidad, no fase: un P0 bloquea cualquier piloto o release que incluya la capacidad, aunque se entregue después de M1 ([RR-0001](../requirements/records/RR-0001-inconsistencias-fases-prioridades.md)).
+**P0 / P1 / P2:** prioridad de un requisito: P0 = núcleo y seguridad; P1 = primera expansión; P2 = avanzado. La prioridad expresa criticidad, no fase: un P0 bloquea cualquier piloto o release que incluya la capacidad ([RR-0001](../requirements/records/RR-0001-inconsistencias-fases-prioridades.md)).
 
-**M0–M5:** cortes o fases de entrega descritos en el [PRD](../product/PRD.md) y el [ROADMAP](../planning/ROADMAP.md); no son fechas comprometidas.
+**M0–M5:** M0 definición y cinco *vertical slices* (M1 tesis, M2 Scrum e híbrido, M3 dinero, M4 control tower y portafolio, M5 enterprise) descritos en el [PRD](../product/PRD.md) y el [ROADMAP](../planning/ROADMAP.md); no son fechas comprometidas. **M1a–M1d:** hitos internos de M1.
 
 **G0–G5:** gates de salida de cada fase, con criterios en el [ROADMAP](../planning/ROADMAP.md). Cada gate exige aprobación humana.
 
@@ -74,7 +74,41 @@ Si un término se define también en el [SRS](../requirements/SRS.md), prevalece
 
 **IDOR:** acceso a un objeto ajeno manipulando su identificador. **SSRF:** forzar al servidor a hacer peticiones a destinos no autorizados.
 
-**SBOM:** inventario de componentes y dependencias de software, base de la auditoría de licencias. **DCO / CLA:** Developer Certificate of Origin / Contributor License Agreement; alternativas para certificar derechos de contribución (pendiente en [ADR-0004](../architecture/adr/0004-oss-license-pending.md)).
+**SBOM:** inventario de componentes y dependencias de software, base de la auditoría de licencias. **DCO / CLA:** Developer Certificate of Origin / Contributor License Agreement; alternativas para certificar derechos de contribución. El proyecto usa DCO (`git commit -s`) según [ADR-0004](../architecture/adr/0004-oss-license-pending.md).
+
+**RLS:** Row-Level Security de PostgreSQL; filtra filas por `tenant_id` en la propia base ([ADR-0007](../architecture/adr/0007-tenancy-y-autenticacion.md)).
+
+## Producto
+
+**Project Control Plane:** categoría del producto: plano de control que planifica, observa y controla proyectos sobre un modelo unificado, con IA nativa y orientado a evidencia ([PRODUCT_BRIEF](../product/PRODUCT_BRIEF.md)).
+
+**Project Graph / Work Node:** modelo canónico; todo trabajo es un Work Node tipado unido por aristas de jerarquía, dependencia, artefacto, objetivo, ownership, asignación y evidencia ([DOMAIN_MODEL](../architecture/DOMAIN_MODEL.md)).
+
+**`delivery_profile`:** configuración metodológica de un proyecto (predictivo, Scrum, Kanban o híbrido) que cada rama puede sobrescribir.
+
+**EvidenceEvent:** hecho externo normalizado (PR mergeado, documento aprobado, mensaje con intención) con procedencia y vínculo propuesto; no cambia avance por sí solo.
+
+**AIProposal:** cambio propuesto por la IA con evidencia, criterios cumplidos y pendientes, consecuencias y nivel de autonomía.
+
+**Niveles de autonomía:** *informar* (automático y auditado), *proponer* (confirmación ligera) y *controlado* (aprobación obligatoria) ([ADR-0005](../architecture/adr/0005-agent-tools-policy-gate.md)).
+
+**Estrategia de progreso:** regla versionada por paquete que define cómo se calcula su avance (aceptación de entregable, manual, checklist ponderado, evidencia externa, hitos ponderados, etc.).
+
+**Motor determinista:** componente que calcula fechas, capacidad, costos, baseline, permisos y estados; la única autoridad sobre esos datos.
+
+**Project Event Log:** registro append-only y legible de qué cambió, por qué, con qué evidencia y con qué efecto.
+
+**Connector SDK / Connector Fabric:** contrato común de los conectores (`authorize`, `subscribe`, `normalize`, `resolve_identity`…) y la capa que los ejecuta ([INTEGRATIONS](../architecture/INTEGRATIONS.md)).
+
+**Saldo gastable / holgura de forecast:** lo que aún puede comprometerse (autorizado − real − compromisos − reserva protegida) frente al margen esperado al final (autorizado − forecast a terminación).
+
+**Exception-first:** principio de interfaz: la dirección ve primero lo que exige decisión.
+
+**My Work / Team / Project Control / Portfolio / Ask-Command:** las cuatro experiencias del producto y la barra universal de consulta y órdenes ([UX_IA](../product/UX_IA.md)).
+
+**PM Attention Efficiency:** métrica estrella: porcentaje del tiempo del PM dedicado a decisiones y excepciones frente a recolectar información.
+
+**Vertical slice:** corte que entrega una capacidad completa de punta a punta; M1 a M5 son vertical slices.
 
 ## Desarrollo agéntico
 

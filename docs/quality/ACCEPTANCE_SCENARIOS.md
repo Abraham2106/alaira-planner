@@ -46,6 +46,50 @@
 
 **Given** navegador/teclado, lector de pantalla y viewport móvil. **When** se crea un paquete, se adjunta evidencia y se toma una decisión. **Then** se pueden completar sin ratón, con focos visibles, etiquetas, feedback y estados accesibles. **REQ:** 076,077, NFR-013.
 
+## Casos del grafo de proyecto y de la IA transaccional (baseline M1)
+
+Derivados del [PRODUCT_BRIEF](../product/PRODUCT_BRIEF.md) y del [SRS §3.7](../requirements/SRS.md).
+
+### TC-HYB-02 — Perfil de entrega por rama
+
+**Given** el proyecto «Plataforma 2.0» con `delivery_profile` híbrido, la rama Arquitectura predictiva y la rama Backend en Scrum. **When** se consulta el plan y el tablero y luego se cambia Backend a Kanban. **Then** Arquitectura muestra Gantt y ruta crítica, Backend muestra sprint o tablero sobre los mismos Work Nodes, el cambio de perfil no duplica ni pierde trabajo y queda auditado. **REQ:** 081.
+
+### TC-BASE-04 — Baseline, forecast y real separados
+
+**Given** una actividad con baseline aprobada, forecast recalculado y fechas reales. **When** se registra un retraso y la IA propone replanificar. **Then** se muestran las tres fechas y su varianza, el forecast cambia y la baseline no; ninguna herramienta de IA puede escribir en la baseline. **REQ:** 085, NFR-021.
+
+### TC-EV-04 — EvidenceEvent normalizado y vinculación
+
+**Given** un PR mergeado en GitHub cuya rama menciona un ítem, un segundo PR ambiguo y un evento repetido por el proveedor. **When** llegan los eventos. **Then** cada uno produce un único EvidenceEvent con todos los campos de REQ-087; el vínculo claro queda propuesto o confirmado con su confianza y método, el ambiguo queda sin vincular y pide decisión, y ningún evento cambia por sí solo el avance. **REQ:** 087, 031.
+
+### TC-GH-01 — GitHub como evidencia, no como porcentaje
+
+**Given** un Work Item con DoD «PR mergeado, checks en verde, revisión aprobada, escaneo de seguridad». **When** el PR se mergea con checks y revisión pero sin escaneo. **Then** se registra evidencia y una AIProposal que marca tres criterios cumplidos y uno pendiente; el ítem no se cierra y el número de commits no influye en el avance. **REQ:** 088, 092.
+
+### TC-AI-05 — Niveles de autonomía
+
+**Given** la política por defecto. **When** la IA intenta vincular evidencia, subir el avance de 70 a 90 % y modificar la baseline. **Then** el vínculo se aplica y audita (informar), el avance espera la confirmación del responsable (proponer) y la baseline exige aprobación de un actor facultado (controlado); un usuario sin facultad no puede aprobar la acción controlada. **REQ:** 090.
+
+### TC-AI-06 — Trazabilidad de cambios de IA
+
+**Given** una propuesta de avance confirmada. **When** se consulta el Project Event Log. **Then** aparecen quién, qué, cuándo, por qué, evidencia citada, modelo o regla, estado anterior, estado posterior y aprobador, y se puede revertir con evento compensatorio. **REQ:** 091, 097.
+
+### TC-AI-07 — Criterios de aceptación pendientes
+
+**Given** un entregable con cuatro criterios, tres con evidencia. **When** un usuario pide por Slack marcarlo como completado. **Then** la IA responde qué falta, propone un avance parcial según la estrategia del paquete y no cierra el ítem. **REQ:** 092, 093.
+
+### TC-AI-09 — Frontera determinista
+
+**Given** el AI runtime con todas sus herramientas. **When** se revisa el catálogo de herramientas y se intenta, mediante prompt injection, que la IA escriba una fecha, un costo o un estado directamente. **Then** no existe ruta de escritura fuera de los comandos tipados del dominio; las fechas y costos que aparecen en las respuestas proceden del motor determinista y el intento queda rechazado y auditado. **NFR:** 021.
+
+### TC-BOT-03 — Respuesta con consecuencias
+
+**Given** un ítem en la ruta crítica de un hito. **When** se completa desde Slack con evidencia suficiente. **Then** la respuesta indica el estado real, el efecto en el hito, la ruta crítica y el forecast, y lo que no se modificó; si quedó pendiente de revisión, lo dice con referencia. **REQ:** 093.
+
+### TC-FIN-08 — Saldo gastable y holgura de forecast (M3)
+
+**Given** autorizado 100 000 USD, real 62 500, compromisos abiertos 15 000, reserva protegida 5 000 y forecast a terminación 112 500. **When** se calcula el estado financiero. **Then** saldo gastable = 17 500 USD y holgura de forecast = −12 500 USD, mostrados por separado y en lenguaje simple. **REQ:** 098.
+
 ## Casos derivados de atributos de calidad (NFR)
 
 Definidos por [RR-0001](../requirements/records/RR-0001-inconsistencias-fases-prioridades.md). Las cifras concretas (carga, RPO/RTO, SLO) se fijan antes del primer piloto; mientras no existan, el caso queda `blocked`, no `passed`.

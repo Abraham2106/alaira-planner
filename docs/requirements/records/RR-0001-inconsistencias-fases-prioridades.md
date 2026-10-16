@@ -1,6 +1,6 @@
 # RR-0001 — Resolver contradicciones de fases, prioridades y verificación entre PRD, ROADMAP, SRS y trazabilidad
 
-- **Estado:** approved
+- **Estado:** approved; decisiones 1 y 2 sustituidas por [RR-0002](RR-0002-baseline-m1-y-g0.md), que adopta la definición de producto del mantenedor y reordena los cortes
 - **Solicitante / fecha:** revisión documental 0.1.1 / 2026-10-15
 - **Problema de negocio y usuarios afectados:** el Planner, los agentes y los revisores recibían señales distintas sobre qué entra en cada corte y qué significa una prioridad. Eso impedía congelar la baseline M1 en G0 y permitía que dos agentes interpretaran de forma diferente el mismo paquete.
 - **Resultado esperado:** una sola interpretación de fase y prioridad por requisito, y una prueba definida para cada REQ y NFR, coherentes en PRD, ROADMAP, SRS, TRACEABILITY y ACCEPTANCE_SCENARIOS.

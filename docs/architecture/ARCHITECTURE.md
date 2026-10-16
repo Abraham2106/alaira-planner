@@ -1,76 +1,109 @@
 # Arquitectura de referencia — Alaira Planner
 
-**Estado:** propuesta; no hay tecnología ni despliegue aprobados. **No constituye ADR aceptado.**
+**Estado:** diseño vigente; implementa la definición del [PRODUCT_BRIEF](../product/PRODUCT_BRIEF.md) sobre las decisiones de [ADR-0003](adr/0003-modular-monolith-candidate.md) (monolito modular con outbox), [ADR-0005](adr/0005-agent-tools-policy-gate.md) (IA transaccional), [ADR-0006](adr/0006-stack-base.md) (stack) y [ADR-0007](adr/0007-tenancy-y-autenticacion.md) (tenancy y autenticación). Los ADR 0003, 0005, 0006 y 0007 están aceptados con la condición de que TASK-0002 los valide. **No hay código ni despliegue todavía.**
 
 ## Drivers arquitectónicos
 
-Consistencia en transiciones de negocio (aceptación, baseline, costo), portabilidad OSS, desarrollo incremental por agentes, aislamiento multi-tenant, auditoría, extensibilidad de conectores y rendimiento de vistas de proyecto.
+- **Cuatro verdades separadas:** proyecto (grafo y estados), ejecución (evidencia externa), finanzas (presupuesto, costo real, compromisos) e IA transaccional, que propone sobre las otras tres sin sustituirlas.
+- Consistencia en transiciones de negocio (aceptación, baseline, costo).
+- Motor determinista como autoridad (NFR-021).
+- Portabilidad OSS y autoalojamiento.
+- Aislamiento multi-tenant y auditoría append-only.
+- Extensibilidad de conectores.
+- Frescura de evidencia (NFR-022).
+- Desarrollo incremental por varios agentes.
 
-## Arquitectura candidata
-
-La opción inicialmente preferida para validar es **monolito modular con trabajos asíncronos y APIs**, no microservicios por defecto. Los límites de módulos reflejan el dominio de [DOMAIN_MODEL](DOMAIN_MODEL.md). Evaluar también backend modular distribuido y patrón event-sourced completo antes de decidir con ADR. Se propone una fuente transaccional para reglas críticas, cola/outbox para conectores/IA y almacenamiento de objetos para evidencias, con índices derivados para búsqueda y proyecciones. No elegir motor concreto por intuición.
+## Vista lógica
 
 ```mermaid
 flowchart LR
- UI[Web UI / vistas] --> G[API / Auth Gateway]
- BOT[Slack / Teams] --> I[Adaptadores de integración]
- I --> G
- G --> D[Dominio: proyectos / WBS / ágil]
- G --> A[Dominio: evidencia y aprobación]
- G --> F[Dominio: costos y baseline]
- D --> DB[(Almacén transaccional)]
- A --> DB
- F --> DB
- A --> OBJ[(Objetos / evidencias)]
- DB --> O[Outbox + Worker]
- O --> I
- O --> AI[Asistente / RAG con filtros]
- AI --> G
- G --> AUD[(Auditoría/observabilidad)]
+ UI[Web: My Work / Team / Project Control / Portfolio / Ask-Command] --> G[API v1 + Auth]
+ EXT[Slack / GitHub / Google / Teams] --> CF[Connector Fabric]
+ CF --> EB[Event backbone: outbox + worker]
+ G --> PG[Project Graph]
+ G --> EN[Motor determinista: programación / capacidad / finanzas]
+ G --> EV[Evidencia, aceptación y cambios]
+ EB --> EV
+ EB --> AIR[AI runtime]
+ AIR --> PEP[Pasarela de políticas]
+ PEP --> G
+ PG --> DB[(PostgreSQL + RLS)]
+ EN --> DB
+ EV --> DB
+ EV --> OBJ[(Objetos S3)]
+ DB --> LOG[(Project Event Log append-only)]
+ DB --> IDX[(Full-text + pgvector)]
+ IDX --> AIR
 ```
 
-Los diagramas son lógicos; líneas no garantizan implementación ni obligatoriedad de un proveedor.
+Los diagramas son lógicos.
 
-## Módulos y límites
+## Módulos y autoridad sobre los datos
 
-| Módulo | Autoridad sobre dato | Contrato |
+| Módulo | Autoridad sobre el dato | Contrato |
 |---|---|---|
-| IAM/Tenant | membresías, políticas, sesiones | identidad y autorización central |
-| Project & Work | jerarquía, ownership, tareas, entregables | comandos de negocio y eventos |
-| Planning | calendario, red, baseline, cambios | plan validado e instantáneas |
-| Agile | iteraciones, backlog, estados | proyecciones coherentes de trabajo |
-| Evidence & Review | fuentes, criterios, aceptación | transiciones auditadas |
-| Finance | presupuesto, AC, EV/PV, aprobaciones | números reproducibles |
-| Integrations | conectores, grants, sync, dedup | anti-corruption layer |
-| AI | consultas, citas, sugerencias y herramientas | policy enforcement delegado |
-| Reporting | consultas/indicadores multi-nivel | lecturas derivadas con fecha de corte |
+| IAM/Tenant | membresías, políticas, sesiones | identidad y autorización central (ADR-0007) |
+| Project Graph | Work Nodes, aristas, `delivery_profile`, ownership | comandos de negocio y eventos |
+| Planning engine | calendarios, red, CPM, nivelación, baselines, forecast determinista | plan validado e instantáneas reproducibles |
+| Capacity | personas, equipos, capacidad, recursos no humanos | disponibilidad y sobrecarga calculadas |
+| Agile | iteraciones, backlog, estados, métricas | proyecciones sobre los mismos Work Nodes |
+| Evidence & Review | EvidenceEvent, vínculos, criterios, aceptación, cambios | transiciones auditadas |
+| Finance | presupuesto, costo real, compromisos, EV/PV, aprobaciones | números reproducibles |
+| Connector Fabric | conexiones, grants, mapeos, eventos normalizados, deduplicación | Connector SDK (capa anticorrupción) |
+| AI runtime | conversaciones, AIProposal, evaluaciones | herramientas tipadas tras la pasarela de políticas (ADR-0005) |
+| Reporting | proyecciones de control tower y portafolio | lecturas derivadas con fecha de corte |
 
-No realizar transacción distribuida dentro del camino de aceptar entregable si puede evitarse. Integraciones externas operan con reintentos y compensación; una notificación fallida nunca revierte una aceptación legítima sin política explícita.
+No hay transacción distribuida en el camino de aceptar un entregable. Las integraciones externas operan con reintentos y compensación; una notificación fallida nunca revierte una aceptación legítima.
+
+## Event backbone
+
+Cada mutación de dominio escribe en la misma transacción su evento de dominio y el registro del outbox. El worker publica hacia conectores, AI runtime y proyecciones con reintentos, backoff y cola de fallos. Los eventos de conectores entran como **EvidenceEvent** normalizados (`artifact.lifecycle.changed`, `user.intent.received`, `artifact.activity.detected`; ver [INTEGRATIONS](INTEGRATIONS.md)) con clave de deduplicación por fuente. Contrato con `schema_version` y compatibilidad hacia atrás.
+
+## AI runtime
+
+Seis pasos (ADR-0005): **Observe** (evento o petición) → **Retrieve context** (grafo, permisos, documentos, historial; filtrado por tenant y permisos **antes** de recuperar) → **Interpret** (intención y entidades) → **Plan action** (comandos tipados) → **Policy / authorization** (actor, scopes, nivel de autonomía, versión) → **Execute + verify** (vía API de dominio, verificación del estado resultante y respuesta con consecuencias). El resultado queda como AIProposal o como cambio aplicado, siempre con trazabilidad completa en el Project Event Log (REQ-091).
+
+## Frontera determinista / probabilística (NFR-021)
+
+| Determinista: autoridad | Probabilístico: IA |
+|---|---|
+| fechas, calendarios, dependencias, ruta crítica | interpretar lenguaje natural |
+| capacidad y sobrecarga | vincular evidencia con ítems (IA + reglas) |
+| costo, saldo, EV/PV/AC, forecast determinista | resumir y explicar |
+| baseline y estados | proponer riesgos, avance y replanificación |
+| permisos y transacciones | redactar stand-ups y reportes |
+| aprobaciones contractuales: siempre humanas | — |
+
+El forecast probabilístico (Monte Carlo, M5) es un cálculo estadístico reproducible con semilla, no una salida del LLM.
+
+## Persistencia
+
+PostgreSQL es la fuente transaccional única: tablas de nodos y aristas (`work_node`, `dependency_edge`, `hierarchy_edge`, `artifact_link`, `goal_link`), RLS por `tenant_id`, eventos append-only, full-text e índice vectorial `pgvector`. Las evidencias binarias van a almacenamiento S3. Un almacén analítico separado solo entra por ADR cuando la medición lo exija (WBS-6.4).
 
 ## Reglas técnicas
 
-**Comandos:** validar identidad/tenant/permisos → validación de estado/versión → transacción del dominio y outbox → respuesta estable → publicación eventual. Operaciones sensibles requieren aprobación y claves idempotentes.
+**Comandos:** identidad, tenant y permisos → estado y versión → transacción de dominio con outbox → respuesta estable → publicación eventual. Operaciones sensibles con aprobación y clave idempotente.
 
-**Versionado:** API `/v1`, contrato de eventos con `schema_version`, estrategia de compatibilidad hacia atrás, migraciones de base y relectura de eventos. Compatibilidad específica se determina por ADR.
+**Versionado:** API `/api/v1`, eventos con `schema_version`, migraciones `up`/`down` (NFR-012) y relectura de eventos.
 
-**Consistencia:** datos financieros y decisiones dentro de límites transaccionales; sincronizaciones se reconcilian de manera asíncrona. Mostrar «pendiente de sincronizar» en lugar de simular actualización inmediata confirmada.
+**Consistencia:** finanzas y decisiones dentro de límites transaccionales; las sincronizaciones se reconcilian de forma asíncrona y la UI muestra «pendiente de sincronizar» en lugar de simular confirmación.
 
-**Seguridad:** deny by default, servidor como enforcement point, OAuth mínimos permisos y verificación de firmas; no confiar en un LLM para validación final; cifrado, rotación, observabilidad y límites de conexión.
+**Seguridad:** deny by default; el servidor es el punto de enforcement; OAuth con permisos mínimos y verificación de firmas; el LLM nunca valida de forma final; contenido externo tratado como entrada hostil ([SECURITY_PRIVACY](SECURITY_PRIVACY.md)).
 
-**IA:** el LLM puede resumir/citar/proponer; acciones pasan por herramientas tipadas que ejecutan las mismas reglas de dominio que la UI. RAG incluye control de acceso antes de recuperar fragmentos, no sólo filtrar al final. Prompt injection se trata como entrada hostil.
+## Despliegue de referencia
 
-## Despliegue de referencia (a decidir)
+Docker Compose con API, worker, web, PostgreSQL y almacenamiento S3 local (ADR-0006). Ambientes local, CI, staging y producción; secretos fuera del repositorio; migración y rollback; backups restaurados y ensayados antes del primer piloto (NFR-009); telemetría, alertas, colas de fallos, SLO y runbooks (WBS-8.4).
 
-Ambientes local, CI, staging y producción; contenedores o método reproducible; variables/secrets sin comprometer repo; migración y rollback; backups restaurados y ensayados; telemetría, alertas, colas de fallos, SLO y runbooks. La opción de self-hosting OSS exige no atarse a proveedor único.
+## Evolución por cortes
 
-## Evolución
+| Corte | Arquitectura que entra |
+|---|---|
+| M1 | kernel completo: tenancy y RLS, Project Graph, motor de programación, evidencia y aceptación, event log, Connector Fabric con Slack y GitHub, AI runtime con pasarela de políticas, UI mínima |
+| M2 | módulo Agile e híbrido sobre los mismos Work Nodes; conector de Google Workspace; stand-up asíncrono |
+| M3 | módulo Finance y EV/PV/AC |
+| M4 | proyecciones de control tower, portafolio y RAID; suscripciones salientes; evaluación de GraphQL |
+| M5 | gobierno enterprise, forecast probabilístico y conector de Microsoft 365 / Teams |
 
-1. M0: validar bounded contexts, threat model y pruebas de concepto para CPM/EV y sync.
-2. M1: transacciones + auditoría + API + evidencia/aceptación + UI.
-3. M2/M3: planning/agile como módulos, no duplicaciones de trabajo.
-4. M4: adaptadores externos con outbox y reintentos.
-5. M5: finanzas y predicción como módulos con pruebas deterministas primero.
+## ADRs pendientes
 
-## ADRs obligatorios antes de implementación
-
-Stack/runtime, DB/tenancy, auth/OAuth, object storage, eventos/outbox, licencia, hosting y autoservicio, reglas progreso aceptado, fórmula EVA/EVM y alcance de IA. Propuestas se elevan en [adr/](adr/). No atribuir decisiones definitivas a este documento.
+Se deciden antes de la capacidad que los requiere: fórmula de EVM y reglas de costos (antes de M3), política de privacidad y retención (antes del primer piloto, OQ-08), forma de la oferta empresarial (OQ-11) y cualquier cambio a la tabla de ADR-0006.

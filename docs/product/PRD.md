@@ -1,54 +1,58 @@
 # PRD — Product Requirements Document
 
-**Versión:** 0.1 · **Estado:** propuesta de concepción · **Deriva de:** [VISION](VISION.md) · **Detalle normativo:** [SRS](../requirements/SRS.md).
+**Versión:** 0.2 · **Estado:** baseline M1 aprobada ([RR-0002](../requirements/records/RR-0002-baseline-m1-y-g0.md)); resto propuesto · **Deriva de:** [PRODUCT_BRIEF](PRODUCT_BRIEF.md) y [VISION](VISION.md) · **Detalle normativo:** [SRS](../requirements/SRS.md).
 
-## 1. Oportunidad y clientes
+## 1. Oportunidad
 
-La promesa es reducir la reconstrucción manual del estado de proyectos heterogéneos. Segmento inicial **hipotético**: equipos de servicios/proyectos digitales de 5–50 participantes con entregables documentales y coordinación en Slack/Microsoft 365. Segunda expansión: PMO híbrida, proyectos operativos y entornos con mayor control de costos. Validar con usuarios antes de comprometer arquitectura o pricing.
+Los PMs dedican buena parte de su semana a recolectar estado de herramientas que modelan el trabajo de forma incompatible. Ningún competidor une en un modelo **baseline + cambio + presupuesto + evidencia + planificación adaptativa + ejecución ágil + capacidad + IA transaccional**; esa combinación es el hueco defendible ([análisis competitivo](../research/ECOSYSTEM_RESEARCH.md)).
+
+Segmento inicial: equipos que ya trabajan en **Slack, GitHub y Google Workspace** y gestionan proyectos con componente de software y entregables formales (hitos, clientes, presupuesto). La forma en que proyectos sin código demuestran avance se valida en discovery (WBS-1.1).
 
 ## 2. Trabajos a resolver
 
-- Al iniciar, elegir enfoque predictivo, ágil o híbrido; adaptar vistas sin perder un modelo común.
-- Planificar fases, WBS, paquetes, hitos, dependencias, calendario, responsables y una línea base.
-- Para ágil, priorizar backlog, ejecutar iteraciones y medir velocidad y tiempo de ciclo sin métricas coercitivas.
-- Adjuntar evidencias, solicitar revisión, aceptar o rechazar entregables y recalcular estado auditable.
-- Consultar desviaciones de plazo/costo y explicar de dónde provienen.
-- Pedir desde Slack: «@Alaira marca la tarea X del proyecto Y como completada», con resolución de contexto, permiso, confirmación, evidencia exigida y log.
-- Preguntar a la IA por riesgos, próximos bloqueos y escenarios; mostrar supuestos y grado de certeza.
+- Planificar con WBS, paquetes, dependencias, calendarios, personas y baseline, y saber qué pasa si algo cambia.
+- Ejecutar partes del proyecto con backlog y sprints sin perder la relación con hitos y baseline.
+- Que el avance se actualice desde el trabajo real (PR mergeado, documento aprobado, decisión en Slack) con propuesta de IA y confirmación, sin perseguir a nadie.
+- Ver de inmediato la consecuencia de un cambio en fechas, hitos, ruta crítica, capacidad y forecast.
+- Saber cuánto puede gastarse todavía (saldo disponible) y qué margen se espera al terminar (holgura de forecast).
+- Preguntar en lenguaje natural qué decisión hace falta y obtener opción, efecto de fecha, costo y evidencia usada.
 
 ## 3. Experiencias núcleo
 
-**Onboarding:** organización → seguridad/miembros → plantilla/modo → calendario → primer entregable → vista de estado → integración opcional. Demostrar valor sin exigir GitHub.
-
-**Gestión predictiva:** EDT indentable → paquete y criterios de aceptación → duraciones/recursos/dependencias → Gantt y baseline → estado y costos → control de cambios.
-
-**Gestión ágil:** épica/historia → prioridad/backlog → sprint o Kanban/WIP → estado → entrega/aceptación → lead time, cycle time, throughput y velocidad (cuando aplican).
-
-**Gestión híbrida:** fases e hitos con compromisos de entrega, equipos Scrum/Kanban vinculados a paquetes o resultados, consolidación por regla transparente y aprobaciones de gate.
-
-**Asistente contextual:** explicar recomendaciones con fuentes, no completar a partir de inferencias; exigir autorización en acciones de escritura.
-
-## 4. Modelo de entregas
-
-| Corte | Alcance sugerido | Exclusiones explícitas |
+| Experiencia | Para | Contenido |
 |---|---|---|
-| M0 — Validación | entrevistas, modelo de dominio, prototipos, arquitectura y riesgos | producto funcional |
-| M1 — Núcleo | organizaciones, RBAC, proyecto/tareas, árbol WBS con paquetes, hitos y entregables, evidencia, aceptación, audit log, API, UI base | calendarios, CPM, forecast IA, EVM avanzado |
-| M2 — Planificación | calendarios, dependencias FS/SS/FF/SF con lag/lead, CPM, baseline, Gantt, recursos y control de cambios | optimización compleja multi-recurso |
-| M3 — Ágil e híbrido | backlog, boards, sprints, WIP, ciclo, mapeo de fases | escalar frameworks complejos |
-| M4 — Integraciones | Slack bot con escritura segura, webhooks, Drive/Microsoft 365 gradual | conectores indiscriminados |
-| M5 — Finanzas + IA | presupuesto, AC/PV/EV y CPI/SPI, previsión explicable, riesgos | contabilidad ERP completa |
+| **My Work** | ejecutores | hoy, en progreso, esperando a alguien, necesita tu confirmación; actualización sugerida del stand-up asíncrono |
+| **Team** | leads, Scrum Master, PO | board, sprint, capacidad, bloqueos, release |
+| **Project Control** | PM | overview, WBS, timeline/Gantt, backlog, board, recursos, finanzas, riesgos, cambios, evidencia, reportes, centro de excepciones |
+| **Portfolio** | dirección, PMO | objetivos, programas, salud, forecast, presupuesto, hitos, dependencias entre proyectos, decisiones requeridas |
+| **Ask / Command** | todos | barra universal para consultar, simular y pedir acciones bajo la política de autonomía |
+| **Slack** | todos | menciones a `@Alaira` con resolución de entidades, permisos, DoD, confirmación y respuesta con consecuencias |
 
-El orden definitivo depende de descubrimiento, tamaño del equipo, riesgos y ADRs. Puede introducirse una integración temprana piloto sin asumir que todo M4 deba preceder a control financiero.
+Detalle de navegación y flujos en [UX_IA](UX_IA.md).
+
+## 4. Cortes de entrega (vertical slices)
+
+Cada corte entrega una capacidad operativa completa de extremo a extremo, no una capa técnica.
+
+| Corte | Resultado verificable | Incluye | Excluye |
+|---|---|---|---|
+| **M0 — Definición** | modelo de dominio y reglas aceptadas (G0) | requisitos, ADRs, discovery en curso, threat model | producto funcional |
+| **M1 — Tesis: lanzamiento de una API** | crear proyecto → WBS → dependencias → personas → baseline → Gantt → conectar GitHub y Slack → PR mergeado → evidencia → la IA propone avance → confirmación en Slack → recálculo del cronograma → cockpit con la nueva situación | kernel (jerarquía, work nodes, `delivery_profile`, campos personalizados, hitos), motor de programación con calendarios, FS/SS/FF/SF, lag/lead y ruta crítica, baseline/forecast/real, asignación de personas y sobreasignación, evidencia y aceptación, Connector Fabric con GitHub y Slack, runtime de IA con propuestas, autonomía y auditoría, Project Event Log, Project Control y My Work mínimos | Scrum, finanzas, Google, portafolio, nivelación de recursos |
+| **M2 — Ejecución ágil e híbrido** | una fase de software ejecuta backlog y sprints con GitHub; una release enlazada a un hito predictivo recalcula su forecast sin romper la baseline | backlog, sprints, board, WIP, story points, métricas de flujo, releases ↔ hitos, modos por rama, restricciones de fecha, control de cambios con deltas, conector Google Workspace, stand-up asíncrono | finanzas, portafolio |
+| **M3 — Control financiero** | un costo externo modifica el forecast y no la baseline; el PM ve gasto, comprometido, forecast, saldo disponible y holgura | presupuesto, tarifas, horas reales, compromisos, costos fijos, forecast, varianza, PV/EV/AC, CPI/SPI, EAC/ETC/VAC, reservas, cockpit financiero | ERP completo, contabilidad legal |
+| **M4 — Control tower y portafolio** | el PM opera por excepciones; dirección ve programas y dependencias | centro de excepciones completo, agentes Risk/Dependency/Change/Portfolio, RAID, notificaciones, portafolio y objetivos estratégicos, dependencias entre proyectos, reportes | — |
+| **M5 — Enterprise y forecasting** | una organización puede confiar su portafolio; forecast explicable con histórico | SSO/SAML, SCIM, retención, residencia, export de auditoría, administración; analítica histórica y forecast probabilístico; Teams/Microsoft 365, nivelación de recursos, móvil completo | — |
+
+La **Definition of Done del producto inicial** del [PRODUCT_BRIEF](PRODUCT_BRIEF.md) se cumple al cerrar M3. A partir de ahí se habilita el piloto externo (WBS-8.5) y el primer release (WBS-8.6). Etapas del brief como hitos: Kernel prototype, Planning alpha, Connected alpha y AI alpha dentro de M1; Execution alpha y Hybrid beta en M2; Financial beta en M3; PM control beta y Portfolio maturity en M4; Enterprise readiness en M5.
 
 ## 5. Requisitos de lanzamiento
 
-Seguridad entre tenants, autenticación, autorización por acción y recurso, evidencias con procedencia, reversión de actualizaciones, pruebas contractuales y de aceptación, accesibilidad evaluada y métricas de fiabilidad. La trazabilidad `REQ→WBS→TC` y estado de licencia se revisan antes de anunciar una distribución OSS.
+Aislamiento entre tenants, autorización por acción y recurso, política de autonomía de IA con trazabilidad completa, evidencias con procedencia, reversión de actualizaciones, motor determinista reproducible (CPM y EVM), pruebas de aceptación ejecutadas, accesibilidad evaluada y métricas de fiabilidad. La trazabilidad REQ → WBS → TC se revisa antes de cada release.
 
-## 6. No-objetivos iniciales
+## 6. No-objetivos
 
-ERP, nómina, vigilancia personal, compatibilidad binaria con Microsoft Project/P6, migración perfecta de todos los proveedores, agente autónomo que autorice gastos, promesas de camino crítico correctas sin validación y diferenciación basada solo en estética.
+ERP, nómina, vigilancia o puntuación individual de productividad, compatibilidad binaria con Microsoft Project o P6, veinte integraciones superficiales en lugar de tres excelentes, agente autónomo que apruebe cambios contractuales o gastos, metodología como característica premium y diferenciación basada solo en estética.
 
 ## 7. Preguntas a validar
 
-Arquitectura y hosting; elección de licencia OSS; segmentos y regiones; mínimo legal de privacidad; proveedor de autenticación; Slack primero vs Teams; reglas de progreso agregado; fuente del costo real; monetización compatible con OSS; requisitos offline; integraciones prioritarias.
+Se gestionan en [OPEN_QUESTIONS](../governance/OPEN_QUESTIONS.md): segmento y regiones, política de privacidad y retención antes del piloto, forma de la oferta empresarial compatible con OSS, coste de IA por acción, reglas de baseline, conectores posteriores y requisitos offline.

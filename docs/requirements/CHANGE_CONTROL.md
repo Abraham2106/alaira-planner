@@ -15,7 +15,7 @@
 
 ## Línea base
 
-La versión 0.1 es **propuesta, no aprobada**. El primer gate humano congela alcance M1, trazabilidad y reglas de cambio. Mantener al menos estado anterior, autor, hora y razonamiento del cambio; la replanificación no borra baseline aprobada.
+G0 congeló la **baseline M1** con el SRS 0.2.0 ([RR-0002](records/RR-0002-baseline-m1-y-g0.md)); cualquier cambio a esos requisitos exige una RR aprobada. Los requisitos de cortes posteriores siguen propuestos y se congelan en el gate previo a su corte. Mantener al menos estado anterior, autor, hora y razonamiento del cambio; la replanificación no borra baseline aprobada.
 
 ## Plantilla rápida RR
 

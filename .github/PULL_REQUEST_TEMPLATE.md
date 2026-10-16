@@ -24,6 +24,8 @@
 - [ ] `python scripts/validate_docs.py` ejecutado sin errores; documentos nuevos enlazados desde `docs/INDEX.md`.
 - [ ] No se atribuye avance por commits/mensajes sin aceptación.
 - [ ] Revisor distinto del implementador.
+- [ ] Todos los commits llevan firma DCO (`git commit -s`).
+- [ ] Dependencias nuevas con licencia compatible con Apache-2.0; solo datos sintéticos en pruebas.
 - [ ] Riesgos, migración y rollback descritos.
 
 ## Rollback

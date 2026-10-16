@@ -1,59 +1,81 @@
 # UX/UI y arquitectura de información de Alaira Planner
 
-**Estado:** guía de diseño conceptual, no pantallas implementadas. La interfaz importa para adopción, pero la diferenciación depende de reglas de producto y fiabilidad.
+**Estado:** guía de diseño conceptual; todavía no hay pantallas. Deriva del [PRODUCT_BRIEF](PRODUCT_BRIEF.md). La interfaz importa para la adopción, pero la diferenciación depende de las reglas de producto y de la fiabilidad.
 
 ## 1. Principios
 
-**Orientación al trabajo:** el mismo objeto de proyecto debe expresarse como WBS, Gantt, tabla, board, calendario, dashboard o chat sin cambiar su identidad canónica. **Revelación progresiva:** mostrar primero lo necesario para el rol/metodología, mantener disponible el detalle técnico. **Acciones con consecuencia visible:** toda aceptación, aprobación, cambio de baseline o ejecución asistida presenta quién puede actuar y qué cambiará. **Confianza:** distinguir «actividad», «solicitud de finalizar», «aceptado», «sincronización pendiente» y «predicción».
+- **Una verdad, muchas proyecciones:** el mismo Work Node se ve como WBS, Gantt, tabla, tablero, calendario, dashboard o chat sin cambiar su identidad. Las vistas no contienen copias del proyecto.
+- **Exception-first:** la dirección ve primero lo que exige una decisión (riesgos de fecha, bloqueos, propuestas pendientes, desviaciones), no listas completas.
+- **Revelación progresiva:** primero lo necesario para el rol y la metodología; el detalle técnico sigue disponible.
+- **Acciones con consecuencia visible:** toda aceptación, aprobación, cambio de baseline o acción de la IA muestra quién puede actuar, qué cambiará y qué no (REQ-093).
+- **Confianza:** distinguir siempre «actividad», «evidencia», «propuesta de IA», «solicitud de finalizar», «aceptado», «sincronización pendiente» y «predicción».
 
-## 2. Estructura de navegación candidata
+**Terminología:** la interfaz dice **Personas**, **Equipos**, **Capacidad** y **Recursos no humanos**; «recurso» no se usa como sinónimo de persona.
+
+## 2. Cuatro experiencias y la barra Ask/Command (REQ-096)
+
+| Experiencia | Para quién | Contenido |
+|---|---|---|
+| **My Work** | ejecutores | hoy, en progreso, esperando a alguien, necesita tu confirmación (propuestas de IA y stand-up) |
+| **Team** | leads | tablero, sprint, capacidad, bloqueos, release |
+| **Project Control** | PM | overview, WBS, timeline/Gantt, backlog, tablero, personas y capacidad, finanzas, riesgos, cambios, evidencia, reportes, Project Event Log |
+| **Portfolio** | dirección | objetivos, programas, salud, forecast, presupuesto, hitos, dependencias entre proyectos, decisiones requeridas |
+
+La barra **Ask/Command** está disponible en toda la aplicación, sujeta a permisos y a la política de autonomía. Ejemplos: «Muéstrame solo los paquetes que pueden afectar noviembre», «¿Qué cambió desde el steering del jueves?», «Simula agregar dos backend engineers tres semanas», «¿Cuánto dinero queda sin comprometer?», «Crea un change request para posponer Beta dos semanas».
+
+Corte: M1 entrega Project Control y My Work mínimos y la barra para consultas y comandos de la baseline; Team llega con M2; el centro de excepciones completo y Portfolio, con M4.
 
 ```mermaid
 flowchart TD
- W[Workspace / organización] --> P[Portfolio]
- W --> M[Mis tareas / bandeja de aprobaciones]
+ W[Organización] --> MW[My Work]
+ W --> TM[Team]
+ W --> PF[Portfolio]
  W --> C[Conectores y configuración]
- P --> PR[Proyecto]
- PR --> O[Resumen / salud]
- PR --> WB[WBS / entregables]
- PR --> G[Gantt / calendario]
+ PF --> PR[Project Control]
+ PR --> O[Overview y excepciones]
+ PR --> WB[WBS y entregables]
+ PR --> G[Timeline / Gantt]
  PR --> BA[Backlog / sprint / Kanban]
- PR --> EV[Evidencia / aceptación]
- PR --> FI[Presupuesto / EVM]
- PR --> RI[RAID / decisiones]
- PR --> AC[Actividad y auditoría]
+ PR --> CAP[Personas y capacidad]
+ PR --> EV[Evidencia y aceptación]
+ PR --> FI[Finanzas]
+ PR --> RI[Riesgos y cambios]
+ PR --> LOG[Project Event Log]
+ ASK[Ask / Command] -.-> W
 ```
 
-La navegación cambia priorización según rol, no cambia permisología del backend. Un PM predictivo aterriza en EDT/Gantt; PO en backlog; contribuyente en mis tareas/evidencias; finanzas en presupuesto. Un proyecto híbrido muestra fases y entrega, con drill-down a iteraciones.
+La navegación cambia la prioridad según el rol, no los permisos del backend.
 
-## 3. Vistas y microinteracciones necesarias
+## 3. Vistas y riesgos de UX
 
 | Vista | Señales esenciales | Riesgo de UX |
 |---|---|---|
-| Organización | selector tenant, permisos, invitaciones | confundir acceso de organizaciones |
-| Portfolio | salud, costos y fechas con fecha de corte | suma no comparable entre proyectos |
-| Proyecto | nombre, metodología, objetivos, hitos, desviación, dependencias | ocultar baseline |
-| WBS | árbol, peso, entregable, estado, responsable, aceptación | aparentar progreso desde subtareas |
-| Gantt | fechas, feriados, ruta crítica bajo supuestos, baseline | fechas falsas sin calendario |
-| Backlog/board | prioridad, sprint, WIP, lead/cycle | sobreinterpretar métricas de individuo |
-| Entregable | versiones, evidencia, criterios, revisor, historial | confundir «subido» con «aceptado» |
-| Finanzas | corte, BAC/AC/PV/EV, moneda, fórmulas | presentar una estimación como dato real |
-| Bot/IA | interpretación de intent, fuentes, permisos, confirmación, undo | completar objeto equivocado |
+| Portfolio | salud, costos y fechas con fecha de corte | sumar datos no comparables |
+| Overview del proyecto | excepciones, hitos en riesgo, propuestas pendientes, frescura de evidencia | volver a una lista de tareas atrasadas |
+| WBS | árbol, peso, estrategia de progreso, responsable, aceptación | aparentar avance desde subtareas |
+| Timeline / Gantt | baseline, forecast y real, calendario, ruta crítica | fechas falsas sin calendario |
+| Backlog / tablero | prioridad, sprint, WIP, lead y cycle time | métricas individuales |
+| Entregable | versiones, evidencia, criterios cumplidos y pendientes, revisor, historial | confundir «subido» con «aceptado» |
+| Finanzas | gastado, comprometido, saldo gastable, forecast al final; CPI/SPI como detalle | presentar una estimación como dato real |
+| Propuesta de IA | qué cambia, evidencia citada, criterios, consecuencias, nivel de autonomía | completar el objeto equivocado |
+| Project Event Log | quién, qué, cuándo, por qué, evidencia, efecto | registro ilegible |
 
 ## 4. Flujos clave para prototipo
 
-**Primer proyecto:** elegir plantilla → definir objetivo y método → agregar 2 entregables → dueño/revisor y criterios → invitar → ver progreso inicial real 0% hasta aceptación.
+**Primer proyecto:** describir el proyecto o elegir plantilla → la IA propone WBS y backlog iniciales (agente Intake, M4; en M1, plantilla) → definir `delivery_profile` → entregables con responsable, revisor y criterios → invitar → avance inicial real 0 %.
 
-**Solicitar cierre:** tarea → «solicitar finalización» → adjuntar evidencia o justificar ausencia según política → mostrar pendientes → revisor recibe petición → aprueba/rechaza → notificación y auditoría.
+**Evidencia a avance:** PR mergeado → EvidenceEvent vinculado → propuesta con criterios cumplidos y pendientes → confirmación del responsable en Slack o My Work → recálculo → el PM solo ve la excepción si un hito cambia de riesgo.
 
-**Acción IA:** sugerencia citada → botón «ver cambios propuestos» → confirmar como actor → ejecutar herramienta con permisos → mostrar resultado o rechazo; jamás mensaje genérico de éxito sin confirmación del servicio.
+**Acción de IA:** propuesta citada → «ver cambios propuestos» → confirmar como actor → ejecución con permisos → resultado con consecuencias o rechazo; nunca un éxito genérico sin confirmación del servicio.
 
-**Híbrido:** fase y hito → paquete WBS → tablero del equipo → trabajo concluido → validación de entregable del gate. Estado de sprint no equivale a aceptación de fase.
+**Stand-up asíncrono (M2):** cada persona recibe su actualización sugerida a partir de la evidencia, la confirma o corrige; el PM recibe un resumen por excepciones.
+
+**Híbrido:** fase y hito → paquete WBS → tablero del equipo → trabajo terminado → validación del entregable del gate. El estado del sprint no equivale a la aceptación de la fase; el sistema traduce el progreso adaptativo en consecuencias predictivas.
 
 ## 5. Accesibilidad, móvil y rendimiento percibido
 
-Target WCAG 2.2 AA a verificar: navegación de teclado, orden de foco, nombres accesibles en drag/drop, alternativas tabulares al Gantt, gráficos acompañados de datos, colores no como única señal, contrastes, mensajes de error y anuncios de estado. Mobile prioriza consultar/adjuntar/revisar; planificación de dependencias complejas puede tener versión desktop con alternativa accesible. Mostrar loading, estado offline/degraded y éxito confirmado según back-end.
+Objetivo WCAG 2.2 AA verificable: teclado, orden de foco, nombres accesibles en arrastrar y soltar, alternativa tabular al Gantt, gráficos con datos, color nunca como única señal, contraste, errores y anuncios de estado. Web de escritorio primero; móvil para My Work, aprobaciones y actualizaciones. Mostrar carga, estado degradado y éxito confirmado por el backend.
 
 ## 6. Validación de interfaz
 
-Test con PM predictivo, PO ágil, revisor documental y finanzas; evaluar tiempo hasta primer proyecto, errores al elegir objeto desde Slack, accesibilidad del flujo aprobación y comprensión de EV/baseline. No fijar librería UI hasta ADR y prototipo evaluados.
+Pruebas con PM predictivo, PO ágil, revisor documental y finanzas: tiempo hasta el primer proyecto, errores al elegir objeto desde Slack, comprensión de las propuestas de IA, accesibilidad del flujo de aprobación y comprensión de saldo y forecast. La librería de componentes se elige en la TASK que la introduce (ADR-0006).
