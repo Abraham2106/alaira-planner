@@ -28,6 +28,8 @@ describe("TASK-0108 / ADR-0005 (80/20)", () => {
 
     expect(result.ok).toBe(false);
     if (!result.ok) {
+      expect(result.modelRef).toBe("fake-deterministic/v1");
+      expect(result.limitedAvailability).toBe(true);
       expect(result.reason).toBe("direct_write_forbidden");
       expect(result.audit.some((e) => e.phase === "policy")).toBe(true);
     }
@@ -46,6 +48,10 @@ describe("TASK-0108 / ADR-0005 (80/20)", () => {
       expect(result.proposal.typedCommand).toBe("propose_progress_update");
       expect(result.proposal.resolution).toBe("pending");
       expect(result.proposal.autonomyLevel).toBe("proponer");
+      expect(result.proposal.modelRef).toBe("fake-deterministic/v1");
+      expect(result.proposal.limitedAvailability).toBe(true);
+      expect(result.modelRef).toBe("fake-deterministic/v1");
+      expect(result.limitedAvailability).toBe(true);
     }
   });
 
@@ -63,6 +69,8 @@ describe("TASK-0108 / ADR-0005 (80/20)", () => {
 
     expect(result.ok).toBe(true);
     if (result.ok && result.kind === "executed") {
+      expect(result.modelRef).toBe("fake-deterministic/v1");
+      expect(result.limitedAvailability).toBe(true);
       expect(result.tool).toBe("get_project");
       expect(result.result).toMatchObject({ projectId, source: "typed_tool" });
       expect(result.audit.map((e) => e.phase)).toEqual([

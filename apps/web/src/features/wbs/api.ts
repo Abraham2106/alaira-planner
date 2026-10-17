@@ -1,11 +1,9 @@
 import { schemas as wbsSchemas } from "@alaira/contracts/wbs";
-import { z, type ZodType } from "zod";
-import { ApiClientError } from "../../lib/api-client/errors.js";
-import { createApiClient } from "../../lib/api-client/http-client.js";
-import { toApiV1Path } from "../../lib/api-client/paths.js";
-import { jsonWriteHeaders } from "./csrf.js";
-
-const client = createApiClient();
+import { z } from "zod";
+import {
+  createApiClient,
+  type ApiClientOptions,
+} from "../../lib/api-client/http-client.js";
 
 const defaultCriteria = [{ key: "done", text: "Criterio de aceptación sintético", required: true }];
 
@@ -14,33 +12,8 @@ const ReparentNodeResponse = z.object({
   parentWorkNodeId: z.string(),
 });
 
-async function writeJson<T>(
-  method: "POST" | "PATCH",
-  path: string,
-  schema: ZodType<T>,
-  body: unknown,
-): Promise<T> {
-  const url = toApiV1Path(path);
-  const response = await fetch(url, {
-    method,
-    credentials: "same-origin",
-    headers: jsonWriteHeaders(),
-    body: JSON.stringify(body),
-  });
-  let payload: unknown;
-  const contentType = response.headers.get("content-type") ?? "";
-  if (contentType.includes("application/json")) {
-    payload = await response.json();
-  } else {
-    payload = await response.text();
-  }
-  if (!response.ok) {
-    throw new ApiClientError(response.status, payload);
-  }
-  return schema.parse(payload);
-}
-
-export function createWbsApi() {
+export function createWbsApi(options?: ApiClientOptions) {
+  const client = createApiClient(options);
   return {
     listTree(projectId: string) {
       return client.get(
@@ -56,8 +29,7 @@ export function createWbsApi() {
         parentWorkNodeId?: string;
       },
     ) {
-      return writeJson(
-        "POST",
+      return client.post(
         `projects/${encodeURIComponent(projectId)}/wbs/packages`,
         wbsSchemas.PackageResponse,
         {
@@ -67,8 +39,7 @@ export function createWbsApi() {
       );
     },
     reparentNode(projectId: string, workNodeId: string, parentWorkNodeId: string) {
-      return writeJson(
-        "PATCH",
+      return client.patch(
         `projects/${encodeURIComponent(projectId)}/wbs/nodes/${encodeURIComponent(workNodeId)}/parent`,
         ReparentNodeResponse,
         { parentWorkNodeId },
@@ -82,8 +53,7 @@ export function createWbsApi() {
         linkKind: "backlog_projection" | "goal";
       },
     ) {
-      return writeJson(
-        "POST",
+      return client.post(
         `projects/${encodeURIComponent(projectId)}/wbs/projection-links`,
         wbsSchemas.ProjectionLinkResponse,
         body,

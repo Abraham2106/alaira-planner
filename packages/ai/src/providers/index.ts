@@ -1,4 +1,5 @@
 export {
+  FAKE_DETERMINISTIC_MODEL_REF,
   FakeDeterministicProvider,
   fakeDeterministicInterpret,
   interpretObservation,

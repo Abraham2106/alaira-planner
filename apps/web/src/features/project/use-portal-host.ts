@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 /** Waits for the shell `#main-content` landmark (rendered by feature `shell`). */
-export function usePortalHost(elementId = "main-content"): HTMLElement | null {
+export function usePortalHost(elementId = "feature-host"): HTMLElement | null {
   const [host, setHost] = useState<HTMLElement | null>(null);
 
   useEffect(() => {

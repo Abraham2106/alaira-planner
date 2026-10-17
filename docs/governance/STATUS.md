@@ -22,6 +22,10 @@
 - 23 REQ nuevos y 2 NFR nuevos.
 - Seis paquetes WBS nuevos.
 
+## Corte 2026-10-16 — implementación M1 provisional
+
+La implementación de M1 está en **provisional** y **G1 no está aprobado**. Donde el registro ya decía `integrated_provisional`, sigue así; TASK-0133, TASK-0125, TASK-0129 y TASK-0130 siguen `proposed`. Hay pruebas de código en los runs de ese día; no cierran la batería de aceptación ni marcan ningún requisito como `accepted`. Siguen abiertas las gates humanas de RLS (0002), auth (0101), authz (0106), RLS de asignaciones (0114), ADR-0005 (0108), OpenAPI (0112), línea base (0116), discovery (0003) y los umbrales de evals (0128). El paquete para el mantenedor está en el [cierre parcial](../agents/runs/2026-10-16-m1-cierre-parcial.md).
+
 ## Revisión documental 0.1.1 (2026-10-15)
 
 Correcciones editoriales sin cambio de obligaciones:

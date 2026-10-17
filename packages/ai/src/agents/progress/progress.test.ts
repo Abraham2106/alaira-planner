@@ -56,6 +56,8 @@ describe("TASK-0126 Progress agent (80/20)", () => {
     expect(result.suggestedProgressPercent).toBeLessThan(100);
     expect(result.progressProposal?.proposedPercentComplete).toBe(result.suggestedProgressPercent);
     expect(result.summary).toMatch(/Cannot close/i);
+    expect(result.modelRef).toBe("fake-deterministic/v1");
+    expect(result.limitedAvailability).toBe(true);
   });
 
   it("context-only evidence does not satisfy criteria", async () => {

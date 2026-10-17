@@ -14,9 +14,10 @@ describe("control-tower hash routes", () => {
     expect(viewFromHash("#/projects/control")).toBe("project-control");
   });
 
-  it("exposes global ask on home and projects overview only", () => {
+  it("exposes global ask on home only", () => {
     expect(isGlobalAskRoute("#/")).toBe(true);
-    expect(isGlobalAskRoute("#/projects")).toBe(true);
+    expect(isGlobalAskRoute("#/projects")).toBe(false);
+    expect(viewFromHash("#/projects")).toBe("inactive");
     expect(isGlobalAskRoute("#/projects/wbs")).toBe(false);
     expect(isGlobalAskRoute("#/projects/gantt")).toBe(false);
     expect(viewFromHash("#/")).toBe("global-ask");

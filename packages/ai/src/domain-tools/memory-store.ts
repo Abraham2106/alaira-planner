@@ -1,6 +1,13 @@
 import type { DomainToolStore, WorkItemSnapshot } from "./store.js";
 import type { ToolExecutionContext } from "../tools/registry.js";
 
+const memoryStores = new WeakSet<DomainToolStore>();
+
+/** True for the in-memory test double. Production jobs must refuse these stores. */
+export function isMemoryDomainToolStore(store: DomainToolStore): boolean {
+  return memoryStores.has(store);
+}
+
 const defaultWorkItem = (ctx: ToolExecutionContext): WorkItemSnapshot => ({
   workItemId: ctx.targetNodeId,
   nodeType: "deliverable",
@@ -24,7 +31,7 @@ export function createMemoryDomainToolStore(
   ];
   const satisfied = new Set(overrides.satisfied ?? ["pr_merged", "checks_green", "review_ok"]);
 
-  return {
+  const store: DomainToolStore = {
     async getProject(ctx) {
       return {
         projectId: ctx.projectId,
@@ -45,6 +52,8 @@ export function createMemoryDomainToolStore(
       return { evidenceId, workItemId: ctx.targetNodeId, linked: true };
     },
   };
+  memoryStores.add(store);
+  return store;
 }
 
 export const defaultMemoryDomainToolStore = createMemoryDomainToolStore();

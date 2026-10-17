@@ -24,7 +24,6 @@ export function isGlobalAskRoute(hash: string): boolean {
   const normalized = normalizeHash(hash);
   if (isMyWorkRoute(normalized) || isProjectControlRoute(normalized)) return false;
   if (normalized === "#/" || normalized.startsWith("#/?")) return true;
-  if (normalized === "#/projects" || normalized.startsWith("#/projects?")) return true;
   return false;
 }
 

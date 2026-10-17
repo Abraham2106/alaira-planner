@@ -2,6 +2,8 @@
 
 **Estado:** asignación por rangos alineada con el [PRODUCT_BRIEF](../product/PRODUCT_BRIEF.md) y la baseline M1 de [RR-0002](records/RR-0002-baseline-m1-y-g0.md). Los TC son pruebas **planificadas, no ejecutadas**. La columna «Corte» sigue el [ROADMAP](../planning/ROADMAP.md); cuando un rango abarca varios cortes, se indica la excepción entre paréntesis. La aceptación requiere evidencia enlazada y verificación independiente.
 
+**Nota de corte 2026-10-16.** Hay pruebas de código provisional (typecheck y vitest citados en los runs de las pistas A, B y C). No son la batería de aceptación del SRS y no cierran el gate. Ningún REQ de esta matriz pasa a `accepted`.
+
 ## Requisitos funcionales
 
 | Requisitos | WBS principal | Prueba(s) | Corte |
@@ -64,3 +66,4 @@ Si una RR añade o modifica un requisito, se crean o actualizan filas y TC en el
 |---|---|---|---|---|
 | baseline M1 (RR-0002) | approved / not_implemented | no | no | por designar |
 | resto | proposed / not_implemented | no | no | por designar |
+| corte 2026-10-16 (código M1) | provisional / gate abierto | pruebas de código en los runs; batería SRS no cerrada | no | sin `accepted` |

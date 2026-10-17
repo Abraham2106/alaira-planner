@@ -1,13 +1,15 @@
 import type { OpenAiCompatibleProvider } from "../providers/openai-compatible.js";
 import { extractFirstToolCall } from "../providers/openai-compatible.js";
-import { interpretObservation } from "../providers/fake-deterministic.js";
+import {
+  FAKE_DETERMINISTIC_MODEL_REF,
+  FakeDeterministicProvider,
+  interpretObservation,
+} from "../providers/fake-deterministic.js";
 import type { DomainToolStore } from "../domain-tools/store.js";
 import { executeTypedTool } from "../tools/registry.js";
 import { evaluatePolicy } from "./policy-gateway.js";
 import { buildAiProposal } from "./proposal.js";
 import type { AiRuntimeInput, AiRuntimeResult, RuntimeAuditEntry } from "./types.js";
-
-const MODEL_REF = "fake-deterministic/v1";
 
 function pushAudit(
   audit: RuntimeAuditEntry[],
@@ -40,10 +42,17 @@ export async function runAiRuntime(
     `tenant:${input.actor.tenantId};project:${input.projectId};node:${targetNodeId}`,
   );
 
+  const fallbackProvider =
+    !options.provider || options.provider instanceof FakeDeterministicProvider;
+  let availability: { modelRef: string; limitedAvailability: boolean } = {
+    modelRef: FAKE_DETERMINISTIC_MODEL_REF,
+    limitedAvailability: true,
+  };
+
   let plannedTool: ReturnType<typeof interpretObservation>;
   if (options.provider) {
     const completion = await options.provider.createChatCompletion({
-      model: MODEL_REF,
+      model: FAKE_DETERMINISTIC_MODEL_REF,
       messages: [
         {
           role: "system",
@@ -56,12 +65,22 @@ export async function runAiRuntime(
     const toolCall = extractFirstToolCall(completion);
     if (!toolCall) {
       plannedTool = interpretObservation(input.observation);
+      availability = {
+        modelRef: FAKE_DETERMINISTIC_MODEL_REF,
+        limitedAvailability: true,
+      };
     } else {
       plannedTool = {
         intent: toolCall.name,
         tool: toolCall.name,
         arguments: toolCall.arguments,
       };
+      if (!fallbackProvider) {
+        const reported = completion.model.trim();
+        if (reported && reported !== FAKE_DETERMINISTIC_MODEL_REF) {
+          availability = { modelRef: reported, limitedAvailability: false };
+        }
+      }
     }
   } else {
     plannedTool = interpretObservation(input.observation);
@@ -82,6 +101,7 @@ export async function runAiRuntime(
       ok: false,
       reason: decision.code,
       audit,
+      ...availability,
     };
   }
 
@@ -114,11 +134,12 @@ export async function runAiRuntime(
           : { preview },
       citedEvidenceIds,
       rationale: input.observation.slice(0, 500),
-      modelRef: MODEL_REF,
+      modelRef: availability.modelRef,
+      limitedAvailability: availability.limitedAvailability,
     });
 
     pushAudit(audit, "verify", `proposal:${proposal.id}:${proposal.resolution}`);
-    return { ok: true, kind: "proposal", proposal, audit };
+    return { ok: true, kind: "proposal", proposal, audit, ...availability };
   }
 
   pushAudit(audit, "policy", "allow_execute");
@@ -142,5 +163,6 @@ export async function runAiRuntime(
     tool: decision.tool,
     result,
     audit,
+    ...availability,
   };
 }

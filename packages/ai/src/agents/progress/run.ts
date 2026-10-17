@@ -1,5 +1,6 @@
 import { executeDomainTool } from "../../domain-tools/execute.js";
 import { defaultMemoryDomainToolStore } from "../../domain-tools/memory-store.js";
+import { FAKE_DETERMINISTIC_MODEL_REF } from "../../providers/fake-deterministic.js";
 import type { DomainToolStore } from "../../domain-tools/store.js";
 import type { ToolExecutionContext } from "../../tools/registry.js";
 import { domainStoreWithEvidence } from "./evidence-store.js";
@@ -28,6 +29,7 @@ export type RunProgressAgentInput = {
  * Progress agent (WBS-7.4): gather evidence → evaluate DoD → propose partial progress; never auto-accept.
  */
 export async function runProgressAgent(input: RunProgressAgentInput): Promise<ProgressAgentResult> {
+  // Omitted store is the in-memory test double. The production worker must pass a persistent store.
   const baseStore = input.store ?? defaultMemoryDomainToolStore;
   const store = domainStoreWithEvidence(baseStore, input.evidence);
 
@@ -68,5 +70,7 @@ export async function runProgressAgent(input: RunProgressAgentInput): Promise<Pr
       mayCloseItem,
       suggestedProgressPercent,
     }),
+    modelRef: FAKE_DETERMINISTIC_MODEL_REF,
+    limitedAvailability: true,
   };
 }

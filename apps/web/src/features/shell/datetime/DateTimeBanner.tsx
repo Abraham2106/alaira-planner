@@ -27,12 +27,20 @@ export function DateTimeBanner({ locale, timeZone }: DateTimeBannerProps) {
     return () => window.clearInterval(id);
   }, [resolvedLocale, resolvedZone]);
 
+  const quietLabel = new Intl.DateTimeFormat(resolvedLocale, {
+    timeZone: resolvedZone,
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(new Date(parts.isoUtc));
+
   return (
     <div className="shell-datetime" aria-live="polite" aria-atomic="true">
-      <time dateTime={parts.isoUtc}>{parts.localLabel}</time>
-      <div>
-        Zona: <strong>{parts.timeZoneId}</strong> ({parts.utcOffsetLabel})
-      </div>
+      <time dateTime={parts.isoUtc} title={`${parts.timeZoneId} (${parts.utcOffsetLabel})`}>
+        {quietLabel}
+      </time>
     </div>
   );
 }

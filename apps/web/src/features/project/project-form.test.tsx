@@ -36,7 +36,7 @@ describe("ProjectWorkspace a11y", () => {
     name.focus();
     expect(name).toHaveFocus();
     fireEvent.keyDown(name, { key: "Tab" });
-    const submit = screen.getByRole("button", { name: /Crear vía API/i });
+    const submit = screen.getByRole("button", { name: /Crear proyecto/i });
     submit.focus();
     expect(submit).toHaveFocus();
   });

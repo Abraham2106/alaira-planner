@@ -15,6 +15,8 @@ export type GanttTaskRow = {
   forecastFinishVsBaselineMinutes: number | null;
   actualFinishVsBaselineMinutes: number | null;
   actualCostVsBaselineMinor: number | null;
+  /** Presente cuando el forecast canónico marca la tarea en la ruta crítica. */
+  isCritical?: boolean;
 };
 
 export type TimelineBounds = {

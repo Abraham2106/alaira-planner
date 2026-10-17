@@ -12,9 +12,10 @@ export type EventLogRow = {
 
 type EventLogListProps = {
   entries: EventLogRow[];
+  loaded?: boolean;
 };
 
-export function EventLogList({ entries }: EventLogListProps) {
+export function EventLogList({ entries, loaded = true }: EventLogListProps) {
   const listId = useId();
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
   const [focusedIndex, setFocusedIndex] = useState(0);
@@ -47,21 +48,26 @@ export function EventLogList({ entries }: EventLogListProps) {
   };
 
   if (entries.length === 0) {
-    return <p className="planner-muted">Sin entradas en el Project Event Log para este proyecto.</p>;
+    return (
+      <p className="ct-empty">
+        {loaded ? "No hay registros en este proyecto." : "Cargá el proyecto para ver el registro."}
+      </p>
+    );
   }
 
   return (
-    <div className="ct-event-log">
-      <ul
-        id={listId}
-        className="ct-event-log-list"
-        aria-label="Project Event Log legible"
-        role="list"
-      >
+    <div className="ct-sheet">
+      <div className="ct-row ct-row-log ct-row-head" aria-hidden="true">
+        <span>#</span>
+        <span>Cuándo</span>
+        <span>Tipo</span>
+        <span>Qué pasó</span>
+      </div>
+      <ul id={listId} className="ct-rows" aria-label="Project Event Log legible" role="list">
         {entries.map((entry, index) => (
           <li
             key={entry.id}
-            className="ct-event-log-item"
+            className="ct-row ct-row-log"
             tabIndex={index === focusedIndex ? 0 : -1}
             ref={(el) => {
               itemRefs.current[index] = el;
@@ -69,20 +75,18 @@ export function EventLogList({ entries }: EventLogListProps) {
             onFocus={() => setFocusedIndex(index)}
             onKeyDown={(event) => onKeyDown(event, index)}
           >
-            <div className="ct-event-log-meta">
-              <span className="ct-event-log-seq">#{entry.sequenceNum}</span>
-              <time dateTime={entry.occurredAt}>
-                {new Date(entry.occurredAt).toLocaleString(locale)}
-              </time>
-              <span className="ct-event-log-type">{entry.eventType}</span>
-            </div>
-            <p className="ct-event-log-readable">{entry.readable}</p>
-            <p className="planner-muted ct-event-log-summary">{entry.summary}</p>
+            <span className="ct-row-id">#{entry.sequenceNum}</span>
+            <time dateTime={entry.occurredAt}>{new Date(entry.occurredAt).toLocaleString(locale)}</time>
+            <span className="ct-mono-inline">{entry.eventType}</span>
+            <span className="ct-row-summary" title={`${entry.readable} ${entry.summary}`}>
+              {entry.readable}
+              {entry.summary ? ` — ${entry.summary}` : ""}
+            </span>
           </li>
         ))}
       </ul>
-      <p className="planner-muted" id={`${listId}-hint`}>
-        Flechas arriba/abajo, Inicio y Fin para recorrer entradas del log (REQ-097).
+      <p className="ct-note" id={`${listId}-hint`}>
+        Flechas arriba/abajo, Inicio y Fin para recorrer el log.
       </p>
     </div>
   );

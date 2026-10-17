@@ -1,5 +1,6 @@
 import { KeyboardEvent, useCallback, useId, useRef, useState } from "react";
 import { resolveDefaultLocale } from "../shell/datetime/format.js";
+import { CriticalMark } from "./GanttBars.js";
 import type { GanttTaskRow } from "./gantt-model.js";
 import { formatEpochMs, formatVarianceMinutes } from "./format-schedule.js";
 
@@ -37,7 +38,12 @@ export function GanttTable({ rows }: GanttTableProps) {
 
   return (
     <div className="gantt-table-wrap">
-      <table className="gantt-table" id={tableId} aria-label="Cronograma tabular con desviación vs baseline">
+      <table
+        className="gantt-table"
+        id={tableId}
+        aria-label="Cronograma tabular con desviación vs baseline"
+        aria-describedby={`${tableId}-hint`}
+      >
         <thead>
           <tr>
             <th scope="col">Tarea</th>
@@ -60,7 +66,15 @@ export function GanttTable({ rows }: GanttTableProps) {
               onFocus={() => setFocusedIndex(index)}
               onKeyDown={(event) => onRowKeyDown(event, index)}
             >
-              <th scope="row">{row.workNodeId}</th>
+              <th scope="row">
+                <span className="gantt-id">{row.workNodeId}</span>
+                {row.isCritical ? (
+                  <>
+                    {" "}
+                    <CriticalMark />
+                  </>
+                ) : null}
+              </th>
               <td>{formatEpochMs(row.baselineFinishMs, locale)}</td>
               <td>{formatEpochMs(row.forecastFinishMs, locale)}</td>
               <td>{formatEpochMs(row.actualFinishMs, locale)}</td>
@@ -70,7 +84,7 @@ export function GanttTable({ rows }: GanttTableProps) {
           ))}
         </tbody>
       </table>
-      <p className="planner-muted" id={`${tableId}-hint`}>
+      <p className="gantt-hint" id={`${tableId}-hint`}>
         Usa flechas arriba/abajo, Inicio y Fin para moverte entre filas cuando una fila tiene el foco.
       </p>
     </div>

@@ -1,5 +1,5 @@
 import { createPortal } from "react-dom";
-import { ProjectWorkspace } from "./ProjectWorkspace.js";
+import { ProjectDirectory } from "../workspace/ProjectDirectory.js";
 import { usePortalHost } from "./use-portal-host.js";
 import { useProjectsHash } from "./use-projects-hash.js";
 
@@ -14,5 +14,5 @@ export function Feature() {
     return null;
   }
 
-  return createPortal(<ProjectWorkspace />, host);
+  return createPortal(<ProjectDirectory />, host);
 }

@@ -7,6 +7,7 @@ export type {
   AiRuntimeResult,
   AiRuntimeSuccess,
   AiRuntimeFailure,
+  ModelDisclosure,
   PlannedToolCall,
   RuntimeAuditEntry,
 } from "./types.js";

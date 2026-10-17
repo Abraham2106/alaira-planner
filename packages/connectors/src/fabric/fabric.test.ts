@@ -31,15 +31,18 @@ describe("connector fabric (TASK-0119)", () => {
   it("stale timestamp", () => {
     const ts = 1_000;
     const sig = signWebhookPayload(SYNTHETIC_WEBHOOK_SECRET, ts, "{}");
-    expect(
-      verifyWebhookSignature({
-        signingSecret: SYNTHETIC_WEBHOOK_SECRET,
-        rawBody: "{}",
-        timestampHeader: String(ts),
-        signatureHeader: sig,
-        nowMs: 9_000_000_000,
-      }).reason,
-    ).toBe("stale_timestamp");
+    const verified = verifyWebhookSignature({
+      signingSecret: SYNTHETIC_WEBHOOK_SECRET,
+      rawBody: "{}",
+      timestampHeader: String(ts),
+      signatureHeader: sig,
+      nowMs: 9_000_000_000,
+    });
+    expect(verified.ok).toBe(false);
+    if (verified.ok) {
+      throw new Error("expected a stale timestamp rejection");
+    }
+    expect(verified.reason).toBe("stale_timestamp");
   });
 
   it("dedup + hash", () => {

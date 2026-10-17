@@ -24,4 +24,7 @@ export type ProgressAgentResult = {
     proposedPercentComplete: number;
   };
   summary: string;
+  /** Deterministic stub id. This agent does not call a production model. */
+  modelRef: "fake-deterministic/v1";
+  limitedAvailability: true;
 };

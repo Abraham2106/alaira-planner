@@ -62,6 +62,8 @@ export const aiProposalSchema = z.object({
   resolution: aiProposalResolutionSchema,
   rationale: z.string().max(4000),
   modelRef: z.string().max(120),
+  /** Set when the proposal came from the deterministic fallback, not a production model. */
+  limitedAvailability: z.boolean().optional(),
 });
 
 export const policyDecisionSchema = z.discriminatedUnion("outcome", [

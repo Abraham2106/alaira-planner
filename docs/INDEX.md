@@ -29,6 +29,10 @@ Instrucciones expresas del mantenedor > requisitos aprobados ([SRS](requirements
 
 ## Mapa completo
 
+- [TASK-0131: rediseño comercial UI](agents/tasks/TASK-0131-ui-comercial.md): asignación directa, validaciones y rollback.
+- [TASK-0132: cliente de sesión](agents/tasks/TASK-0132-sesion-cliente.md): pista A; no accepted.
+- [TASK-0133: WorkHub persistente](agents/tasks/TASK-0133-workhub-persistente.md): pista B; ficha proposed; el run tiene código y vitest 23/23.
+
 ### Producto
 
 | Documento | Para qué sirve | Autoridad |
@@ -132,6 +136,14 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [RUN 2026-10-16 M1c→M1d](agents/runs/2026-10-16-planner-m1c-cierre-m1d-ola4.md) | Checkpoint Planner: cierre M1c, apertura M1d | Run |
 | [RUN 2026-10-16 M1d 0124](agents/runs/2026-10-16-planner-m1d-0124-cierre-ready.md) | Checkpoint Planner: 0124 provisional; ready 0126–0128 | Run |
 | [RUN 2026-10-16 M1d cierre](agents/runs/2026-10-16-planner-m1d-cierre-implementacion.md) | Checkpoint Planner: 0122–0128 provisional; gates G1 humanos | Run |
+| [RUN 2026-10-16 snapshot](agents/runs/2026-10-16-m1-platform-snapshot.md) | Inventario antes de la pista A | Run |
+| [RUN 2026-10-16 task plan](agents/runs/2026-10-16-m1-task-plan.md) | Plan de la pista A; B/C/D reservadas en ese momento | Run |
+| [RUN 2026-10-16 pista A](agents/runs/2026-10-16-m1-pista-a.md) | TASK-0132 provisional; Postgres del flujo UI not_run | Run |
+| [RUN 2026-10-16 pista B](agents/runs/2026-10-16-m1-pista-b.md) | Proyecto activo en inicio, paquetes, cronograma y control; vitest 23/23; ficha 0133 proposed | Run |
+| [RUN 2026-10-16 pista C](agents/runs/2026-10-16-m1-pista-c.md) | Tick persiste AIProposal pending; TASK-0125 no implementada | Run |
+| [RUN 2026-10-16 revisión C](agents/runs/2026-10-16-m1-revision-c.md) | Approve del tick; no aprueba G1 | Run |
+| [RUN 2026-10-16 cierre parcial M1](agents/runs/2026-10-16-m1-cierre-parcial.md) | Paquete al mantenedor: M1 provisional; G1 no aprobado | Run |
+| [G1 borrador](quality/reports/G1.md) | Borrador de G1; no aprobado | Evidencia (no cierra el gate) |
 | [Plantilla RUN](agents/runs/TEMPLATE.md) | Registro por ejecución de agente | Plantilla |
 | [SWARM_MASTER_PROMPT](agents/prompts/SWARM_MASTER_PROMPT.md) | Prompt del Planner para construir M1 con un enjambre de agentes Composer | Procedimiento operativo |
 
@@ -183,6 +195,7 @@ Solo los ADR en estado `Accepted` obligan. Los condicionados obligan desde ya y 
 | [RACI](governance/RACI.md) | Responsabilidades por decisión | Gestión |
 | [GLOSSARY](governance/GLOSSARY.md) | Términos y siglas | Referencia |
 | [ECOSYSTEM_RESEARCH](research/ECOSYSTEM_RESEARCH.md) | Plan de benchmarking de competidores | Investigación, no verdad del producto |
+| [UI_TASTE_PROMPTS](research/UI_TASTE_PROMPTS.md) | Prompts para rehacer la UI con la identidad de Alaira (tokens, estados, pantallas), con investigación de taste y de ClickUp/Planner/Jira/Slack | Investigación y procedimiento propuesto |
 | [NON_CODE_EVIDENCE](examples/NON_CODE_EVIDENCE.md) | Avance verificable fuera de GitHub | Ejemplo ilustrativo |
 | [SLACK_BOT_FLOW](examples/SLACK_BOT_FLOW.md) | Conversación segura con el bot y ramas adversariales | Ejemplo ilustrativo |
 

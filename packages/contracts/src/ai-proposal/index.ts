@@ -25,10 +25,16 @@ const AiProposalRecord = aiProposalSchema
   resolvedAt: z.string().datetime().optional(),
   });
 
+const modelDisclosure = {
+  modelRef: z.string().max(120).optional(),
+  limitedAvailability: z.boolean().optional(),
+};
+
 const RunObservationDenied = z.object({
   ok: z.literal(false),
   reason: z.string(),
   audit: z.array(runtimeAuditEntrySchema),
+  ...modelDisclosure,
 });
 
 const RunObservationExecuted = z.object({
@@ -37,6 +43,7 @@ const RunObservationExecuted = z.object({
   tool: typedToolNameSchema.exclude(["__direct_write__"]),
   result: z.record(z.unknown()),
   audit: z.array(runtimeAuditEntrySchema),
+  ...modelDisclosure,
 });
 
 const RunObservationProposal = z.object({

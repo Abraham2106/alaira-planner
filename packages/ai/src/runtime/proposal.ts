@@ -12,6 +12,7 @@ export function buildAiProposal(input: {
   citedEvidenceIds: readonly string[];
   rationale: string;
   modelRef: string;
+  limitedAvailability?: boolean;
 }): AiProposalDto {
   return {
     id: input.id,
@@ -25,5 +26,8 @@ export function buildAiProposal(input: {
     resolution: input.autonomyLevel === "informar" ? "applied" : "pending",
     rationale: input.rationale,
     modelRef: input.modelRef,
+    ...(input.limitedAvailability === undefined
+      ? {}
+      : { limitedAvailability: input.limitedAvailability }),
   };
 }

@@ -20,7 +20,8 @@ describe("WbsWorkspace", () => {
   it("wraps legends inside fieldset elements", () => {
     render(<WbsWorkspace />);
     const fieldsets = screen.getAllByRole("group");
-    expect(fieldsets.length).toBe(4);
+    expect(fieldsets.length).toBe(3);
+    expect(screen.queryByLabelText(/ID de proyecto/i)).toBeNull();
     for (const fieldset of fieldsets) {
       expect(fieldset.tagName).toBe("FIELDSET");
       expect(fieldset.querySelector("legend")).toBeTruthy();

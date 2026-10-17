@@ -1,5 +1,6 @@
 import { v7 as uuidv7 } from "uuid";
 import { runAiRuntime } from "@alaira/ai/runtime";
+import { FAKE_DETERMINISTIC_MODEL_REF } from "@alaira/ai/providers";
 import type { AiProposalDto, RuntimeAuditEntryDto } from "@alaira/contracts/ai";
 import { getToolDefinition } from "@alaira/contracts/ai";
 import type { AiProposalRecordDto } from "@alaira/contracts/ai-proposal";
@@ -89,6 +90,7 @@ function rowToDto(row: AiProposalRow, projectExternalId: string): AiProposalReco
     resolution: row.resolution as AiProposalDto["resolution"],
     rationale: row.rationale,
     modelRef: row.model_ref,
+    limitedAvailability: row.model_ref === FAKE_DETERMINISTIC_MODEL_REF,
     approverUserId: row.approver_user_id
       ? toExternalId("user", row.approver_user_id)
       : undefined,
@@ -263,7 +265,8 @@ export async function runObservationCommand(
           citedEvidenceIds: body.citedEvidenceIds ?? [],
           resolution: "applied",
           rationale: body.observation.slice(0, 500),
-          modelRef: "fake-deterministic/v1",
+          modelRef: FAKE_DETERMINISTIC_MODEL_REF,
+          limitedAvailability: true,
         };
         await insertProposal(client, {
           id: proposalId,

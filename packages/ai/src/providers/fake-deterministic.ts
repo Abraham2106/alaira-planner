@@ -5,6 +5,9 @@ import type {
   OpenAiCompatibleProvider,
 } from "./openai-compatible.js";
 
+/** Truthful id for the deterministic stub. Not a production model. */
+export const FAKE_DETERMINISTIC_MODEL_REF = "fake-deterministic/v1" as const;
+
 export type FakeInterpretation = {
   intent: string;
   tool: TypedToolName;

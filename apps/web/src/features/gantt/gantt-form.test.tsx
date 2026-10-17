@@ -17,16 +17,11 @@ afterEach(() => {
 });
 
 describe("GanttWorkspace", () => {
-  it("uses fieldset and legend for load and view sections", () => {
+  it("loads from the active project instead of an id field", () => {
     render(<GanttWorkspace />);
-    const fieldsets = screen.getAllByRole("group");
-    expect(fieldsets.length).toBeGreaterThanOrEqual(1);
-    for (const fieldset of fieldsets) {
-      expect(fieldset.tagName).toBe("FIELDSET");
-      expect(fieldset.querySelector("legend")).toBeTruthy();
-    }
-    expect(screen.getByText(/Cargar cronograma del proyecto/i)).toBeTruthy();
-    expect(screen.getByLabelText(/ID de proyecto/i)).toBeTruthy();
+    expect(screen.queryByLabelText(/ID de proyecto/i)).toBeNull();
+    expect(screen.getByText(/Elegí un proyecto/i)).toBeTruthy();
+    expect(screen.queryByRole("group")).toBeNull();
   });
 
   it("does not expose baseline mutation controls", () => {

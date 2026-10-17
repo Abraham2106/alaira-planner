@@ -21,19 +21,21 @@ afterEach(() => {
 });
 
 describe("ControlTowerWorkspace", () => {
-  it("uses fieldset/legend for load and tab sections", () => {
+  it("uses the active project and keeps the control views", () => {
     render(<ControlTowerWorkspace />);
-    expect(screen.getByText(/Cargar cockpit del proyecto/i)).toBeTruthy();
-    expect(screen.getAllByLabelText(/ID de proyecto/i).length).toBeGreaterThanOrEqual(1);
+    expect(screen.queryByLabelText(/ID de proyecto/i)).toBeNull();
+    expect(screen.getByText(/Elegí un proyecto/i)).toBeTruthy();
     expect(screen.getByText(/Vistas de control/i)).toBeTruthy();
     expect(screen.getByRole("radiogroup", { name: /Vista de control/i })).toBeTruthy();
   });
 });
 
 describe("MyWorkWorkspace", () => {
-  it("renders Ask/Command legend", () => {
+  it("does not fall back to the illustrative task list", () => {
     render(<MyWorkWorkspace />);
-    expect(screen.getByText(/Ask \/ Command/i)).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Mi trabajo" })).toBeTruthy();
+    expect(screen.queryByText("ALA-01")).toBeNull();
+    expect(screen.getByText(/No hay una cola personal/i)).toBeTruthy();
   });
 });
 

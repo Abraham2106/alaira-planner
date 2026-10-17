@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
-export type ProjectsView = "overview" | "wbs";
+export type ProjectsView = "overview" | "wbs" | "other";
 
 function viewFromHash(hash: string): ProjectsView {
   const normalized = hash || "#/";
@@ -10,7 +10,7 @@ function viewFromHash(hash: string): ProjectsView {
   if (normalized === "#/projects" || normalized.startsWith("#/projects?")) {
     return "overview";
   }
-  return "overview";
+  return "other";
 }
 
 export function isProjectsAreaHash(hash: string): boolean {

@@ -1,9 +1,11 @@
-import { FormEvent, useCallback, useId, useMemo, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useState } from "react";
+import { hrefWithProject, rememberActiveProjectId } from "../../lib/session/active-project.js";
+import { useActiveProjectId } from "../../lib/session/use-active-project.js";
 import { formatApiError } from "../project/format-api-error.js";
 import "../project/project.css";
 import "./gantt.css";
 import { createGanttApi } from "./api.js";
-import { GanttBars } from "./GanttBars.js";
+import { GanttBars, GanttLegend } from "./GanttBars.js";
 import { GanttTable } from "./GanttTable.js";
 import {
   computeTimelineBounds,
@@ -15,15 +17,15 @@ export type ScheduleViewMode = "gantt" | "table";
 
 export function GanttWorkspace() {
   const api = useMemo(() => createGanttApi(), []);
-  const loadFormId = useId();
   const viewFieldsetId = useId();
-  const [projectId, setProjectId] = useState("");
+  const activeProjectId = useActiveProjectId();
   const [viewMode, setViewMode] = useState<ScheduleViewMode>("gantt");
   const [rows, setRows] = useState<GanttTaskRow[]>([]);
   const [meta, setMeta] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   const bounds = useMemo(() => computeTimelineBounds(rows), [rows]);
 
@@ -32,70 +34,85 @@ export function GanttWorkspace() {
     setSuccess(null);
   }, []);
 
-  const onLoadVariance = async (event: FormEvent) => {
-    event.preventDefault();
-    resetFeedback();
-    setBusy(true);
-    try {
-      const id = projectId.trim();
-      const variance = await api.getBaselineVariance(id);
-      const mapped = mapVarianceToRows(variance);
-      setRows(mapped);
-      setMeta(
-        `Baseline v${variance.baselineVersion} · forecast v${variance.forecastVersion} · ${mapped.length} tareas`,
-      );
-      if (mapped.length === 0) {
-        setSuccess("Sin tareas programables en la varianza (¿baseline aprobada?).");
-      } else {
-        setSuccess("Cronograma cargado desde API canónica (solo lectura; baseline inmutable).");
+  const loadVariance = useCallback(
+    async (id: string) => {
+      resetFeedback();
+      setBusy(true);
+      try {
+        rememberActiveProjectId(id);
+        const variance = await api.getBaselineVariance(id);
+        const criticalIds = new Set<string>();
+        if (typeof api.getScheduleForecast === "function") {
+          try {
+            const forecast = await api.getScheduleForecast(id);
+            for (const workNodeId of forecast.criticalWorkNodeIds) {
+              criticalIds.add(workNodeId);
+            }
+          } catch {
+            /* La varianza sigue siendo el cronograma; sin forecast no hay marca crítica. */
+          }
+        }
+        const mapped = mapVarianceToRows(variance).map((row) => ({
+          ...row,
+          isCritical: criticalIds.has(row.workNodeId),
+        }));
+        setRows(mapped);
+        setLoaded(true);
+        setMeta(
+          `Baseline v${variance.baselineVersion} · forecast v${variance.forecastVersion} · ${mapped.length} tareas`,
+        );
+        if (mapped.length === 0) {
+          setSuccess(null);
+        } else {
+          setSuccess("Cronograma cargado.");
+        }
+      } catch (err) {
+        setRows([]);
+        setMeta(null);
+        setLoaded(false);
+        setError(formatApiError(err));
+      } finally {
+        setBusy(false);
       }
-    } catch (err) {
+    },
+    [api, resetFeedback],
+  );
+
+  useEffect(() => {
+    if (!activeProjectId) {
       setRows([]);
       setMeta(null);
-      setError(formatApiError(err));
-    } finally {
-      setBusy(false);
+      setLoaded(false);
+      setError(null);
+      setSuccess(null);
+      return;
     }
-  };
+    void loadVariance(activeProjectId);
+  }, [activeProjectId, loadVariance]);
 
   return (
-    <div className="planner-forms">
+    <div className="planner-forms gantt-workspace">
       <nav className="planner-subnav" aria-label="Secciones de proyectos">
-        <a href="#/projects">Proyecto</a>
-        <a href="#/projects/wbs">WBS y dependencias</a>
-        <a href="#/projects/gantt" aria-current="page">
-          Gantt y desviaciones
+        <a href={hrefWithProject("#/projects", activeProjectId)}>Proyecto</a>
+        <a href={hrefWithProject("#/projects/wbs", activeProjectId)}>Paquetes</a>
+        <a href={hrefWithProject("#/projects/gantt", activeProjectId)} aria-current="page">
+          Cronograma
         </a>
+        <a href={hrefWithProject("#/projects/control", activeProjectId)}>Control</a>
       </nav>
 
-      <p className="planner-muted">
-        Vista de solo lectura: baseline, forecast y real desde{" "}
-        <code>GET /baseline/variance</code>. No hay acciones para mutar baseline.
-      </p>
+      <p className="planner-muted">Solo lectura. Baseline, forecast y real siguen separados. El plan aprobado no se edita acá.</p>
 
-      <form id={loadFormId} onSubmit={onLoadVariance}>
-        <fieldset className="planner-fieldset" disabled={busy}>
-          <legend>Cargar cronograma del proyecto</legend>
-          <div className="planner-field-grid">
-            <label htmlFor={`${loadFormId}-project`}>
-              ID de proyecto
-              <input
-                id={`${loadFormId}-project`}
-                name="projectId"
-                value={projectId}
-                onChange={(e) => setProjectId(e.target.value)}
-                required
-                autoComplete="off"
-                spellCheck={false}
-              />
-            </label>
-          </div>
-          <div className="planner-actions">
-            <button type="submit">Cargar varianza</button>
-          </div>
-        </fieldset>
-      </form>
-
+      {!activeProjectId ? (
+        <p className="planner-muted" role="status">
+          Elegí un proyecto en <a href="#/projects">Proyectos</a>. El cronograma usa ese mismo proyecto.
+        </p>
+      ) : null}
+      {busy ? (
+        <p className="planner-muted" role="status">
+          Cargando el cronograma…
+        </p>
+      ) : null}
       {meta ? (
         <p className="planner-muted" aria-live="polite">
           {meta}
@@ -109,6 +126,14 @@ export function GanttWorkspace() {
       {success ? (
         <p role="status" className="planner-success">
           {success}
+        </p>
+      ) : null}
+
+      <GanttLegend />
+
+      {loaded && rows.length === 0 ? (
+        <p className="planner-muted" role="status">
+          No hay tareas en el cronograma.
         </p>
       ) : null}
 

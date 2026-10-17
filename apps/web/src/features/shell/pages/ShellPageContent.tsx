@@ -7,15 +7,17 @@ type ShellPageContentProps = {
 };
 
 export function ShellPageContent({ route, children }: ShellPageContentProps) {
+  if (route.id === "entrar" || route.id === "registro") {
+    return children ? <>{children}</> : null;
+  }
+
   return (
-    <>
+    <header className="shell-page-head">
       <h1 className="shell-page-title" id="shell-page-title">
         {route.label}
       </h1>
-      <section className="shell-card" aria-labelledby="shell-page-title">
-        <p className="shell-muted">{route.description}</p>
-        {children}
-      </section>
-    </>
+      <p className="shell-muted">{route.description}</p>
+      {children}
+    </header>
   );
 }
